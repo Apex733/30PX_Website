@@ -68,7 +68,7 @@ export function AIVideoAds() {
             </div>
 
             <div className="relative w-full overflow-hidden">
-                <div className="relative w-full [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                <div className="relative w-full">
                     <VelocityScroll
                         default_velocity={3}
                         className="flex items-center"

@@ -111,67 +111,68 @@ export function OurWork() {
                         );
                     })}
                 </div>
-
-                {/* Velocity Grid Carousel */}
-                {images.length > 0 ? (
-                    <div className="relative w-full overflow-hidden">
-                        <div className="relative w-full">
-                            <VelocityScroll
-                                default_velocity={5}
-                                className="flex items-center"
-                            >
-                                <div className="flex">
-                                    {images.map((item, index) => {
-                                        return (
-                                            <div
-                                                key={`${activeCategory}-${index}`}
-                                                className="pl-4 shrink-0"
-                                            >
-                                                <div
-                                                    className="h-72 md:h-80 overflow-hidden rounded-lg bg-neutral-100 relative group"
-                                                >
-                                                    {item.type === "video" ? (
-                                                        <video
-                                                            src={item.src}
-                                                            className="h-full w-auto object-contain pointer-events-none"
-                                                            autoPlay
-                                                            muted
-                                                            loop
-                                                            playsInline
-                                                        />
-                                                    ) : (
-                                                        <img
-                                                            src={item.src}
-                                                            alt={`${activeCategory} work ${index + 1}`}
-                                                            className="h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
-                                                            loading="lazy"
-                                                            draggable={false}
-                                                        />
-                                                    )}
-
-                                                    {/* Image Name Label (Only for 3D and AI) */}
-                                                    {(activeCategory === "3D" || activeCategory === "AI") && (
-                                                        <div className="absolute top-3 right-3 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm z-10">
-                                                            <span className="text-xs font-medium text-white tracking-wide">
-                                                                {item.name}
-                                                            </span>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </VelocityScroll>
-                        </div>
-                    </div>
-                ) : (
-                    <div className="text-center py-16 text-neutral-500">
-                        {/* This fallback should ideally not be reached if buttons are disabled, but keeping it for safety */}
-                        Coming soon...
-                    </div>
-                )}
             </div>
+
+            {/* Velocity Grid Carousel - FULL WIDTH */}
+            {images.length > 0 ? (
+                <div className="relative w-full overflow-hidden">
+                    <div className="relative w-full">
+                        <VelocityScroll
+                            default_velocity={5}
+                            className="flex items-center"
+                        >
+                            <div className="flex">
+                                {images.map((item, index) => {
+                                    return (
+                                        <div
+                                            key={`${activeCategory}-${index}`}
+                                            className="pl-4 shrink-0"
+                                        >
+                                            <div
+                                                className="h-72 md:h-80 overflow-hidden rounded-lg bg-neutral-100 relative group"
+                                            >
+                                                {item.type === "video" ? (
+                                                    <video
+                                                        src={item.src}
+                                                        className="h-full w-auto object-contain pointer-events-none"
+                                                        autoPlay
+                                                        muted
+                                                        loop
+                                                        playsInline
+                                                    />
+                                                ) : (
+                                                    <img
+                                                        src={item.src}
+                                                        alt={`${activeCategory} work ${index + 1}`}
+                                                        className="h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
+                                                        loading="lazy"
+                                                        draggable={false}
+                                                    />
+                                                )}
+
+                                                {/* Image Name Label (Only for 3D and AI) */}
+                                                {(activeCategory === "3D" || activeCategory === "AI") && (
+                                                    <div className="absolute top-3 right-3 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm z-10">
+                                                        <span className="text-xs font-medium text-white tracking-wide">
+                                                            {item.name}
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </VelocityScroll>
+                    </div>
+                </div>
+            ) : (
+                <div className="text-center py-16 text-neutral-500">
+                    {/* This fallback should ideally not be reached if buttons are disabled, but keeping it for safety */}
+                    Coming soon...
+                </div>
+            )}
+                )}
         </section>
     );
 }

@@ -10,6 +10,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
@@ -71,6 +72,13 @@ export default function Testimonials() {
                 </div>
 
                 <Carousel
+                    plugins={[
+                        Autoplay({
+                            delay: 3000,
+                            stopOnInteraction: false,
+                            stopOnMouseEnter: true,
+                        }),
+                    ]}
                     opts={{
                         align: "start",
                         loop: true,

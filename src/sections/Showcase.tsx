@@ -77,6 +77,7 @@ export function Showcase() {
                                         loop
                                         muted
                                         playsInline
+                                        preload='metadata'
                                     />
                                 ) : (
                                     <img

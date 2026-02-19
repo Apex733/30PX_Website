@@ -72,9 +72,24 @@ function ParallaxText({
     const [repetitions, setRepetitions] = useState(2);
     // Track the size of the content (single repetition) in pixels
     const [contentSize, setContentSize] = useState(0);
+    // Track visibility to pause animation when off-screen
+    const [isVisible, setIsVisible] = useState(false);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
+
+    // Visibility observer — pause animation when off-screen
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsVisible(entry.isIntersecting),
+            { rootMargin: "200px" } // Start slightly before entering viewport
+        );
+        observer.observe(container);
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         const calculateRepetitions = () => {
@@ -154,6 +169,9 @@ function ParallaxText({
 
     useAnimationFrame((t, delta) => {
         if (contentSize === 0) return;
+
+        // Skip animation when off-screen
+        if (!isVisible) return;
 
         // Skip auto-scroll logic while dragging
         if (isDragging.current) return;

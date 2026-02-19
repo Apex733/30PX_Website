@@ -2,6 +2,7 @@ import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
+import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import {
     Carousel,
@@ -9,8 +10,8 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
+    type CarouselApi,
 } from '@/components/ui/carousel'
-import Autoplay from 'embla-carousel-autoplay'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
@@ -51,6 +52,25 @@ const testimonials = [
 ]
 
 export default function Testimonials() {
+    const [api, setApi] = useState<CarouselApi>()
+    const [isHovered, setIsHovered] = useState(false)
+
+    useEffect(() => {
+        if (!api) {
+            return
+        }
+
+        if (isHovered) {
+            return
+        }
+
+        const interval = setInterval(() => {
+            api.scrollNext()
+        }, 3000)
+
+        return () => clearInterval(interval)
+    }, [api, isHovered])
+
     return (
         <section className="py-16 md:py-24 bg-background">
             <div className="container mx-auto px-4 max-w-7xl">
@@ -72,18 +92,14 @@ export default function Testimonials() {
                 </div>
 
                 <Carousel
-                    plugins={[
-                        Autoplay({
-                            delay: 3000,
-                            stopOnInteraction: false,
-                            stopOnMouseEnter: true,
-                        }),
-                    ]}
+                    setApi={setApi}
                     opts={{
                         align: "start",
                         loop: true,
                     }}
                     className="w-full"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
                 >
                     <CarouselContent className="-ml-4">
                         {testimonials.map((testimonial, index) => (

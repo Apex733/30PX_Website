@@ -172,7 +172,6 @@ export function OurWork() {
                     Coming soon...
                 </div>
             )}
-                )}
         </section>
     );
 }

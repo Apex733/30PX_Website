@@ -2,6 +2,7 @@
 import React from 'react';
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
+import { CTASection } from "@/components/ui/cta-section";
 
 // GhostTongue Images
 const IMAGES = [
@@ -90,6 +91,9 @@ const GhostTongueProject = () => {
                     </div>
                 </div>
             </main>
+
+            {/* CTA Section */}
+            <CTASection />
 
             <Footer />
         </div>

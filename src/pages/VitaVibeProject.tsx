@@ -2,6 +2,7 @@
 import React from 'react';
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
+import { CTASection } from "@/components/ui/cta-section";
 
 // VitaVibe Images
 const IMAGES = [
@@ -88,6 +89,9 @@ const VitaVibeProject = () => {
                     </div>
                 </div>
             </main>
+
+            {/* CTA Section */}
+            <CTASection />
 
             <Footer />
         </div>

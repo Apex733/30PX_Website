@@ -13,6 +13,7 @@ import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-co
 import Testimonials from "@/components/ui/testimonials";
 import { AIVideoAds } from "@/components/ui/ai-video-ads";
 import { Footer } from "@/components/ui/footer-section";
+import { CTASection } from "@/components/ui/cta-section";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Palette, Code, Search, PenTool, Video, Cpu, Megaphone, Layout, Image } from "lucide-react";
 import * as React from "react";
@@ -153,8 +154,9 @@ function Home() {
 
                 <AIDesignPerformance />
 
-                {/* Testimonials placed at the end as catch-all / social proof before footer */}
                 <Testimonials />
+
+                <CTASection />
 
             </main>
 

@@ -93,6 +93,9 @@ const LoudMindsPortfolio = () => {
                 </div>
             </main>
 
+            {/* CTA Section */}
+            <CTASection />
+
             <Footer />
         </div>
     );

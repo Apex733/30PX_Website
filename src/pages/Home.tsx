@@ -1,0 +1,166 @@
+
+import { Hero } from "@/sections/Hero";
+import { Industries } from "@/sections/Industries";
+import { Logos } from "@/sections/Logos";
+import { OurWork } from "@/sections/OurWork";
+import GlobeSection from "@/components/ui/globe-feature-section";
+import { ComparisonTable } from "@/sections/ComparisonTable";
+import { PricingSection } from "@/components/ui/pricing-section";
+import { DetailedComparison } from "@/sections/DetailedComparison";
+import { AIDesignPerformance } from "@/sections/AIDesignPerformance";
+
+import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-columns-1";
+import Testimonials from "@/components/ui/testimonials";
+import { AIVideoAds } from "@/components/ui/ai-video-ads";
+import { Footer } from "@/components/ui/footer-section";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { Palette, Code, Search, PenTool, Video, Cpu, Megaphone, Layout, Image } from "lucide-react";
+import * as React from "react";
+import { Header } from "@/components/ui/header";
+
+export const PAYMENT_FREQUENCIES = ["monthly", "yearly"];
+
+export const TIERS = [
+    {
+        id: "startup",
+        name: "Startup",
+        price: {
+            monthly: 60,
+            yearly: 24,
+        },
+        description: "Perfect for consistent social media presence.",
+        features: [
+            "30 social media designs/month",
+            "1 design per day OR batch delivery",
+            "48-hour turnaround",
+            "Unlimited revisions",
+            "Source files (PNG/JPG)",
+        ],
+        cta: "Start Now",
+        href: {
+            monthly: "https://www.paypal.com/ncp/payment/J8RR522KULEJW",
+            yearly: "https://www.paypal.com/ncp/payment/A3ACZ76C2CX9S",
+        },
+    },
+    {
+        id: "growth",
+        name: "Growth",
+        price: {
+            monthly: 149,
+            yearly: 59,
+        },
+        description: "For brands ready to scale their visual presence.",
+        features: [
+            "Everything in Startup",
+            "Unlimited design requests",
+            "Ad creatives & banners",
+            "Flyers & basic print",
+            "24-48hr turnaround",
+            "Unlimited revisions", // Added to match previous
+        ],
+        cta: "Start Now",
+        popular: true,
+        href: {
+            monthly: "https://www.paypal.com/ncp/payment/X5FV7E2KSUXTA",
+            yearly: "https://www.paypal.com/ncp/payment/44ZVTVLXWKL6N",
+        },
+    },
+    {
+        id: "scale",
+        name: "Scale",
+        price: {
+            monthly: 299,
+            yearly: 119,
+        },
+        description: "Complete creative department on demand.",
+        features: [
+            "Everything in Growth",
+            "8 video edits/month",
+            "Motion graphics",
+            "Full vector logos",
+            "UI design (Figma/XD)",
+        ],
+        cta: "Start Now",
+        href: {
+            monthly: "https://www.paypal.com/ncp/payment/8HS4XMKWYQFXU",
+            yearly: "https://www.paypal.com/ncp/payment/67UDJAT546CG6",
+        },
+    },
+    {
+        id: "enterprise",
+        name: "Enterprise",
+        price: {
+            monthly: 499,
+            yearly: 199,
+        },
+        description: "Full-service creative partnership for high-volume brands.",
+        features: [
+            "Dedicated Support",
+            "Same-day priority turnaround",
+            "Slack + Zoom calls",
+            "12 video edits/month",
+            "Long-form video & Brand Identity",
+            "Custom AI models & Voice Clones",
+            "WordPress/Framer development",
+        ],
+        cta: "Book Meeting",
+        highlighted: true,
+    },
+];
+
+
+function Home() {
+    const [frequency, setFrequency] = React.useState(PAYMENT_FREQUENCIES[1]) // Default to yearly
+    const [isComparisonOpen, setIsComparisonOpen] = React.useState(false)
+
+
+    return (
+        <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10">
+
+            <Header />
+
+            <main>
+                <div data-theme="dark">
+                    <Hero />
+                    <Logos />
+                </div>
+
+                <GlobeSection />
+
+                <ComparisonTable />
+
+                <Industries />
+
+                <OurWork />
+
+                <PricingSection
+                    title="Everything your brand needs. One subscription."
+                    subtitle="Simple, transparent pricing. Pause or cancel anytime."
+                    tiers={TIERS}
+                    frequencies={PAYMENT_FREQUENCIES}
+                    frequency={frequency}
+                    setFrequency={setFrequency}
+                    onCompareClick={() => setIsComparisonOpen(!isComparisonOpen)}
+                    isComparisonOpen={isComparisonOpen}
+                />
+
+                <DetailedComparison
+                    isOpen={isComparisonOpen}
+                    frequency={frequency}
+                />
+
+                <AIVideoAds />
+
+                <AIDesignPerformance />
+
+                {/* Testimonials placed at the end as catch-all / social proof before footer */}
+                <Testimonials />
+
+            </main>
+
+            <Footer />
+        </div>
+    )
+}
+
+export default Home

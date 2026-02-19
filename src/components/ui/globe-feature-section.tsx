@@ -96,8 +96,12 @@ export function Globe({
         }
     }
 
+    const isVisibleRef = useRef(false)
+    const globeRef = useRef<ReturnType<typeof createGlobe> | null>(null)
+
     const onRender = useCallback(
         (state: Record<string, any>) => {
+            if (!isVisibleRef.current) return // Skip rendering when off-screen
             if (!pointerInteracting.current) phi += 0.003
             state.phi = phi + r
             state.width = width * 2
@@ -122,9 +126,26 @@ export function Globe({
             height: width * 2,
             onRender,
         })
+        globeRef.current = globe
 
         setTimeout(() => (canvasRef.current!.style.opacity = "1"))
-        return () => globe.destroy()
+
+        // Visibility observer — skip rendering when off-screen
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisibleRef.current = entry.isIntersecting
+            },
+            { rootMargin: "200px" }
+        )
+        if (canvasRef.current) {
+            observer.observe(canvasRef.current)
+        }
+
+        return () => {
+            globe.destroy()
+            observer.disconnect()
+            window.removeEventListener("resize", onResize)
+        }
     }, [])
 
     return (

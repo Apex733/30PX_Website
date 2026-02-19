@@ -1,7 +1,7 @@
 import { SectionHeading } from "@/components/ui/section-heading"
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 
 // Import all videos from AI ADS directory
@@ -11,8 +11,47 @@ const videoModules = import.meta.glob<{ default: string }>(
 );
 
 const allVideos = Object.values(videoModules).map((module) => module.default);
-// Limit to 8 videos to prevent performance issues/crashing
-const videos = allVideos.slice(0, 8);
+// Limit to 5 videos to prevent performance issues
+const videos = allVideos.slice(0, 5);
+
+// Lazy video component — only plays when visible
+const LazyAdVideo = React.memo(({ src }: { src: string }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const container = containerRef.current;
+        const video = videoRef.current;
+        if (!container || !video) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => { });
+                } else {
+                    video.pause();
+                }
+            },
+            { rootMargin: "100px" }
+        );
+        observer.observe(container);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div ref={containerRef} className="w-[200px] md:w-[280px] aspect-[9/16] rounded-lg overflow-hidden shadow-lg border border-white/10 shrink-0 bg-black/5">
+            <video
+                ref={videoRef}
+                src={src}
+                className="w-full h-full object-cover"
+                muted
+                loop
+                playsInline
+                preload="none"
+            />
+        </div>
+    );
+});
 
 export function AIVideoAds() {
     if (videos.length === 0) return null;
@@ -36,19 +75,7 @@ export function AIVideoAds() {
                     >
                         <div className="flex gap-6 pr-6">
                             {videos.map((src, index) => (
-                                <div
-                                    key={index}
-                                    className="w-[200px] md:w-[280px] aspect-[9/16] rounded-lg overflow-hidden shadow-lg border border-white/10 shrink-0 bg-black/5"
-                                >
-                                    <video
-                                        src={src}
-                                        className="w-full h-full object-cover"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                    />
-                                </div>
+                                <LazyAdVideo key={index} src={src} />
                             ))}
                         </div>
                     </VelocityScroll>

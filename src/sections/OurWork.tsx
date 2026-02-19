@@ -115,7 +115,7 @@ export function OurWork() {
                 {/* Velocity Grid Carousel */}
                 {images.length > 0 ? (
                     <div className="relative w-full overflow-hidden">
-                        <div className="relative w-full [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+                        <div className="relative w-full">
                             <VelocityScroll
                                 default_velocity={5}
                                 className="flex items-center"

@@ -5,11 +5,11 @@ export function CTASection() {
     return (
         <section className="relative w-full overflow-hidden bg-black text-white">
             {/* Background Image Setup */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 bg-black flex items-center justify-end overflow-hidden">
                 <img
                     src="/Work/CTA/Desktop-view.png"
                     alt="Abstract Background"
-                    className="w-full h-full object-cover opacity-60 md:opacity-80"
+                    className="h-full w-auto max-w-none object-contain object-right opacity-60 md:opacity-80"
                 />
             </div>
 

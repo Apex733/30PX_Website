@@ -71,7 +71,7 @@ function ParallaxText({
 
     const [repetitions, setRepetitions] = useState(2);
     // Track the size of the content (single repetition) in pixels
-    const [contentSize, setContentSize] = useState(0);
+    const contentSize = useRef(0);
     // Track visibility to pause animation when off-screen
     const [isVisible, setIsVisible] = useState(false);
 
@@ -104,7 +104,7 @@ function ParallaxText({
                 if (textSize > 0) {
                     const newRepetitions = Math.ceil(containerSize / textSize) + 2;
                     setRepetitions(Math.min(newRepetitions, 20));
-                    setContentSize(textSize); // Store pixel size
+                    contentSize.current = textSize; // Store pixel size
                 }
             }
         };
@@ -127,9 +127,10 @@ function ParallaxText({
     }, [children, axis]);
 
     const motionValue = useTransform(baseX, (v) => {
-        if (contentSize === 0) return "0px";
-        // Wrap between -contentSize and 0 (pixels)
-        return `${wrap(-contentSize, 0, v)}px`;
+        const size = contentSize.current;
+        if (size === 0) return "0px";
+        // Wrap between -size and 0 (pixels)
+        return `${wrap(-size, 0, v)}px`;
     });
 
     const isDragging = useRef(false);
@@ -168,7 +169,7 @@ function ParallaxText({
     const directionFactor = React.useRef<number>(1);
 
     useAnimationFrame((t, delta) => {
-        if (contentSize === 0) return;
+        if (contentSize.current === 0) return;
 
         // Skip animation when off-screen
         if (!isVisible) return;

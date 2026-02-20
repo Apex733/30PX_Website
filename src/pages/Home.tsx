@@ -191,6 +191,8 @@ function Home() {
 
                 <AIDesignPerformance />
 
+                <Testimonials />
+
                 <JourneyTimeline />
 
             </main>

@@ -96,6 +96,7 @@ export function PricingSection({
                         paymentFrequency={isHireProfessional ? "monthly" : frequency}
                         onCompareClick={onCompareClick}
                         isComparisonOpen={isComparisonOpen}
+                        hideCompare={isHireProfessional}
                     />
                 ))}
             </div>

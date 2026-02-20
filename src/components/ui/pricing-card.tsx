@@ -26,9 +26,10 @@ interface PricingCardProps {
     paymentFrequency: string
     onCompareClick?: () => void
     isComparisonOpen?: boolean
+    hideCompare?: boolean
 }
 
-export function PricingCard({ tier, paymentFrequency, onCompareClick, isComparisonOpen }: PricingCardProps) {
+export function PricingCard({ tier, paymentFrequency, onCompareClick, isComparisonOpen, hideCompare }: PricingCardProps) {
     const price = tier.price[paymentFrequency]
     const isHighlighted = tier.highlighted
     const isPopular = tier.popular
@@ -128,13 +129,15 @@ export function PricingCard({ tier, paymentFrequency, onCompareClick, isComparis
                 </Button>
             )}
 
-            <Button
-                variant="ghost"
-                className="w-full rounded-full text-muted-foreground hover:text-foreground h-9"
-                onClick={onCompareClick}
-            >
-                {isComparisonOpen ? "Hide Comparison" : "Compare Plans"}
-            </Button>
+            {!hideCompare && (
+                <Button
+                    variant="ghost"
+                    className="w-full rounded-full text-muted-foreground hover:text-foreground h-9"
+                    onClick={onCompareClick}
+                >
+                    {isComparisonOpen ? "Hide Comparison" : "Compare Plans"}
+                </Button>
+            )}
         </Card>
     )
 }

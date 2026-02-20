@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useScroll, useVelocity, useMotionValue, useSpring, useMotionValueEvent } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const TextHoverEffect = ({
@@ -32,6 +32,27 @@ export const TextHoverEffect = ({
         return () => window.removeEventListener("resize", updateRect);
     }, []);
 
+    const { scrollY, scrollYProgress } = useScroll();
+    const scrollVelocity = useVelocity(scrollY);
+    const stretchTarget = useMotionValue(1);
+
+    const scaleY = useSpring(stretchTarget, {
+        stiffness: 200,
+        damping: 10,
+        mass: 1
+    });
+
+    useMotionValueEvent(scrollVelocity, "change", (latestVelocity) => {
+        const progress = scrollYProgress.get();
+        if (progress > 0.8 && latestVelocity > 0) {
+            const bottomFactor = Math.max(0, (progress - 0.8) * 5); // 0 at 80%, up to 1+ past 100%
+            const stretchAmount = (latestVelocity / 1500) * bottomFactor;
+            stretchTarget.set(1 + Math.min(stretchAmount, 2.5)); // cap at max stretch of 3.5 total
+        } else {
+            stretchTarget.set(1);
+        }
+    });
+
     useEffect(() => {
         if (svgRectRef.current && cursor.x !== null && cursor.y !== null) {
             const svgRect = svgRectRef.current;
@@ -45,101 +66,109 @@ export const TextHoverEffect = ({
     }, [cursor]);
 
     return (
-        <svg
-            ref={svgRef}
-            width="100%"
-            height="100%"
-            viewBox="0 0 390 100"
-            xmlns="http://www.w3.org/2000/svg"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
-            className={cn("select-none uppercase cursor-pointer", className)}
+        <motion.div
+            style={{
+                scaleY,
+                transformOrigin: "bottom center",
+            }}
+            className="w-full h-full flex items-end justify-center"
         >
-            <defs>
-                <linearGradient
-                    id="textGradient"
-                    gradientUnits="userSpaceOnUse"
-                    cx="50%"
-                    cy="50%"
-                    r="25%"
-                >
-                    {hovered && (
-                        <>
-                            <stop offset="0%" stopColor="#eab308" />
-                            <stop offset="25%" stopColor="#ef4444" />
-                            <stop offset="50%" stopColor="#80eeb4" />
-                            <stop offset="75%" stopColor="#06b6d4" />
-                            <stop offset="100%" stopColor="#8b5cf6" />
-                        </>
-                    )}
-                </linearGradient>
+            <svg
+                ref={svgRef}
+                width="100%"
+                height="100%"
+                viewBox="0 0 390 100"
+                xmlns="http://www.w3.org/2000/svg"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
+                className={cn("select-none uppercase cursor-pointer", className)}
+            >
+                <defs>
+                    <linearGradient
+                        id="textGradient"
+                        gradientUnits="userSpaceOnUse"
+                        cx="50%"
+                        cy="50%"
+                        r="25%"
+                    >
+                        {hovered && (
+                            <>
+                                <stop offset="0%" stopColor="#eab308" />
+                                <stop offset="25%" stopColor="#ef4444" />
+                                <stop offset="50%" stopColor="#80eeb4" />
+                                <stop offset="75%" stopColor="#06b6d4" />
+                                <stop offset="100%" stopColor="#8b5cf6" />
+                            </>
+                        )}
+                    </linearGradient>
 
-                <motion.radialGradient
-                    id="revealMask"
-                    gradientUnits="userSpaceOnUse"
-                    r="20%"
-                    initial={{ cx: "50%", cy: "50%" }}
-                    animate={maskPosition}
-                    transition={{ duration: duration ?? 0, ease: "easeOut" }}
+                    <motion.radialGradient
+                        id="revealMask"
+                        gradientUnits="userSpaceOnUse"
+                        r="20%"
+                        initial={{ cx: "50%", cy: "50%" }}
+                        animate={maskPosition}
+                        transition={{ duration: duration ?? 0, ease: "easeOut" }}
+                    >
+                        <stop offset="0%" stopColor="white" />
+                        <stop offset="100%" stopColor="black" />
+                    </motion.radialGradient>
+                    <mask id="textMask">
+                        <rect
+                            x="0"
+                            y="0"
+                            width="100%"
+                            height="100%"
+                            fill="url(#revealMask)"
+                        />
+                    </mask>
+                </defs>
+                <text
+                    x="50%"
+                    y="50%"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    strokeWidth="0.3"
+                    className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+                    style={{ opacity: hovered ? 0.7 : 0 }}
                 >
-                    <stop offset="0%" stopColor="white" />
-                    <stop offset="100%" stopColor="black" />
-                </motion.radialGradient>
-                <mask id="textMask">
-                    <rect
-                        x="0"
-                        y="0"
-                        width="100%"
-                        height="100%"
-                        fill="url(#revealMask)"
-                    />
-                </mask>
-            </defs>
-            <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                strokeWidth="0.3"
-                className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
-                style={{ opacity: hovered ? 0.7 : 0 }}
-            >
-                {text}
-            </text>
-            <motion.text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                strokeWidth="0.3"
-                className="fill-transparent stroke-[#3ca2fa] font-[helvetica] text-7xl font-bold 
+                    {text}
+                </text>
+                <motion.text
+                    x="50%"
+                    y="50%"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    strokeWidth="0.3"
+                    className="fill-transparent stroke-[#3ca2fa] font-[helvetica] text-7xl font-bold 
         dark:stroke-[#3ca2fa99]"
-                initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-                animate={{
-                    strokeDashoffset: 0,
-                    strokeDasharray: 1000,
-                }}
-                transition={{
-                    duration: 4,
-                    ease: "easeInOut",
-                }}
-            >
-                {text}
-            </motion.text>
-            <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                stroke="url(#textGradient)"
-                strokeWidth="0.3"
-                mask="url(#textMask)"
-                className="fill-transparent font-[helvetica] text-7xl font-bold"
-            >
-                {text}
-            </text>
-        </svg>
+                    initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
+                    animate={{
+                        strokeDashoffset: 0,
+                        strokeDasharray: 1000,
+                    }}
+                    transition={{
+                        duration: 4,
+                        ease: "easeInOut",
+                    }}
+                >
+                    {text}
+                </motion.text>
+                <text
+                    x="50%"
+                    y="50%"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    stroke="url(#textGradient)"
+                    strokeWidth="0.3"
+                    mask="url(#textMask)"
+                    className="fill-transparent font-[helvetica] text-7xl font-bold"
+                >
+                    {text}
+                </text>
+            </svg>
+        </motion.div>
     );
 };
 

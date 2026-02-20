@@ -17,37 +17,25 @@ const videos = allVideos.slice(0, 5);
 // Lazy video component — only plays when visible
 const LazyAdVideo = React.memo(({ src }: { src: string }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const container = containerRef.current;
-        const video = videoRef.current;
-        if (!container || !video) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    video.play().catch(() => { });
-                } else {
-                    video.pause();
-                }
-            },
-            { rootMargin: "100px" }
-        );
-        observer.observe(container);
-        return () => observer.disconnect();
-    }, []);
 
     return (
-        <div ref={containerRef} className="w-[200px] md:w-[280px] aspect-[9/16] rounded-lg overflow-hidden shadow-lg border border-white/10 shrink-0 bg-black/5">
+        <div
+            className="w-[200px] md:w-[280px] aspect-[9/16] rounded-lg overflow-hidden shadow-lg border border-white/10 shrink-0 bg-black/5"
+            onMouseEnter={() => videoRef.current?.play().catch(() => { })}
+            onMouseLeave={() => {
+                if (videoRef.current) {
+                    videoRef.current.pause();
+                }
+            }}
+        >
             <video
                 ref={videoRef}
                 src={src}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-opacity duration-300"
                 muted
                 loop
                 playsInline
-                preload="none"
+                preload="metadata"
             />
         </div>
     );

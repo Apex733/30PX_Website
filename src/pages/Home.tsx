@@ -9,9 +9,9 @@ import { PricingSection } from "@/components/ui/pricing-section";
 import { DetailedComparison } from "@/sections/DetailedComparison";
 import { AIDesignPerformance } from "@/sections/AIDesignPerformance";
 
-import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-columns-1";
 import Testimonials from "@/components/ui/testimonials";
 import { AIVideoAds } from "@/components/ui/ai-video-ads";
+import { JourneyTimeline } from "@/sections/JourneyTimeline";
 import { Footer } from "@/components/ui/footer-section";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Palette, Code, Search, PenTool, Video, Cpu, Megaphone, Layout, Image } from "lucide-react";
@@ -191,7 +191,7 @@ function Home() {
 
                 <AIDesignPerformance />
 
-                <Testimonials />
+                <JourneyTimeline />
 
             </main>
 

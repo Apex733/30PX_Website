@@ -190,10 +190,21 @@ export function Footer() {
                         </FooterLink>
                     </div>
 
-                    {/* Copyright */}
-                    <p className="text-center md:text-left text-neutral-500">
-                        &copy; {new Date().getFullYear()} 30Pixels. All rights reserved.
-                    </p>
+                    {/* Copyright & Links */}
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                        <p className="text-center md:text-left text-neutral-500">
+                            &copy; {new Date().getFullYear()} 30Pixels. All rights reserved.
+                        </p>
+                        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-neutral-500">
+                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">Privacy Policy</FooterLink>
+                            <span className="hidden sm:inline">•</span>
+                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">Terms of Use</FooterLink>
+                            <span className="hidden sm:inline">•</span>
+                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">Cookie Policy</FooterLink>
+                            <span className="hidden sm:inline">•</span>
+                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">DMCA</FooterLink>
+                        </div>
+                    </div>
                 </div>
             </div>
 

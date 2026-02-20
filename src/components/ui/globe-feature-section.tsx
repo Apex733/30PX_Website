@@ -21,7 +21,7 @@ export default function Featured_05() {
                     <div className="flex justify-center md:justify-start">
                         <ShimmerButton background="#7C3AED" className="shadow-2xl">
                             <span className="flex items-center gap-2 font-semibold">
-                                Start for $60 <ArrowRight className="h-4 w-4" />
+                                Start for $24 <ArrowRight className="h-4 w-4" />
                             </span>
                         </ShimmerButton>
                     </div>

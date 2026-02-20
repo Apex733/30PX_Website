@@ -89,7 +89,7 @@ export function ComparisonTable() {
                 </div>
 
                 {/* Comparison Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-0 max-w-6xl mx-auto overflow-hidden rounded-[10px] border border-border shadow-sm relative isolate">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-0 max-w-6xl mx-auto overflow-hidden rounded-[14px] border border-border shadow-sm relative isolate">
                     {/* 30PX Column - Highlighted (Always Visible) */}
                     <motion.div
                         initial={{ opacity: 0, x: -50, filter: "blur(20px)" }}

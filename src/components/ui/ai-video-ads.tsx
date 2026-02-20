@@ -20,7 +20,7 @@ const LazyAdVideo = React.memo(({ src }: { src: string }) => {
 
     return (
         <div
-            className="w-[200px] md:w-[280px] aspect-[9/16] rounded-lg overflow-hidden shadow-lg border border-white/10 shrink-0 bg-black/5"
+            className="w-[200px] md:w-[280px] aspect-[9/16] rounded-[14px] overflow-hidden shadow-lg border border-white/10 shrink-0 bg-black/5"
             onMouseEnter={() => videoRef.current?.play().catch(() => { })}
             onMouseLeave={() => {
                 if (videoRef.current) {

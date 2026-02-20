@@ -117,11 +117,6 @@ export default function Testimonials() {
                                                     />
                                                     <AvatarFallback>{testimonial.initials}</AvatarFallback>
                                                 </Avatar>
-
-                                                {/* Text only logo equivalent for non-logo avatars if needed, or just name? 
-                                                    Jasper has a logo on left. We have avatars. 
-                                                    Let's keep Avatar + Name/Role structure but styled clearly.
-                                                */}
                                             </div>
 
                                             {testimonial.name === "Mark C. Lawrence" ? (
@@ -176,12 +171,6 @@ export default function Testimonials() {
                         <CarouselPrevious className="static translate-y-0" />
                         <CarouselNext className="static translate-y-0" />
                     </div>
-                    {/* Desktop controls usually float or sit top right. Let's add them to the top right container if possible, 
-                        but Carousel controls need to be inside Carousel context usually unless using specific API. 
-                        For simplicity with standard shadcn Carousel, we place standard absolute controls or custom relative ones.
-                        The design shows arrows. Let's put standard controls visible on desktop?
-                        Actually Jasper has them top right. I'll stick to standard shadcn controls for now or bottom for mobile.
-                    */}
                     <div className="hidden md:block">
                         <CarouselPrevious className="-left-4 lg:-left-12" />
                         <CarouselNext className="-right-4 lg:-right-12" />

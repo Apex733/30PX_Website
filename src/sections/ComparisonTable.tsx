@@ -89,14 +89,14 @@ export function ComparisonTable() {
                 </div>
 
                 {/* Comparison Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-0 max-w-6xl mx-auto overflow-hidden rounded-xl border border-border shadow-sm relative isolate">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-0 max-w-6xl mx-auto overflow-hidden rounded-[10px] border border-border shadow-sm relative isolate">
                     {/* 30PX Column - Highlighted (Always Visible) */}
                     <motion.div
                         initial={{ opacity: 0, x: -50, filter: "blur(20px)" }}
                         whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="bg-card text-card-foreground p-6 lg:rounded-l-xl z-20 relative shadow-lg lg:shadow-none border-r border-border"
+                        className="bg-card text-card-foreground p-6 z-20 relative shadow-lg lg:shadow-none border-r border-border"
                     >
                         <div className="flex items-center justify-between mb-8">
                             <h3 className="font-bold text-xl text-primary">30PX</h3>
@@ -194,7 +194,7 @@ export function ComparisonTable() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
                         className={cn(
-                            "bg-card/50 text-card-foreground p-6 lg:rounded-r-xl transition-all duration-500",
+                            "bg-card/50 text-card-foreground p-6 transition-all duration-500",
                             !isExpanded ? "hidden lg:block" : "block"
                         )}
                     >

@@ -61,7 +61,7 @@ export function AIVideoAds() {
             <div className="container px-4 md:px-12 mx-auto mb-12">
                 <SectionHeading
                     badge="AI Video"
-                    title="AI Video Ads"
+                    title="AI UGC Ads"
                     description="High-performing ad creatives generated with cutting-edge AI."
                     align="center"
                 />

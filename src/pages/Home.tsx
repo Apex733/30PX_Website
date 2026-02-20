@@ -13,7 +13,6 @@ import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-co
 import Testimonials from "@/components/ui/testimonials";
 import { AIVideoAds } from "@/components/ui/ai-video-ads";
 import { Footer } from "@/components/ui/footer-section";
-import { CTASection } from "@/components/ui/cta-section";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Palette, Code, Search, PenTool, Video, Cpu, Megaphone, Layout, Image } from "lucide-react";
 import * as React from "react";
@@ -24,12 +23,12 @@ export const PAYMENT_FREQUENCIES = ["monthly", "yearly"];
 export const TIERS = [
     {
         id: "startup",
-        name: "Startup",
+        name: "Social Media Package",
         price: {
             monthly: 60,
             yearly: 24,
         },
-        description: "Perfect for consistent social media presence.",
+        description: "Best suitable for Startups or people who are looking for just social media.",
         features: [
             "30 social media designs/month",
             "1 design per day OR batch delivery",
@@ -193,8 +192,6 @@ function Home() {
                 <AIDesignPerformance />
 
                 <Testimonials />
-
-                <CTASection />
 
             </main>
 

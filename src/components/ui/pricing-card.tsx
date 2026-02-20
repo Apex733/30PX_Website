@@ -51,10 +51,10 @@ export function PricingCard({ tier, paymentFrequency, onCompareClick, isComparis
             {isHighlighted && <HighlightedBackground />}
             {isPopular && <PopularBackground />}
 
-            <h2 className="flex items-center gap-3 text-xl font-medium capitalize">
+            <h2 className="flex items-start gap-3 text-xl font-medium">
                 {tier.name}
                 {isPopular && (
-                    <Badge variant="secondary" className="mt-1 z-10">
+                    <Badge variant="secondary" className="mt-1 z-10 shrink-0">
                         🔥 Most Popular
                     </Badge>
                 )}

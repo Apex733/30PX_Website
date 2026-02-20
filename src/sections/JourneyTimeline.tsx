@@ -1,5 +1,4 @@
 import { Check, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const timelineData = [
@@ -36,10 +35,12 @@ export function JourneyTimeline() {
     return (
         <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
             <div className="flex flex-col items-center mb-16 text-center">
-                <p className="text-muted-foreground mb-4 font-medium tracking-tight">Great design shouldn't take months to deliver.</p>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-3xl">
-                    Here's what you can expect from 30PX in your first 30 days.
-                </h2>
+                <SectionHeading
+                    badge="Your Journey"
+                    title="Here's what you can expect from 30PX in your first 30 days."
+                    description="Great design shouldn't take months to deliver."
+                    align="center"
+                />
                 <a href="#pricing" className="inline-flex items-center text-sm font-medium hover:text-primary transition-colors">
                     Start your subscription <ArrowRight className="ml-1 h-4 w-4" />
                 </a>

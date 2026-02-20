@@ -1,7 +1,7 @@
-import { SectionHeading } from "@/components/ui/section-heading"
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { SectionHeading } from "@/components/ui/section-heading"
+import React, { useRef } from "react";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 
 // Import all videos from AI ADS directory

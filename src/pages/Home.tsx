@@ -13,8 +13,6 @@ import Testimonials from "@/components/ui/testimonials";
 import { AIVideoAds } from "@/components/ui/ai-video-ads";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 import { Footer } from "@/components/ui/footer-section";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { Palette, Code, Search, PenTool, Video, Cpu, Megaphone, Layout, Image } from "lucide-react";
 import * as React from "react";
 import { Header } from "@/components/ui/header";
 

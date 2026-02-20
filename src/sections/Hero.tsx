@@ -39,9 +39,9 @@ export function Hero() {
                             Start for $24/month
                         </Button>
                         <Button
-                            variant="default"
+                            variant="outline"
                             size="lg"
-                            className="h-14 px-8 text-xl w-full sm:w-auto bg-white text-black hover:bg-gray-200 rounded-full"
+                            className="h-14 px-8 text-xl w-full sm:w-auto bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white/50 rounded-full"
                             onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
                         >
                             See pricing

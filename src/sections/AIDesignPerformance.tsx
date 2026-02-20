@@ -1,6 +1,6 @@
-import { SectionHeading } from "@/components/ui/section-heading"
 "use client";
 
+import { SectionHeading } from "@/components/ui/section-heading"
 import React from "react";
 import { motion } from "framer-motion";
 

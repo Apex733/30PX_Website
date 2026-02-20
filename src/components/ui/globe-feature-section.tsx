@@ -1,6 +1,6 @@
-import { SectionHeading } from "@/components/ui/section-heading"
 "use client";
 
+import { SectionHeading } from "@/components/ui/section-heading"
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { ArrowRight } from "lucide-react";
 import createGlobe, { COBEOptions } from "cobe"

@@ -23,7 +23,7 @@ export function Hero() {
                         </Badge>
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-[#FAFAFA]">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#FAFAFA] leading-[1.1]">
                         World-class creative.<br />
                         <span className="text-blue-400 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200">
                             <Typewriter words={words} speed={100} delayBetweenWords={2000} cursor={true} />

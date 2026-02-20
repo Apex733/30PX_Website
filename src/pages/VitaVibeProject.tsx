@@ -76,7 +76,7 @@ const VitaVibeProject = () => {
                         {/* Dynamic Masonry Layout */}
                         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                             {IMAGES.map((src, index) => (
-                                <div key={index} className="break-inside-avoid relative overflow-hidden rounded-2xl group mb-6">
+                                <div key={index} className="break-inside-avoid relative overflow-hidden rounded-[14px] group mb-6">
                                     <img
                                         src={src}
                                         alt={`VitaVibe Work ${index + 1}`}

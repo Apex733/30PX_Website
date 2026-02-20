@@ -110,6 +110,43 @@ export const TIERS = [
 ];
 
 
+export const PROFESSIONAL_TIERS = [
+    {
+        id: "hire-designer",
+        name: "Hire a designer",
+        price: {
+            monthly: 120,
+            yearly: 120, // Keep same if yearly isn't specified, or just let the user handle it
+        },
+        description: "Perfect for simple day to day tasks.",
+        features: [
+            "1 task a day",
+            "Graphic design services",
+            "Unlimited revisions",
+            "Source files (PNG/JPG)",
+        ],
+        cta: "Hire Now",
+    },
+    {
+        id: "hire-full-stack-designer",
+        name: "Graphic, Web and UI Designer",
+        price: {
+            monthly: 199,
+            yearly: 199,
+        },
+        description: "Complete creative coverage for your growing brand.",
+        features: [
+            "2 tasks per day",
+            "Graphic design",
+            "Web design",
+            "UI/UX design",
+            "Source files included",
+        ],
+        cta: "Hire Now",
+        popular: true,
+    }
+];
+
 function Home() {
     const [frequency, setFrequency] = React.useState(PAYMENT_FREQUENCIES[1]) // Default to yearly
     const [isComparisonOpen, setIsComparisonOpen] = React.useState(false)
@@ -138,6 +175,7 @@ function Home() {
                     title="Everything your brand needs. One subscription."
                     subtitle="Simple, transparent pricing. Pause or cancel anytime."
                     tiers={TIERS}
+                    professionalTiers={PROFESSIONAL_TIERS}
                     frequencies={PAYMENT_FREQUENCIES}
                     frequency={frequency}
                     setFrequency={setFrequency}

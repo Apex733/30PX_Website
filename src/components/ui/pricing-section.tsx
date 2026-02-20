@@ -10,6 +10,7 @@ interface PricingSectionProps {
     title: string
     subtitle: string
     tiers: PricingTier[]
+    professionalTiers?: PricingTier[]
     frequencies: string[]
     frequency: string
     setFrequency: (frequency: string) => void
@@ -21,6 +22,7 @@ export function PricingSection({
     title,
     subtitle,
     tiers,
+    professionalTiers = [],
     frequencies,
     frequency,
     setFrequency,
@@ -28,6 +30,9 @@ export function PricingSection({
     isComparisonOpen,
 }: PricingSectionProps) {
     const [isHireProfessional, setIsHireProfessional] = React.useState(false)
+
+    // Select the current list of tiers based on the local toggle
+    const currentTiers = isHireProfessional ? professionalTiers : tiers;
 
     return (
         <section className="flex flex-col items-center gap-10 py-16 md:py-24 px-12" id="pricing">
@@ -69,7 +74,7 @@ export function PricingSection({
                     </span>
                 </div>
 
-                <div className="mx-auto flex w-fit rounded-full bg-muted p-1">
+                <div className={cn("mx-auto flex w-fit rounded-full bg-muted p-1 transition-opacity duration-300", isHireProfessional ? "opacity-0 pointer-events-none" : "opacity-100")}>
                     {frequencies.map((freq) => (
                         <Tab
                             key={freq}
@@ -82,12 +87,13 @@ export function PricingSection({
                 </div>
             </div>
 
-            <div className="grid w-full max-w-7xl gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                {tiers.map((tier) => (
+            {/* Adjust grid layout dynamically: 4 columns for regular, 2 columns for professional */}
+            <div className={cn("grid w-full max-w-7xl gap-6 grid-cols-1 md:grid-cols-2", !isHireProfessional && "lg:grid-cols-4", isHireProfessional && "max-w-4xl mx-auto")}>
+                {currentTiers.map((tier) => (
                     <PricingCard
                         key={tier.name}
                         tier={tier}
-                        paymentFrequency={frequency}
+                        paymentFrequency={isHireProfessional ? "monthly" : frequency}
                         onCompareClick={onCompareClick}
                         isComparisonOpen={isComparisonOpen}
                     />

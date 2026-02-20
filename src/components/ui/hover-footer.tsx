@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useVelocity, useMotionValue, useSpring, useMotionValueEvent } from "motion/react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const TextHoverEffect = ({
@@ -20,6 +20,116 @@ export const TextHoverEffect = ({
 
     const svgRectRef = useRef<DOMRect | null>(null);
 
+    // === RUBBER BAND OVERSCROLL SYSTEM ===
+    const rawStretch = useMotionValue(1);
+    const decayTimerRef = useRef<number | null>(null);
+    const accumulatedStretch = useRef(0);
+
+    // Tuned spring: high stiffness for snappy return, moderate damping for 2-3 bounces
+    const scaleY = useSpring(rawStretch, {
+        stiffness: 300,
+        damping: 15,
+        mass: 0.8,
+        restDelta: 0.001,
+    });
+
+    const isAtBottom = useCallback(() => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        // Within 2px of the absolute bottom
+        return scrollTop + clientHeight >= scrollHeight - 2;
+    }, []);
+
+    useEffect(() => {
+        const handleWheel = (e: WheelEvent) => {
+            if (!isAtBottom()) {
+                // Not at bottom — reset any stretch
+                if (accumulatedStretch.current > 0) {
+                    accumulatedStretch.current = 0;
+                    rawStretch.set(1);
+                }
+                return;
+            }
+
+            // Only stretch on downward scroll attempts (deltaY > 0)
+            if (e.deltaY > 0) {
+                // Accumulate with logarithmic resistance (feels like rubber)
+                const delta = Math.abs(e.deltaY);
+                // Diminishing returns: sqrt creates natural rubber-band resistance
+                accumulatedStretch.current += delta * 0.015;
+                const maxStretch = 2.0; // Cap: text can grow to 3x (1 + 2.0)
+                const dampedStretch = Math.min(
+                    Math.sqrt(accumulatedStretch.current) * 0.3,
+                    maxStretch
+                );
+                rawStretch.set(1 + dampedStretch);
+
+                // Clear any existing decay timer
+                if (decayTimerRef.current) {
+                    clearTimeout(decayTimerRef.current);
+                }
+
+                // Start decay: after 80ms of no wheel events, snap back
+                decayTimerRef.current = window.setTimeout(() => {
+                    accumulatedStretch.current = 0;
+                    rawStretch.set(1); // Spring handles the bounce-back
+                }, 80);
+            }
+        };
+
+        // Touch overscroll support for mobile
+        let touchStartY = 0;
+        const handleTouchStart = (e: TouchEvent) => {
+            touchStartY = e.touches[0].clientY;
+        };
+
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!isAtBottom()) {
+                if (accumulatedStretch.current > 0) {
+                    accumulatedStretch.current = 0;
+                    rawStretch.set(1);
+                }
+                return;
+            }
+
+            const touchY = e.touches[0].clientY;
+            const delta = touchStartY - touchY; // Positive = scrolling down
+
+            if (delta > 0) {
+                accumulatedStretch.current += delta * 0.02;
+                const maxStretch = 2.0;
+                const dampedStretch = Math.min(
+                    Math.sqrt(accumulatedStretch.current) * 0.3,
+                    maxStretch
+                );
+                rawStretch.set(1 + dampedStretch);
+                touchStartY = touchY; // Reset for next frame
+            }
+        };
+
+        const handleTouchEnd = () => {
+            if (accumulatedStretch.current > 0) {
+                accumulatedStretch.current = 0;
+                rawStretch.set(1);
+            }
+        };
+
+        window.addEventListener("wheel", handleWheel, { passive: true });
+        window.addEventListener("touchstart", handleTouchStart, { passive: true });
+        window.addEventListener("touchmove", handleTouchMove, { passive: true });
+        window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+        return () => {
+            window.removeEventListener("wheel", handleWheel);
+            window.removeEventListener("touchstart", handleTouchStart);
+            window.removeEventListener("touchmove", handleTouchMove);
+            window.removeEventListener("touchend", handleTouchEnd);
+            if (decayTimerRef.current) clearTimeout(decayTimerRef.current);
+        };
+    }, [isAtBottom, rawStretch]);
+
+    // === SVG HOVER MASK ===
     useEffect(() => {
         const updateRect = () => {
             if (svgRef.current) {
@@ -31,27 +141,6 @@ export const TextHoverEffect = ({
         window.addEventListener("resize", updateRect);
         return () => window.removeEventListener("resize", updateRect);
     }, []);
-
-    const { scrollY, scrollYProgress } = useScroll();
-    const scrollVelocity = useVelocity(scrollY);
-    const stretchTarget = useMotionValue(1);
-
-    const scaleY = useSpring(stretchTarget, {
-        stiffness: 200,
-        damping: 10,
-        mass: 1
-    });
-
-    useMotionValueEvent(scrollVelocity, "change", (latestVelocity) => {
-        const progress = scrollYProgress.get();
-        if (progress > 0.8 && latestVelocity > 0) {
-            const bottomFactor = Math.max(0, (progress - 0.8) * 5); // 0 at 80%, up to 1+ past 100%
-            const stretchAmount = (latestVelocity / 1500) * bottomFactor;
-            stretchTarget.set(1 + Math.min(stretchAmount, 2.5)); // cap at max stretch of 3.5 total
-        } else {
-            stretchTarget.set(1);
-        }
-    });
 
     useEffect(() => {
         if (svgRectRef.current && cursor.x !== null && cursor.y !== null) {
@@ -71,7 +160,7 @@ export const TextHoverEffect = ({
                 scaleY,
                 transformOrigin: "bottom center",
             }}
-            className="w-full h-full flex items-end justify-center"
+            className="w-full h-full flex items-end justify-center will-change-transform"
         >
             <svg
                 ref={svgRef}

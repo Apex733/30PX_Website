@@ -85,7 +85,7 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
                     className,
                 )}
                 ref={mergedRef}
-                onPointerDown={handlePointerDown}
+                onPointerEnter={handlePointerEnter}
                 {...props}
             >
                 {/* spark container */}

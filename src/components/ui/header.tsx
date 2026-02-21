@@ -128,7 +128,8 @@ export function Header() {
                         className={cn(
                             "h-10 text-sm px-6 py-2 transition-all duration-300",
                         )}
-                        shimmerColor={isDark ? "#ffffff" : "#000000"}
+                        shimmerColor={"#ffffff"}
+                        background="#7C3AED"
                     >
                         Start for $24
                     </ShimmerButton>

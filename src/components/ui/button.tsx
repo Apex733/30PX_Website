@@ -45,7 +45,7 @@ export interface ButtonProps
 function useRipple(enabled: boolean) {
     const containerRef = React.useRef<HTMLElement>(null);
 
-    const handlePointerDown = React.useCallback(
+    const handlePointerEnter = React.useCallback(
         (e: React.PointerEvent) => {
             if (!enabled) return;
             const el = containerRef.current;
@@ -80,13 +80,13 @@ function useRipple(enabled: boolean) {
         [enabled],
     );
 
-    return { containerRef, handlePointerDown };
+    return { containerRef, handlePointerEnter };
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant, size, asChild = false, ripple = true, ...props }, ref) => {
         const Comp = asChild ? Slot : "button"
-        const { containerRef, handlePointerDown } = useRipple(ripple && variant !== "link" && variant !== "ghost");
+        const { containerRef, handlePointerEnter } = useRipple(ripple && variant !== "link" && variant !== "ghost");
 
         // Merge refs
         const mergedRef = React.useCallback(
@@ -105,9 +105,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     ripple && variant !== "link" && variant !== "ghost" && "relative overflow-hidden",
                 )}
                 ref={mergedRef}
-                onPointerDown={(e: React.PointerEvent<HTMLButtonElement>) => {
-                    handlePointerDown(e);
-                    props.onPointerDown?.(e);
+                onPointerEnter={(e: React.PointerEvent<HTMLButtonElement>) => {
+                    handlePointerEnter(e);
+                    props.onPointerEnter?.(e);
                 }}
                 {...props}
             />

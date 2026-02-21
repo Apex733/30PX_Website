@@ -38,7 +38,7 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
             [ref],
         );
 
-        const handlePointerDown = useCallback((e: React.PointerEvent<HTMLButtonElement>) => {
+        const handlePointerEnter = useCallback((e: React.PointerEvent<HTMLButtonElement>) => {
             const el = btnRef.current;
             if (!el) return;
             const rect = el.getBoundingClientRect();
@@ -64,8 +64,8 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
             el.appendChild(ripple);
             ripple.addEventListener("animationend", () => ripple.remove());
 
-            props.onPointerDown?.(e);
-        }, [props.onPointerDown]);
+            props.onPointerEnter?.(e);
+        }, [props.onPointerEnter]);
 
         return (
             <button

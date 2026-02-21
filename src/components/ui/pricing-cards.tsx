@@ -73,7 +73,7 @@ function Pricing() {
                                             <PlanFeature text="48-hour turnaround" />
                                             <PlanFeature text="Unlimited revisions" />
                                             <PlanFeature text="Source files (PNG/JPG)" />
-                                            <Button variant="outline" className="w-full mt-4 gap-2">
+                                            <Button className="w-full mt-4 gap-2">
                                                 Sign up today <MoveRight className="w-4 h-4" />
                                             </Button>
                                         </div>
@@ -150,7 +150,7 @@ function Pricing() {
                                             <PlanFeature text="Motion graphics" />
                                             <PlanFeature text="Full vector logos" />
                                             <PlanFeature text="UI design (Figma/XD)" />
-                                            <Button variant="outline" className="w-full mt-4 gap-2">
+                                            <Button className="w-full mt-4 gap-2">
                                                 Sign up today <MoveRight className="w-4 h-4" />
                                             </Button>
                                         </div>
@@ -208,7 +208,7 @@ function Pricing() {
                                                 <PlanFeature text="WordPress/Framer development" />
                                             </div>
                                             <div className="col-span-full mt-4">
-                                                <Button variant="secondary" className="w-full md:w-auto gap-4">
+                                                <Button className="w-full md:w-auto gap-4">
                                                     Book a meeting <PhoneCall className="w-4 h-4" />
                                                 </Button>
                                             </div>

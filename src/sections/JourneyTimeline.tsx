@@ -43,15 +43,18 @@ const timelineData = [
 export function JourneyTimeline() {
     return (
         <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-            <div className="flex flex-col items-center mb-16 text-center">
+            <div className="flex flex-col items-center mb-16 text-center gap-6">
                 <SectionHeading
                     badge="Your Journey"
                     title="Here's what you can expect from 30PX in your first 30 days."
                     description="Great design shouldn't take months to deliver."
                     align="center"
                 />
-                <a href="#pricing" className="inline-flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    Start your subscription <ArrowRight className="ml-1 h-4 w-4" />
+                <a
+                    href="/#pricing"
+                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                    Start your subscription <ArrowRight className="h-4 w-4" />
                 </a>
             </div>
 

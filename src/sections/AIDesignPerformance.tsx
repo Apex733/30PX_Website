@@ -45,7 +45,7 @@ export function AIDesignPerformance() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="relative"
                     >
-                        <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-2xl">
+                        <div className="aspect-[4/3] relative rounded-[5px] overflow-hidden shadow-2xl">
                             <img
                                 src="/ai-design-performance.png"
                                 alt="AI Design Performance"

@@ -10,7 +10,7 @@ import { DetailedComparison } from "@/sections/DetailedComparison";
 import { AIDesignPerformance } from "@/sections/AIDesignPerformance";
 
 import Testimonials from "@/components/ui/testimonials";
-import { AIVideoAds } from "@/components/ui/ai-video-ads";
+
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 import { Footer } from "@/components/ui/footer-section";
 import * as React from "react";
@@ -185,7 +185,7 @@ function Home() {
                     frequency={frequency}
                 />
 
-                <AIVideoAds />
+
 
                 <AIDesignPerformance />
 

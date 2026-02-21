@@ -129,7 +129,7 @@ export function OurWork() {
                                             className="pl-4 shrink-0"
                                         >
                                             <div
-                                                className="h-72 md:h-80 overflow-hidden rounded-[14px] bg-neutral-100 relative group"
+                                                className="h-72 md:h-80 overflow-hidden rounded-[5px] bg-neutral-100 relative group"
                                             >
                                                 {item.type === "video" ? (
                                                     <video

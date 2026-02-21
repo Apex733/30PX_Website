@@ -149,6 +149,21 @@ function Home() {
     const [frequency, setFrequency] = React.useState(PAYMENT_FREQUENCIES[1]) // Default to yearly
     const [isComparisonOpen, setIsComparisonOpen] = React.useState(false)
 
+    // Handle scroll-to from cross-page navigation (e.g. portfolio → /#/?scrollTo=pricing)
+    React.useEffect(() => {
+        const hash = window.location.hash; // e.g. "#/?scrollTo=services"
+        const match = hash.match(/scrollTo=(\w+)/);
+        if (match) {
+            const sectionId = match[1];
+            // Small delay to let DOM render
+            setTimeout(() => {
+                const el = document.getElementById(sectionId);
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                // Clean up the URL
+                window.history.replaceState(null, "", "/#/");
+            }, 300);
+        }
+    }, []);
 
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10">

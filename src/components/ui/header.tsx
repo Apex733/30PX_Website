@@ -1,14 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
-const navItems = ["Services", "Pricing", "Reviews"];
+const navItems = [
+    { label: "Services", sectionId: "services" },
+    { label: "Pricing", sectionId: "pricing" },
+    { label: "Reviews", sectionId: "reviews" },
+];
 
 export function Header() {
-    const [isDark] = useState(false); // Force light theme (dark text) for white header
+    const [isDark] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
@@ -17,6 +21,17 @@ export function Header() {
     useMotionValueEvent(scrollY, "change", (latest) => {
         setScrolled(latest > 50);
     });
+
+    const scrollToSection = useCallback((sectionId: string) => {
+        // Check if we're on the homepage by looking for the section
+        const el = document.getElementById(sectionId);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+            // We're on a different page — navigate home then scroll
+            window.location.href = `/#/?scrollTo=${sectionId}`;
+        }
+    }, []);
 
     return (
         <header
@@ -64,13 +79,13 @@ export function Header() {
                     onMouseLeave={() => setHoveredTab(null)}
                 >
                     {navItems.map((item) => (
-                        <a
-                            key={item}
-                            href={`#${item.toLowerCase()}`}
-                            className="relative px-4 py-2 rounded-full"
-                            onMouseEnter={() => setHoveredTab(item)}
+                        <button
+                            key={item.label}
+                            onClick={() => scrollToSection(item.sectionId)}
+                            className="relative px-4 py-2 rounded-full cursor-pointer"
+                            onMouseEnter={() => setHoveredTab(item.label)}
                         >
-                            {hoveredTab === item && (
+                            {hoveredTab === item.label && (
                                 <motion.div
                                     layoutId="nav-pill"
                                     className={cn(
@@ -88,17 +103,17 @@ export function Header() {
                             )}
                             <span className={cn(
                                 "relative z-10 transition-colors duration-200",
-                                hoveredTab === item && (isDark ? "text-white" : "text-black")
+                                hoveredTab === item.label && (isDark ? "text-white" : "text-black")
                             )}>
-                                {item}
+                                {item.label}
                             </span>
-                        </a>
+                        </button>
                     ))}
 
                     {/* AI Lab - Special gradient item */}
-                    <a
-                        href="#ai-lab"
-                        className="relative px-4 py-2 rounded-full"
+                    <button
+                        onClick={() => scrollToSection("ai-lab")}
+                        className="relative px-4 py-2 rounded-full cursor-pointer"
                         onMouseEnter={() => setHoveredTab("AI Ads")}
                     >
                         {hoveredTab === "AI Ads" && (
@@ -120,7 +135,7 @@ export function Header() {
                         <span className="relative z-10 ai-lab-gradient ai-lab-glow">
                             ✨ AI Ads
                         </span>
-                    </a>
+                    </button>
                 </nav>
 
                 <div className="flex gap-4">

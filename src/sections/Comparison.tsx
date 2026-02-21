@@ -1,7 +1,7 @@
 import { ImageComparisonSlider } from "@/components/ui/image-comparison-slider-horizontal";
 
 const images = import.meta.glob<{ default: string }>(
-    "/Hero Carousel/untitled folder/*.{jpg,png}",
+    "/Hero Carousel/untitled folder/*.{jpg,png,webp}",
     { eager: true }
 );
 

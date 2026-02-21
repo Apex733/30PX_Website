@@ -70,6 +70,19 @@ async function convertFile(filePath, maxWidth, quality) {
             ? image.resize({ width: maxWidth, withoutEnlargement: true })
             : image;
 
+        if (DRY_RUN) {
+            // Estimate output size without writing
+            const buf = await pipeline.webp({ quality, effort: 4 }).toBuffer();
+            const newSize = buf.length;
+            const savings = ((1 - newSize / originalSize) * 100).toFixed(1);
+
+            console.log(
+                `  ✅ ${path.basename(filePath)} → ${path.basename(webpPath)}  ` +
+                `${formatSize(originalSize)} → ${formatSize(newSize)} (${savings}% smaller) [DRY RUN]`
+            );
+            return { originalSize, newSize, converted: true };
+        }
+
         await pipeline
             .webp({ quality, effort: 4 })
             .toFile(webpPath);
@@ -78,14 +91,11 @@ async function convertFile(filePath, maxWidth, quality) {
         const newSize = newStat.size;
         const savings = ((1 - newSize / originalSize) * 100).toFixed(1);
 
-        if (!DRY_RUN) {
-            await unlink(filePath);
-        }
+        await unlink(filePath);
 
         console.log(
             `  ✅ ${path.basename(filePath)} → ${path.basename(webpPath)}  ` +
-            `${formatSize(originalSize)} → ${formatSize(newSize)} (${savings}% smaller)` +
-            (DRY_RUN ? ' [DRY RUN]' : '')
+            `${formatSize(originalSize)} → ${formatSize(newSize)} (${savings}% smaller)`
         );
 
         return { originalSize, newSize, converted: true };

@@ -3,6 +3,7 @@ import { Hero } from "@/sections/Hero";
 import { Industries } from "@/sections/Industries";
 import { Logos } from "@/sections/Logos";
 import { OurWork } from "@/sections/OurWork";
+import { OurServices } from "@/sections/OurServices";
 import GlobeSection from "@/components/ui/globe-feature-section";
 import { ComparisonTable } from "@/sections/ComparisonTable";
 import { PricingSection } from "@/components/ui/pricing-section";
@@ -166,6 +167,8 @@ function Home() {
                 <ComparisonTable />
 
                 <Industries />
+
+                <OurServices />
 
                 <OurWork />
 

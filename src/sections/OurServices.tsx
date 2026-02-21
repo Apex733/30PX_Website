@@ -1,6 +1,7 @@
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-    Palette,
     Share2,
     Presentation,
     PenTool,
@@ -21,6 +22,7 @@ import {
     TrendingUp,
     Users,
     Megaphone,
+    ChevronDown,
 } from "lucide-react";
 
 const serviceGroups = [
@@ -87,6 +89,20 @@ const serviceGroups = [
 ];
 
 export function OurServices() {
+    const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
+
+    const toggle = (category: string) => {
+        setOpenCategories((prev) => {
+            const next = new Set(prev);
+            if (next.has(category)) {
+                next.delete(category);
+            } else {
+                next.add(category);
+            }
+            return next;
+        });
+    };
+
     return (
         <section className="py-16 md:py-24 bg-background">
             <div className="container mx-auto px-4 md:px-12 max-w-7xl">
@@ -97,41 +113,77 @@ export function OurServices() {
                     align="center"
                 />
 
-                <div className="mt-16 space-y-12">
-                    {serviceGroups.map((group) => (
-                        <div key={group.category}>
-                            {/* Category Header */}
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className={`h-1 w-8 rounded-full bg-gradient-to-r ${group.accent}`} />
-                                <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                                    {group.category}
-                                </h3>
-                            </div>
+                <div className="mt-16">
+                    {serviceGroups.map((group, index) => {
+                        const isOpen = openCategories.has(group.category);
+                        const isLast = index === serviceGroups.length - 1;
 
-                            {/* Service Cards Grid */}
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                                {group.services.map((service) => {
-                                    const Icon = service.icon;
-                                    return (
-                                        <div
-                                            key={service.name}
-                                            className="group relative bg-card border border-border/50 rounded-[14px] p-5 flex flex-col items-center gap-3 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-default"
+                        return (
+                            <div key={group.category}>
+                                {/* Category Header — Clickable */}
+                                <button
+                                    onClick={() => toggle(group.category)}
+                                    className="w-full flex items-center justify-between py-5 group cursor-pointer"
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <div className={`h-2 w-2 rounded-full bg-gradient-to-r ${group.accent}`} />
+                                        <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                                            {group.category}
+                                        </h3>
+                                        <span className="text-xs text-muted-foreground/60 font-medium">
+                                            {group.services.length} services
+                                        </span>
+                                    </div>
+                                    <motion.div
+                                        animate={{ rotate: isOpen ? 180 : 0 }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    >
+                                        <ChevronDown className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                                    </motion.div>
+                                </button>
+
+                                {/* Collapsible Service Cards */}
+                                <AnimatePresence initial={false}>
+                                    {isOpen && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                                            className="overflow-hidden"
                                         >
-                                            {/* Subtle gradient glow on hover */}
-                                            <div className={`absolute inset-0 bg-gradient-to-br ${group.accent} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300`} />
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pb-6">
+                                                {group.services.map((service) => {
+                                                    const Icon = service.icon;
+                                                    return (
+                                                        <div
+                                                            key={service.name}
+                                                            className="group/card relative bg-card border border-border/50 rounded-[14px] p-5 flex flex-col items-center gap-3 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-default"
+                                                        >
+                                                            {/* Subtle gradient glow on hover */}
+                                                            <div className={`absolute inset-0 bg-gradient-to-br ${group.accent} opacity-0 group-hover/card:opacity-[0.04] transition-opacity duration-300`} />
 
-                                            <div className={`relative p-3 rounded-xl ${group.iconBg} transition-all duration-300 group-hover:scale-110`}>
-                                                <Icon className={`h-6 w-6 ${group.iconColor}`} strokeWidth={1.5} />
+                                                            <div className={`relative p-3 rounded-xl ${group.iconBg} transition-all duration-300 group-hover/card:scale-110`}>
+                                                                <Icon className={`h-6 w-6 ${group.iconColor}`} strokeWidth={1.5} />
+                                                            </div>
+                                                            <span className="relative text-sm font-medium text-foreground/80 group-hover/card:text-foreground transition-colors">
+                                                                {service.name}
+                                                            </span>
+                                                        </div>
+                                                    );
+                                                })}
                                             </div>
-                                            <span className="relative text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
-                                                {service.name}
-                                            </span>
-                                        </div>
-                                    );
-                                })}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+
+                                {/* Separator line */}
+                                {!isLast && (
+                                    <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                                )}
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

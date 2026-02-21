@@ -94,7 +94,7 @@ const CarouselColumn = ({ images, speed, className }: { images: string[], speed:
         <VelocityScroll
             axis="vertical"
             default_velocity={speed}
-            velocity_sensitivity={15}
+            velocity_sensitivity={5}
             className={cn("gap-4", className)}
         >
             <div className="flex flex-col gap-4 pb-4">

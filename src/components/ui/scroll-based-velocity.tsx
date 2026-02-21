@@ -66,7 +66,7 @@ function ParallaxText({
     });
 
     const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, velocity_sensitivity], {
-        clamp: false,
+        clamp: true,
     });
 
     const [repetitions, setRepetitions] = useState(2);

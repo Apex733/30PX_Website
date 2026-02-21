@@ -23,6 +23,7 @@
     "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.0.0",
     "framer-motion": "^11.0.3",
+    "lenis": "^1.3.17",
     "lucide-react": "^0.314.0",
     "motion": "^12.26.2",
     "react": "^18.2.0",

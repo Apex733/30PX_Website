@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useCallback, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,6 +27,46 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
         },
         ref,
     ) => {
+        const btnRef = useRef<HTMLButtonElement | null>(null);
+
+        const mergedRef = useCallback(
+            (node: HTMLButtonElement | null) => {
+                btnRef.current = node;
+                if (typeof ref === "function") ref(node);
+                else if (ref) (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+            },
+            [ref],
+        );
+
+        const handlePointerDown = useCallback((e: React.PointerEvent<HTMLButtonElement>) => {
+            const el = btnRef.current;
+            if (!el) return;
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const size = Math.max(rect.width, rect.height) * 2.5;
+
+            const ripple = document.createElement("span");
+            ripple.style.cssText = `
+                position: absolute;
+                left: ${x - size / 2}px;
+                top: ${y - size / 2}px;
+                width: ${size}px;
+                height: ${size}px;
+                border-radius: 50%;
+                background: currentColor;
+                opacity: 0.12;
+                transform: scale(0);
+                pointer-events: none;
+                z-index: 50;
+                animation: btn-ripple-expand 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            `;
+            el.appendChild(ripple);
+            ripple.addEventListener("animationend", () => ripple.remove());
+
+            props.onPointerDown?.(e);
+        }, [props.onPointerDown]);
+
         return (
             <button
                 style={
@@ -44,7 +84,8 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
                     "transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px",
                     className,
                 )}
-                ref={ref}
+                ref={mergedRef}
+                onPointerDown={handlePointerDown}
                 {...props}
             >
                 {/* spark container */}

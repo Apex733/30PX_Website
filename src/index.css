@@ -112,3 +112,20 @@
         offset-distance: 100%;
     }
 }
+
+/* Liquid ripple effect for buttons */
+@keyframes btn-ripple-expand {
+    0% {
+        transform: scale(0);
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}

@@ -4,6 +4,16 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
+const IMAGES = [
+    "/portfolio/vitavibe/projects-mokcup.webp",
+    "/portfolio/vitavibe/ezgif-4cd46d9da4202e.gif",
+    "/portfolio/vitavibe/1.webp",
+    "/portfolio/vitavibe/DUCT-TAPE-FILE.webp",
+    "/portfolio/vitavibe/PILLS-BOTTLE_mockup_v.webp",
+    "/portfolio/vitavibe/TWO-PILLS-BOTTLE-MOCKUP_(v.webp",
+    "/portfolio/vitavibe/mockup.webp",
+];
+
 const VitaVibeProject = () => {
     return (
         <div className="min-h-screen bg-white font-sans text-neutral-950 antialiased selection:bg-[#7C3AED]/10 flex flex-col">
@@ -52,6 +62,27 @@ const VitaVibeProject = () => {
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+                    </div>
+
+                    {/* Bento Grid Gallery */}
+                    <div className="space-y-12">
+                        <div className="text-center">
+                            <h2 className="text-3xl font-bold tracking-tight mb-4">Visual Gallery</h2>
+                            <p className="text-muted-foreground">A curated selection of the work we produced.</p>
+                        </div>
+
+                        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                            {IMAGES.map((src, index) => (
+                                <div key={index} className="break-inside-avoid relative overflow-hidden rounded-[14px] group mb-6">
+                                    <img
+                                        src={src}
+                                        alt={`VitaVibe Work ${index + 1}`}
+                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

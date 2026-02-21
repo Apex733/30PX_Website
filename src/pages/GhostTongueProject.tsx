@@ -4,6 +4,18 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
+const IMAGES = [
+    "/portfolio/ghosttongue/ghost-tongue-logo3.webp",
+    "/portfolio/ghosttongue/dsc04992.webp",
+    "/portfolio/ghosttongue/mockupp.webp",
+    "/portfolio/ghosttongue/post.webp",
+    "/portfolio/ghosttongue/wall-sticker.webp",
+    "/portfolio/ghosttongue/2b9b2cfb-2e46-4091-b84a-48c2920446e5.webp",
+    "/portfolio/ghosttongue/ghost-tongue-packing.webp",
+    "/portfolio/ghosttongue/ghost-tongue-sticker-var.webp",
+    "/portfolio/ghosttongue/ghost-tongue-logovar.webp",
+];
+
 const GhostTongueProject = () => {
     return (
         <div className="min-h-screen bg-white font-sans text-neutral-950 antialiased selection:bg-[#7C3AED]/10 flex flex-col">
@@ -52,6 +64,27 @@ const GhostTongueProject = () => {
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+                    </div>
+
+                    {/* Bento Grid Gallery */}
+                    <div className="space-y-12">
+                        <div className="text-center">
+                            <h2 className="text-3xl font-bold tracking-tight mb-4">Visual Gallery</h2>
+                            <p className="text-muted-foreground">A curated selection of the work we produced.</p>
+                        </div>
+
+                        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                            {IMAGES.map((src, index) => (
+                                <div key={index} className="break-inside-avoid relative overflow-hidden rounded-[14px] group mb-6">
+                                    <img
+                                        src={src}
+                                        alt={`GhostTongue Work ${index + 1}`}
+                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

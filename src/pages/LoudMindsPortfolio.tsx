@@ -4,6 +4,20 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
+const IMAGES = [
+    "/portfolio/loudminds/projects-mokcup.webp",
+    "/portfolio/loudminds/1.webp",
+    "/portfolio/loudminds/2.webp",
+    "/portfolio/loudminds/4.webp",
+    "/portfolio/loudminds/6.webp",
+    "/portfolio/loudminds/7.webp",
+    "/portfolio/loudminds/8.webp",
+    "/portfolio/loudminds/11.webp",
+    "/portfolio/loudminds/22.webp",
+    "/portfolio/loudminds/33.webp",
+    "/portfolio/loudminds/44.webp",
+];
+
 const LoudMindsPortfolio = () => {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
@@ -52,6 +66,27 @@ const LoudMindsPortfolio = () => {
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+                    </div>
+
+                    {/* Bento Grid Gallery */}
+                    <div className="space-y-12">
+                        <div className="text-center">
+                            <h2 className="text-3xl font-bold tracking-tight mb-4">Visual Gallery</h2>
+                            <p className="text-muted-foreground">A curated selection of the work we produced.</p>
+                        </div>
+
+                        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                            {IMAGES.map((src, index) => (
+                                <div key={index} className="break-inside-avoid relative overflow-hidden rounded-[14px] group mb-6">
+                                    <img
+                                        src={src}
+                                        alt={`LoudMinds Work ${index + 1}`}
+                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

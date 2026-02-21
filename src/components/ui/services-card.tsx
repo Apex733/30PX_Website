@@ -236,7 +236,7 @@ const ServiceCard = ({ service, index }: { service: Service; index: number }) =>
         <motion.div
             variants={cardVariants}
             className={cn(
-                "relative flex h-[450px] w-full flex-col justify-between overflow-hidden rounded-lg p-8 bg-gradient-to-r",
+                "relative flex h-[450px] w-full flex-col justify-between overflow-hidden rounded-[5px] p-8 bg-gradient-to-r",
                 service.gradient
             )}
         >

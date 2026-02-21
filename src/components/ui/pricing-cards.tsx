@@ -46,7 +46,7 @@ function Pricing() {
                 {/* Top Row: Startup, Growth, Scale */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                     {/* Startup */}
-                    <Card className="w-full rounded-[14px] cursor-pointer transition-all hover:border-primary/50" onClick={() => togglePlan('startup')}>
+                    <Card className="w-full rounded-[5px] cursor-pointer transition-all hover:border-primary/50" onClick={() => togglePlan('startup')}>
                         <CardHeader className="pb-4">
                             <div className="flex justify-between items-center">
                                 <CardTitle>Startup</CardTitle>
@@ -84,7 +84,7 @@ function Pricing() {
                     </Card>
 
                     {/* Growth */}
-                    <Card className="w-full rounded-[14px] shadow-xl border-primary/20 bg-primary/5 cursor-pointer relative overflow-hidden" onClick={() => togglePlan('growth')}>
+                    <Card className="w-full rounded-[5px] shadow-xl border-primary/20 bg-primary/5 cursor-pointer relative overflow-hidden" onClick={() => togglePlan('growth')}>
                         <div className="absolute top-0 right-0 bg-primary text-white text-xs px-3 py-1 rounded-bl-lg font-medium">Popular</div>
                         <CardHeader className="pb-4">
                             <div className="flex justify-between items-center">
@@ -123,7 +123,7 @@ function Pricing() {
                     </Card>
 
                     {/* Scale */}
-                    <Card className="w-full rounded-[14px] cursor-pointer transition-all hover:border-primary/50" onClick={() => togglePlan('scale')}>
+                    <Card className="w-full rounded-[5px] cursor-pointer transition-all hover:border-primary/50" onClick={() => togglePlan('scale')}>
                         <CardHeader className="pb-4">
                             <div className="flex justify-between items-center">
                                 <CardTitle>Scale</CardTitle>
@@ -163,7 +163,7 @@ function Pricing() {
 
                 {/* Enterprise - Full Width */}
                 <div className="w-full">
-                    <Card className="w-full rounded-[14px] cursor-pointer bg-neutral-900 text-white border-neutral-800 transition-all hover:border-neutral-700" onClick={() => togglePlan('enterprise')}>
+                    <Card className="w-full rounded-[5px] cursor-pointer bg-neutral-900 text-white border-neutral-800 transition-all hover:border-neutral-700" onClick={() => togglePlan('enterprise')}>
                         <CardHeader className="pb-4">
                             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                 <div>

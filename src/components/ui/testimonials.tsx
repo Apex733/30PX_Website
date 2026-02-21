@@ -104,7 +104,7 @@ export default function Testimonials() {
                     <CarouselContent className="-ml-4">
                         {testimonials.map((testimonial, index) => (
                             <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 h-auto">
-                                <Card className="h-full flex flex-col justify-between overflow-hidden border-border/50 bg-card hover:shadow-lg transition-shadow duration-300 rounded-xl">
+                                <Card className="h-full flex flex-col justify-between overflow-hidden border-border/50 bg-card hover:shadow-lg transition-shadow duration-300 rounded-[5px]">
                                     {/* Top Section */}
                                     <div className="p-8 space-y-6 flex-1">
                                         <div className="flex justify-between items-start">

@@ -61,11 +61,11 @@ function ParallaxText({
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
     const smoothVelocity = useSpring(scrollVelocity, {
-        damping: 50,
-        stiffness: 400,
+        damping: 120,
+        stiffness: 200,
     });
 
-    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, velocity_sensitivity], {
+    const velocityFactor = useTransform(smoothVelocity, [0, 500], [0, velocity_sensitivity], {
         clamp: true,
     });
 

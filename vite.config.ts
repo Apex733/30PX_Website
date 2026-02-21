@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import autoWebpPlugin from './scripts/vite-plugin-auto-webp.mjs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +11,7 @@ export default defineConfig({
         ViteImageOptimizer({
             /* pass your config */
         }),
+        autoWebpPlugin(),
     ],
     resolve: {
         alias: {

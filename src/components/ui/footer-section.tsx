@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
-import { TextHoverEffect } from "@/components/ui/hover-footer";
 
 export function Footer() {
     // Footer link data
@@ -208,10 +207,7 @@ export function Footer() {
                 </div>
             </div>
 
-            {/* Text hover effect */}
-            <div className="lg:flex hidden w-full px-0 mt-10 h-[22vw] relative z-10 pointer-events-auto">
-                <TextHoverEffect text="30 PIXELS" className="z-50" />
-            </div>
+
 
             <FooterBackgroundGradient />
         </footer>

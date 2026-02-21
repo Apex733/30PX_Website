@@ -174,6 +174,9 @@ function ParallaxText({
         // Skip animation when off-screen
         if (!isVisible) return;
 
+        // Skip frame if delta is too large (tab hidden or massive lag)
+        if (delta > 100) return;
+
         // Skip auto-scroll logic while dragging
         if (isDragging.current) return;
 

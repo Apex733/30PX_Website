@@ -6,15 +6,15 @@ import { CTASection } from "@/components/ui/cta-section";
 
 // GhostTongue Images
 const IMAGES = [
-    "/portfolio/ghosttongue/ghost-tongue-logo3.jpg", // Hero/Main
-    "/portfolio/ghosttongue/dsc04992.jpg",
-    "/portfolio/ghosttongue/mockupp.jpg",
-    "/portfolio/ghosttongue/post.jpg",
-    "/portfolio/ghosttongue/wall-sticker.jpg",
-    "/portfolio/ghosttongue/2b9b2cfb-2e46-4091-b84a-48c2920446e5.jpg",
-    "/portfolio/ghosttongue/ghost-tongue-packing.jpg",
-    "/portfolio/ghosttongue/ghost-tongue-sticker-var.jpg",
-    "/portfolio/ghosttongue/ghost-tongue-logovar.jpg",
+    "/portfolio/ghosttongue/ghost-tongue-logo3.webp", // Hero/Main
+    "/portfolio/ghosttongue/dsc04992.webp",
+    "/portfolio/ghosttongue/mockupp.webp",
+    "/portfolio/ghosttongue/post.webp",
+    "/portfolio/ghosttongue/wall-sticker.webp",
+    "/portfolio/ghosttongue/2b9b2cfb-2e46-4091-b84a-48c2920446e5.webp",
+    "/portfolio/ghosttongue/ghost-tongue-packing.webp",
+    "/portfolio/ghosttongue/ghost-tongue-sticker-var.webp",
+    "/portfolio/ghosttongue/ghost-tongue-logovar.webp",
 ];
 
 const GhostTongueProject = () => {

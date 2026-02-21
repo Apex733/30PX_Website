@@ -6,17 +6,17 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { CTASection } from "@/components/ui/cta-section";
 
 const IMAGES = [
-    "/portfolio/loudminds/projects-mokcup.jpg", // Hero/Main
-    "/portfolio/loudminds/1.jpg",
-    "/portfolio/loudminds/2.jpg",
-    "/portfolio/loudminds/4.jpg",
-    "/portfolio/loudminds/6.jpg",
-    "/portfolio/loudminds/7.jpg",
-    "/portfolio/loudminds/8.jpg",
-    "/portfolio/loudminds/11.jpg",
-    "/portfolio/loudminds/22.jpg",
-    "/portfolio/loudminds/33.jpg",
-    "/portfolio/loudminds/44.jpg",
+    "/portfolio/loudminds/projects-mokcup.webp", // Hero/Main
+    "/portfolio/loudminds/1.webp",
+    "/portfolio/loudminds/2.webp",
+    "/portfolio/loudminds/4.webp",
+    "/portfolio/loudminds/6.webp",
+    "/portfolio/loudminds/7.webp",
+    "/portfolio/loudminds/8.webp",
+    "/portfolio/loudminds/11.webp",
+    "/portfolio/loudminds/22.webp",
+    "/portfolio/loudminds/33.webp",
+    "/portfolio/loudminds/44.webp",
 ];
 
 const LoudMindsPortfolio = () => {

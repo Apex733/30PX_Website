@@ -45,7 +45,7 @@ export function Header() {
             <div className="container mx-auto h-full flex items-center justify-between px-12">
                 <a href="/" className="flex items-center">
                     <img
-                        src="/30px-logo.png"
+                        src="/30px-logo.webp"
                         alt="30PX"
                         width="1000"
                         height="178"

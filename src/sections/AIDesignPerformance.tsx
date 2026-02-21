@@ -47,7 +47,7 @@ export function AIDesignPerformance() {
                     >
                         <div className="aspect-[4/3] relative rounded-[5px] overflow-hidden shadow-2xl">
                             <img
-                                src="/ai-design-performance.png"
+                                src="/ai-design-performance.webp"
                                 alt="AI Design Performance"
                                 className="object-cover w-full h-full"
                             />

@@ -5,8 +5,8 @@ const images = import.meta.glob<{ default: string }>(
     { eager: true }
 );
 
-const beforeSrc = Object.entries(images).find(([path]) => path.includes("before.jpg"))?.[1].default;
-const afterSrc = Object.entries(images).find(([path]) => path.includes("After.jpg"))?.[1].default;
+const beforeSrc = Object.entries(images).find(([path]) => path.includes("before.webp"))?.[1].default;
+const afterSrc = Object.entries(images).find(([path]) => path.includes("After.webp"))?.[1].default;
 
 export function Comparison() {
     return (

@@ -7,7 +7,7 @@ export function CTASection() {
             {/* Background Image Setup */}
             <div className="absolute inset-0 z-0 bg-black flex items-center justify-end overflow-hidden">
                 <img
-                    src="/Work/CTA/Desktop-view.png"
+                    src="/Work/CTA/Desktop-view.webp"
                     alt="Abstract Background"
                     className="h-full w-auto max-w-none object-contain object-right opacity-60 md:opacity-80"
                 />

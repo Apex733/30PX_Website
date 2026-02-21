@@ -6,13 +6,13 @@ import { CTASection } from "@/components/ui/cta-section";
 
 // VitaVibe Images
 const IMAGES = [
-    "/portfolio/vitavibe/projects-mokcup.jpg", // Hero/Main
+    "/portfolio/vitavibe/projects-mokcup.webp", // Hero/Main
     "/portfolio/vitavibe/ezgif-4cd46d9da4202e.gif", // Animated element
-    "/portfolio/vitavibe/1.jpg",
-    "/portfolio/vitavibe/DUCT-TAPE-FILE.jpg",
-    "/portfolio/vitavibe/PILLS-BOTTLE_mockup_v.jpg",
-    "/portfolio/vitavibe/TWO-PILLS-BOTTLE-MOCKUP_(v.jpg",
-    "/portfolio/vitavibe/mockup.jpg",
+    "/portfolio/vitavibe/1.webp",
+    "/portfolio/vitavibe/DUCT-TAPE-FILE.webp",
+    "/portfolio/vitavibe/PILLS-BOTTLE_mockup_v.webp",
+    "/portfolio/vitavibe/TWO-PILLS-BOTTLE-MOCKUP_(v.webp",
+    "/portfolio/vitavibe/mockup.webp",
 ];
 
 const VitaVibeProject = () => {

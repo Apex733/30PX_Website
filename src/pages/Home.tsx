@@ -10,7 +10,6 @@ import { DetailedComparison } from "@/sections/DetailedComparison";
 import { AIDesignPerformance } from "@/sections/AIDesignPerformance";
 
 import Testimonials from "@/components/ui/testimonials";
-import { MagneticButton, RollingTextButton, LiquidFillButton } from "@/components/ui/fancy-buttons";
 
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 import { Footer } from "@/components/ui/footer-section";
@@ -163,14 +162,6 @@ function Home() {
 
                 <GlobeSection />
 
-                {/* Fancy Hover Buttons */}
-                <section className="py-16 bg-background">
-                    <div className="container mx-auto px-4 flex flex-wrap justify-center gap-8">
-                        <MagneticButton>SAMPLE</MagneticButton>
-                        <RollingTextButton>SAMPLE</RollingTextButton>
-                        <LiquidFillButton>SAMPLE</LiquidFillButton>
-                    </div>
-                </section>
 
                 <ComparisonTable />
 

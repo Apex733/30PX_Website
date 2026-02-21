@@ -73,7 +73,7 @@ const LazyVideo = memo(({ src, className, axis, onLoadedData }: { src: string, c
     }, []);
 
     return (
-        <div ref={containerRef} className={cn("relative overflow-hidden rounded-lg shadow-md transform-gpu", axis === "vertical" ? "w-full" : "h-full")}>
+        <div ref={containerRef} className={cn("relative overflow-hidden rounded-[5px] shadow-md transform-gpu", axis === "vertical" ? "w-full" : "h-full")}>
             <video
                 ref={videoRef}
                 src={src}
@@ -100,7 +100,7 @@ const CarouselColumn = ({ images, speed, className }: { images: string[], speed:
             <div className="flex flex-col gap-4 pb-4">
                 {images.map((src, i) => {
                     const isVid = isVideo(src);
-                    const commonClasses = "object-cover rounded-lg shadow-md pointer-events-none w-full h-auto";
+                    const commonClasses = "object-cover rounded-[5px] shadow-md pointer-events-none w-full h-auto";
 
                     if (isVid) {
                         return (

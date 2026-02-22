@@ -1,5 +1,4 @@
 import { LegalPage } from "@/components/ui/legal-page";
-import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
 export default function PrivacyPolicy() {
     return (

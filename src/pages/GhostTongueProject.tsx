@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Header } from "@/components/ui/header";
+import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
@@ -19,6 +20,11 @@ const IMAGES = [
 const GhostTongueProject = () => {
     return (
         <div className="min-h-screen bg-white font-sans text-neutral-950 antialiased selection:bg-[#7C3AED]/10 flex flex-col">
+            <SEO
+                title="GhostTongue Portfolio"
+                description="Discover the sonic branding and visual identity we created for the next-gen audio production house, GhostTongue."
+                image="https://thirtypixels.com/portfolio/ghosttongue/ghost-tongue-logo3.webp"
+            />
             <Header />
 
             <main className="flex-grow pt-32 pb-16">

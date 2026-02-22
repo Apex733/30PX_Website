@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Header } from "@/components/ui/header";
+import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
@@ -21,6 +22,11 @@ const IMAGES = [
 const LoudMindsPortfolio = () => {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
+            <SEO
+                title="LoudMinds Portfolio"
+                description="Explore our complete rebrand and digital transformation for a cutting-edge creative agency, LoudMinds."
+                image="https://thirtypixels.com/portfolio/loudminds/projects-mokcup.webp"
+            />
             <Header />
 
             <main className="flex-grow pt-32 pb-16">

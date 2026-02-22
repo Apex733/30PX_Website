@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Header } from "@/components/ui/header";
+import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
@@ -17,6 +18,11 @@ const IMAGES = [
 const DesoraPortfolio = () => {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
+            <SEO
+                title="Desora Portfolio"
+                description="Check out our AI-powered glass morphism creatives inspired by Microsoft for Desora."
+                image="https://thirtypixels.com/portfolio/desora/freepik__-id-1-title-browser-dashboard-hero-blue-sphere-com__69589.webp"
+            />
             <Header />
 
             <main className="flex-grow pt-32 pb-16">

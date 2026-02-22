@@ -1,5 +1,6 @@
 
 import { Hero } from "@/sections/Hero";
+import { Industries } from "@/sections/Industries";
 import { SEO } from "@/components/SEO";
 import { Logos } from "@/sections/Logos";
 import { OurWork } from "@/sections/OurWork";

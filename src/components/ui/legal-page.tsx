@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from "@/components/ui/header";
+import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
@@ -12,6 +13,10 @@ interface LegalPageProps {
 export function LegalPage({ title, lastUpdated, children }: LegalPageProps) {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
+            <SEO
+                title={title}
+                description={`Read our ${title}. Last updated on ${lastUpdated}.`}
+            />
             <Header />
             <main className="flex-grow pt-32 pb-24">
                 <div className="container mx-auto px-4 max-w-3xl">

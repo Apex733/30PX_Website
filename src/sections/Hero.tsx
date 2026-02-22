@@ -5,7 +5,7 @@ import { AwardBadge } from "@/components/ui/award-badge";
 import { HeroCarousel } from "@/components/ui/hero-vertical-carousel";
 
 export function Hero() {
-    const words = ["Startup pricings.", "Premium designs.", "Zero headaches.", "Scale fasts."];
+    const words = ["Startup pricing.", "Premium designs.", "Zero headaches.", "Scale fast."];
 
     return (
         <section className="pt-36 pb-32 text-center lg:text-left px-4 md:px-12 relative overflow-hidden bg-[linear-gradient(to_top,#FAFAFA,#60a5fa,#1e3a8a,#020817)] text-white">

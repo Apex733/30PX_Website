@@ -67,6 +67,8 @@ export function Footer() {
     // Helper component for links with "Coming Soon" support
     const FooterLink = ({ href, children, className, isIcon = false, ...props }: any) => {
         const isPlaceholder = href === "#";
+        const isAnchor = href.startsWith("#") && href !== "#"; // e.g. #services
+        const isInternal = href.startsWith("/") && !href.startsWith("//"); // e.g. /privacy
 
         if (isPlaceholder) {
             return (
@@ -89,8 +91,33 @@ export function Footer() {
             );
         }
 
+        if (isAnchor) {
+            // Smooth scroll to section
+            return (
+                <a
+                    href={href}
+                    className={className}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        const el = document.getElementById(href.slice(1));
+                        if (el) {
+                            el.scrollIntoView({ behavior: "smooth", block: "start" });
+                        } else {
+                            window.location.href = `/#/?scrollTo=${href.slice(1)}`;
+                        }
+                    }}
+                    {...props}
+                >
+                    {children}
+                </a>
+            );
+        }
+
+        // Internal routes: use /#/path for HashRouter
+        const resolvedHref = isInternal ? `/#${href}` : href;
+
         return (
-            <a href={href} className={className} {...props}>
+            <a href={resolvedHref} className={className} {...props}>
                 {children}
             </a>
         );
@@ -195,13 +222,13 @@ export function Footer() {
                             &copy; {new Date().getFullYear()} 30Pixels. All rights reserved.
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-neutral-500">
-                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">Privacy Policy</FooterLink>
+                            <FooterLink href="/privacy" className="hover:text-[#3ca2fa] transition-colors">Privacy Policy</FooterLink>
                             <span className="hidden sm:inline">•</span>
-                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">Terms of Use</FooterLink>
+                            <FooterLink href="/terms" className="hover:text-[#3ca2fa] transition-colors">Terms of Use</FooterLink>
                             <span className="hidden sm:inline">•</span>
-                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">Cookie Policy</FooterLink>
+                            <FooterLink href="/cookies" className="hover:text-[#3ca2fa] transition-colors">Cookie Policy</FooterLink>
                             <span className="hidden sm:inline">•</span>
-                            <FooterLink href="#" className="hover:text-[#3ca2fa] transition-colors">DMCA</FooterLink>
+                            <FooterLink href="/dmca" className="hover:text-[#3ca2fa] transition-colors">DMCA</FooterLink>
                         </div>
                     </div>
                 </div>

@@ -172,7 +172,7 @@ export function OurServices() {
                                             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
                                             className="overflow-hidden"
                                         >
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pb-6">
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 pt-4 pb-6">
                                                 {group.services.map((service) => {
                                                     const Icon = service.icon;
                                                     return (

@@ -9,6 +9,8 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfUse from "@/pages/TermsOfUse";
 import CookiePolicy from "@/pages/CookiePolicy";
 import DMCA from "@/pages/DMCA";
+import FAQs from "@/pages/FAQs";
+import AboutUs from "@/pages/AboutUs";
 import ScrollToTop from "@/components/ScrollToTop";
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
                 <Route path="/terms" element={<TermsOfUse />} />
                 <Route path="/cookies" element={<CookiePolicy />} />
                 <Route path="/dmca" element={<DMCA />} />
+                <Route path="/faqs" element={<FAQs />} />
+                <Route path="/about" element={<AboutUs />} />
             </Routes>
         </>
     );

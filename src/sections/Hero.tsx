@@ -8,7 +8,7 @@ export function Hero() {
     const words = ["Startup pricing.", "Premium design.", "Zero headaches.", "Scale fast."];
 
     return (
-        <section className="pt-36 pb-32 text-center lg:text-left px-12 relative overflow-hidden bg-[linear-gradient(to_top,#FAFAFA,#60a5fa,#1e3a8a,#020817)] text-white">
+        <section className="pt-36 pb-32 text-center lg:text-left px-4 md:px-12 relative overflow-hidden bg-[linear-gradient(to_top,#FAFAFA,#60a5fa,#1e3a8a,#020817)] text-white">
 
             {/* Background decorations - Subtle overlay if needed, otherwise clean */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">

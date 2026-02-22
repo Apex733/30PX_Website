@@ -11,7 +11,7 @@ const afterSrc = Object.entries(images).find(([path]) => path.includes("After.we
 export function Comparison() {
     return (
         <section className="py-16">
-            <div className="container mx-auto px-12">
+            <div className="container mx-auto px-4 md:px-12">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl font-bold">Make a lasting impression.</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">See the difference 30PX makes for your brand visuals.</p>

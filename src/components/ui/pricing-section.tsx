@@ -35,7 +35,7 @@ export function PricingSection({
     const currentTiers = isHireProfessional ? professionalTiers : tiers;
 
     return (
-        <section className="flex flex-col items-center gap-10 py-16 md:py-24 px-12" id="pricing">
+        <section className="flex flex-col items-center gap-10 py-16 md:py-24 px-4 md:px-12" id="pricing">
             <div className="space-y-7 text-center">
                 <SectionHeading
                     badge="Pricing"

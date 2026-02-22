@@ -57,7 +57,7 @@ const items = [
 export function Showcase() {
     return (
         <section className="py-16 bg-background border-t">
-            <div className="container mx-auto px-12 max-w-6xl">
+            <div className="container mx-auto px-4 md:px-12 max-w-6xl">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl font-bold">Our Work Speaks for Itself.</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">See what's possible with a dedicated design team.</p>
@@ -93,7 +93,7 @@ export function Showcase() {
                         ))}
                     </SliderContent>
 
-                    <SliderBtnGroup className='container mx-auto px-12 max-w-6xl mt-6 h-fit text-black/80 dark:text-white/80 bg-muted/50 backdrop-blur-md overflow-hidden grid grid-cols-2 md:grid-cols-4 rounded-lg border border-muted-foreground/10'>
+                    <SliderBtnGroup className='container mx-auto px-4 md:px-12 max-w-6xl mt-6 h-fit text-black/80 dark:text-white/80 bg-muted/50 backdrop-blur-md overflow-hidden grid grid-cols-2 md:grid-cols-4 rounded-lg border border-muted-foreground/10'>
                         {items.map((item, index) => (
                             <SliderBtn
                                 key={index}

@@ -57,7 +57,7 @@ export function Header() {
                     text-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
                 }
             `}</style>
-            <div className="container mx-auto h-full flex items-center justify-between px-12">
+            <div className="container mx-auto h-full flex items-center justify-between px-4 md:px-12">
                 <a href="/" className="flex items-center">
                     <img
                         src="/30px-logo.webp"

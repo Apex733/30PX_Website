@@ -43,7 +43,7 @@ export function FeatureSteps({
     }, [progress, features.length, autoPlayInterval])
 
     return (
-        <div className={cn("py-16 px-12", className)}>
+        <div className={cn("py-16 px-4 md:px-12", className)}>
             <div className="max-w-7xl mx-auto w-full">
                 <h2 className="text-3xl font-bold mb-10 text-center">
                     {title}

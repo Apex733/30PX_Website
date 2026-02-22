@@ -49,7 +49,7 @@ export const TestimonialsColumn = (props: {
                                             width={40}
                                             height={40}
                                             src={image}
-                                            alt={name}
+                                            alt={`Portrait of ${name}`}
                                             loading="lazy"
                                             className={`h-10 w-10 rounded-full ${isPro ? "ring-2 ring-yellow-500 ring-offset-2 ring-offset-card" : ""}`}
                                         />

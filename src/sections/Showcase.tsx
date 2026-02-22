@@ -83,7 +83,7 @@ export function Showcase() {
                                     <img
                                         className='w-full h-[550px] md:h-[700px] object-cover'
                                         src={item.src}
-                                        alt={item.desc}
+                                        alt={`Showcase: ${item.title} - ${item.desc}`}
                                         width="1200"
                                         height="700"
                                         loading="lazy"

@@ -48,8 +48,9 @@ export function AIDesignPerformance() {
                         <div className="aspect-[4/3] relative rounded-[5px] overflow-hidden shadow-2xl">
                             <img
                                 src="/ai-design-performance.webp"
-                                alt="AI Design Performance"
+                                alt="Abstract AI design performance visual showing 3D shapes"
                                 className="object-cover w-full h-full"
+                                loading="lazy"
                             />
                             {/* Overlay gradient for better text readability if needed, though mostly for style here */}
                             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent pointer-events-none" />

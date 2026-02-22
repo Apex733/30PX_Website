@@ -54,7 +54,7 @@ export function Logos() {
                                         <div className="flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                                             <img
                                                 src={logo.image}
-                                                alt={logo.description}
+                                                alt={`Logo of ${logo.description}`}
                                                 className={logo.className}
                                                 width={logo.width}
                                                 height={logo.height}

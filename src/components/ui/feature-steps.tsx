@@ -109,7 +109,7 @@ export function FeatureSteps({
                                         >
                                             <img
                                                 src={feature.image}
-                                                alt={feature.step}
+                                                alt={feature.title || feature.step}
                                                 loading="lazy"
                                                 className="w-full h-full object-cover transition-transform transform"
                                             />

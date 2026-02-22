@@ -5,7 +5,7 @@ import { AwardBadge } from "@/components/ui/award-badge";
 import { HeroCarousel } from "@/components/ui/hero-vertical-carousel";
 
 export function Hero() {
-    const words = ["Startup pricing.", "Premium design.", "Zero headaches.", "Scale fast."];
+    const words = ["Startup pricings.", "Premium designs.", "Zero headaches.", "Scale fasts."];
 
     return (
         <section className="pt-36 pb-32 text-center lg:text-left px-4 md:px-12 relative overflow-hidden bg-[linear-gradient(to_top,#FAFAFA,#60a5fa,#1e3a8a,#020817)] text-white">
@@ -24,14 +24,14 @@ export function Hero() {
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#FAFAFA] leading-[1.1]">
-                        World-class creative.<br />
+                        World-class creatives.<br />
                         <span className="text-blue-400 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200 inline-block min-h-[2.4em] md:min-h-0 leading-[1.2]">
                             <Typewriter words={words} speed={100} delayBetweenWords={2000} cursor={true} />
                         </span>
                     </h1>
 
                     <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl leading-relaxed">
-                        30 social media designs for $60/month. Created by veteran designers who've worked with Hollywood, Fortune 500, and global brands. AI-enhanced. Zero drama.
+                        30 social media designs for $24/month. Created by veteran designers who've worked with Hollywood, Fortune 500, and global brands. AI-enhanced. Zero drama.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start w-full">

@@ -5,13 +5,13 @@ import { Footer } from "@/components/ui/footer-section";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
 const IMAGES = [
-    "/portfolio/desora/freepik__-id-1-title-browser-dashboard-hero-blue-sphere-com__69589.png",
-    "/portfolio/desora/freepik__-id-2-title-ai-search-bar-with-playful-teal-3d-obj__69593.png",
-    "/portfolio/desora/freepik__-id-3-title-smartphone-on-editorial-desk-flatlay-w__69594.png",
-    "/portfolio/desora/freepik__-id-3-title-smartphone-on-editorial-desk-flatlay-w__69595.png",
-    "/portfolio/desora/freepik__-id-4-title-layered-crm-glass-cards-with-purple-3d__69590.png",
-    "/portfolio/desora/freepik__-id-5-title-analytics-dashboard-atom-orbiting-ribb__69591.png",
-    "/portfolio/desora/freepik__-id-6-title-multiapp-workspace-with-floating-glass__69592.png",
+    "/portfolio/desora/freepik__-id-1-title-browser-dashboard-hero-blue-sphere-com__69589.webp",
+    "/portfolio/desora/freepik__-id-2-title-ai-search-bar-with-playful-teal-3d-obj__69593.webp",
+    "/portfolio/desora/freepik__-id-3-title-smartphone-on-editorial-desk-flatlay-w__69594.webp",
+    "/portfolio/desora/freepik__-id-3-title-smartphone-on-editorial-desk-flatlay-w__69595.webp",
+    "/portfolio/desora/freepik__-id-4-title-layered-crm-glass-cards-with-purple-3d__69590.webp",
+    "/portfolio/desora/freepik__-id-5-title-analytics-dashboard-atom-orbiting-ribb__69591.webp",
+    "/portfolio/desora/freepik__-id-6-title-multiapp-workspace-with-floating-glass__69592.webp",
 ];
 
 const DesoraPortfolio = () => {

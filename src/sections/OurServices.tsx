@@ -133,7 +133,7 @@ export function OurServices() {
                     align="center"
                 />
 
-                <div className="mt-16">
+                <div className="mt-16 space-y-4">
                     {serviceGroups.map((group, index) => {
                         const isOpen = openCategories.has(group.category);
                         const isLast = index === serviceGroups.length - 1;

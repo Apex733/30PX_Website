@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
 import { ChevronDown } from "lucide-react";
+import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
 const FAQItem = ({ question, answer }: { question: string, answer: React.ReactNode }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -84,6 +85,7 @@ export default function FAQs() {
                 </div>
             </main>
 
+            <JourneyTimeline />
             <Footer />
         </div>
     );

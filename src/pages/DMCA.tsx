@@ -21,7 +21,7 @@ export default function DMCA() {
             <h2>2. Where to Send Notices</h2>
             <p>DMCA takedown notices should be sent to our designated Copyright Agent:</p>
             <ul>
-                <li><strong>Email:</strong> <a href="mailto:dmca@30pixels.com">dmca@30pixels.com</a></li>
+                <li><strong>Email:</strong> <a href="mailto:dmca@thirtypixels.com">dmca@thirtypixels.com</a></li>
                 <li><strong>Subject line:</strong> DMCA Takedown Notice</li>
             </ul>
 
@@ -44,7 +44,7 @@ export default function DMCA() {
             <p>All design work produced by 30PX for our clients is original and created specifically for the client. Upon full payment, clients receive full ownership and commercial rights to their deliverables. We use properly licensed stock assets, original illustrations, and AI-generated content in compliance with applicable licensing terms.</p>
 
             <h2>7. Contact</h2>
-            <p>For general questions about intellectual property or our DMCA processes, contact us at <a href="mailto:hello@30pixels.com">hello@30pixels.com</a>.</p>
+            <p>For general questions about intellectual property or our DMCA processes, contact us at <a href="mailto:hello@thirtypixels.com">hello@thirtypixels.com</a>.</p>
         </LegalPage>
     );
 }

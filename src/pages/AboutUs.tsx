@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
 import { Users, Target, Zap } from "lucide-react";
+import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
 export default function AboutUs() {
     return (
@@ -70,6 +71,7 @@ export default function AboutUs() {
                 </div>
             </main>
 
+            <JourneyTimeline />
             <Footer />
         </div>
     );

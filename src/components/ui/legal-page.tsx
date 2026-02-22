@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer-section";
+import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
 interface LegalPageProps {
     title: string;
@@ -31,6 +32,7 @@ export function LegalPage({ title, lastUpdated, children }: LegalPageProps) {
                     </div>
                 </div>
             </main>
+            <JourneyTimeline />
             <Footer />
         </div>
     );

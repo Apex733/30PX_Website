@@ -46,7 +46,7 @@ export default function CookiePolicy() {
             <p>We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date.</p>
 
             <h2>6. Contact Us</h2>
-            <p>If you have questions about our use of cookies, please contact us at <a href="mailto:hello@30pixels.com">hello@30pixels.com</a>.</p>
+            <p>If you have questions about our use of cookies, please contact us at <a href="mailto:hello@thirtypixels.com">hello@thirtypixels.com</a>.</p>
         </LegalPage>
     );
 }

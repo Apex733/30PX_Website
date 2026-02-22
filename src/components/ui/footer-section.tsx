@@ -42,8 +42,8 @@ export function Footer() {
     const contactInfo = [
         {
             icon: <Mail size={18} className="text-[#3ca2fa]" />,
-            text: "hello@30pixels.com",
-            href: "mailto:hello@30pixels.com",
+            text: "hello@thirtypixels.com",
+            href: "mailto:hello@thirtypixels.com",
         },
         {
             icon: <Phone size={18} className="text-[#3ca2fa]" />,

@@ -62,7 +62,7 @@ export default function TermsOfUse() {
             <p>We reserve the right to modify these Terms at any time. We will notify you of material changes by posting the updated Terms on our website. Your continued use of our services after such changes constitutes acceptance.</p>
 
             <h2>12. Contact</h2>
-            <p>For questions about these Terms, contact us at <a href="mailto:hello@30pixels.com">hello@30pixels.com</a>.</p>
+            <p>For questions about these Terms, contact us at <a href="mailto:hello@thirtypixels.com">hello@thirtypixels.com</a>.</p>
         </LegalPage>
     );
 }

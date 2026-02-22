@@ -1,4 +1,5 @@
 import { LegalPage } from "@/components/ui/legal-page";
+import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
 export default function PrivacyPolicy() {
     return (
@@ -68,7 +69,7 @@ export default function PrivacyPolicy() {
             <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date. Your continued use of our services after changes constitutes acceptance of the updated policy.</p>
 
             <h2>10. Contact Us</h2>
-            <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:hello@30pixels.com">hello@30pixels.com</a>.</p>
+            <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:hello@thirtypixels.com">hello@thirtypixels.com</a>.</p>
         </LegalPage>
     );
 }

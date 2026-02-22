@@ -13,11 +13,16 @@ const FAQItem = ({ question, answer }: { question: string, answer: React.ReactNo
             <button
                 className="w-full flex justify-between items-center p-5 text-left font-medium text-lg hover:bg-secondary/50 transition-colors"
                 onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${question.replace(/\s+/g, '-').toLowerCase()}`}
             >
                 {question}
                 <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
-            <div className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div
+                id={`faq-answer-${question.replace(/\s+/g, '-').toLowerCase()}`}
+                className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}
+            >
                 <div className="p-5 pt-0 text-muted-foreground leading-relaxed">
                     {answer}
                 </div>
@@ -62,11 +67,30 @@ export default function FAQs() {
         }
     ];
 
+    // Generate JSON-LD for FAQs
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
             <SEO
                 title="Frequently Asked Questions"
                 description="Everything you need to know about 30PX's design subscription, turnaround times, pause features, and billing."
+            />
+            {/* Inject JSON-LD FAQ Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
             <Header />
 

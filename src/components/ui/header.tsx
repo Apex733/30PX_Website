@@ -58,7 +58,7 @@ export function Header() {
                 }
             `}</style>
             <div className="container mx-auto h-full flex items-center justify-between px-4 md:px-12">
-                <a href="/" className="flex items-center">
+                <a href="/" className="flex items-center" aria-label="30PX Home">
                     <img
                         src="/30px-logo.webp"
                         alt="30PX"

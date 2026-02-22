@@ -131,6 +131,10 @@ export default function Testimonials() {
                                                 <Link to="/portfolio/vitavibe" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                                                     Read Story <ArrowRight className="ml-1 h-3 w-3" />
                                                 </Link>
+                                            ) : testimonial.name === "Doug Miller" ? (
+                                                <Link to="/portfolio/desora" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                                                    Read Story <ArrowRight className="ml-1 h-3 w-3" />
+                                                </Link>
                                             ) : (
                                                 <a href="#" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                                                     Read Story <ArrowRight className="ml-1 h-3 w-3" />

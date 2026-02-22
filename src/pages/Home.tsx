@@ -1,6 +1,6 @@
 
 import { Hero } from "@/sections/Hero";
-import { Industries } from "@/sections/Industries";
+import { SEO } from "@/components/SEO";
 import { Logos } from "@/sections/Logos";
 import { OurWork } from "@/sections/OurWork";
 import { OurServices } from "@/sections/OurServices";
@@ -167,7 +167,10 @@ function Home() {
 
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10">
-
+            <SEO
+                title="Premium Design. Startup Pricing."
+                description="30PX is an unlimited design subscription service. Replace your expensive agency with a dedicated design team for a flat monthly fee."
+            />
             <Header />
 
             <main>

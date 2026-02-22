@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Header } from "@/components/ui/header";
+import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/ui/footer-section";
 import { ChevronDown } from "lucide-react";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
@@ -63,6 +64,10 @@ export default function FAQs() {
 
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
+            <SEO
+                title="Frequently Asked Questions"
+                description="Everything you need to know about 30PX's design subscription, turnaround times, pause features, and billing."
+            />
             <Header />
 
             <main className="flex-grow pt-32 pb-24">

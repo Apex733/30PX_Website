@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from "@/components/ui/header";
+import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/ui/footer-section";
 import { Users, Target, Zap } from "lucide-react";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
@@ -7,6 +8,10 @@ import { JourneyTimeline } from "@/sections/JourneyTimeline";
 export default function AboutUs() {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
+            <SEO
+                title="About Us"
+                description="We're a team of veteran designers, animators, and AI specialists replacing the traditional agency model with a simple, scalable subscription."
+            />
             <Header />
 
             <main className="flex-grow pt-32 pb-24">

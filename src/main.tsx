@@ -8,6 +8,7 @@ import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import { HashRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
@@ -22,8 +23,10 @@ requestAnimationFrame(raf);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <HashRouter>
-            <App />
-        </HashRouter>
+        <HelmetProvider>
+            <HashRouter>
+                <App />
+            </HashRouter>
+        </HelmetProvider>
     </React.StrictMode>,
 )

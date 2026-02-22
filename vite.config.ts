@@ -21,11 +21,11 @@ export default defineConfig({
     build: {
         rollupOptions: {
             output: {
-                // manualChunks: {
-                //     'vendor-react': ['react', 'react-dom', 'framer-motion', 'motion'],
-                //     'vendor-three': ['three', '@types/three'],
-                //     'vendor-ui': ['@radix-ui/react-accordion', '@radix-ui/react-slot', 'lucide-react', 'clsx', 'tailwind-merge'],
-                // },
+                manualChunks: {
+                    'vendor-react': ['react', 'react-dom', 'framer-motion', 'motion'],
+                    'vendor-three': ['three', '@types/three'],
+                    'vendor-ui': ['@radix-ui/react-accordion', '@radix-ui/react-slot', 'lucide-react', 'clsx', 'tailwind-merge'],
+                },
             },
         },
     },

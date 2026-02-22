@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 129.15 129.15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d4d4d4;
+      }
+
+      .cls-2 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-5 {
+        fill: #fafafa;
+      }
+
+      .cls-6 {
+        fill: #f5f5f5;
+      }
+
+      .cls-7 {
+        fill: #1f3a8a;
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <polygon class="cls-6" points="29.16 50.83 53.94 36.43 78.89 50.83 54.11 65.23 29.16 50.83"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <polygon class="cls-1" points="59.21 66.81 83.99 52.41 108.94 66.81 84.15 81.21 59.21 66.81"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <polygon class="cls-5" points="20.21 78.32 44.99 63.92 69.94 78.32 45.15 92.72 20.21 78.32"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <circle class="cls-7" cx="64.57" cy="64.57" r="64.57"/>
+      <g class="cls-2">
+        <polygon class="cls-6" points="29.16 50.83 53.94 36.43 78.89 50.83 54.11 65.23 29.16 50.83"/>
+        <g class="cls-8">
+          <polyline class="cls-6" points="78.89 50.83 53.94 36.43 29.16 50.83 54.11 65.23 78.89 50.83"/>
+        </g>
+      </g>
+      <g class="cls-2">
+        <polygon class="cls-1" points="59.21 66.81 83.99 52.41 108.94 66.81 84.15 81.21 59.21 66.81"/>
+        <g class="cls-3">
+          <polyline class="cls-1" points="108.94 66.81 83.99 52.41 59.21 66.81 84.15 81.21 108.94 66.81"/>
+        </g>
+      </g>
+      <g class="cls-2">
+        <polygon class="cls-5" points="20.21 78.32 44.99 63.92 69.94 78.32 45.15 92.72 20.21 78.32"/>
+        <g class="cls-4">
+          <polyline class="cls-5" points="69.94 78.32 44.99 63.92 20.21 78.32 45.15 92.72 69.94 78.32"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

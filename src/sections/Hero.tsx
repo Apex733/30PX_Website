@@ -24,7 +24,7 @@ export function Hero() {
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#FAFAFA] leading-[1.1]">
-                        World-class creatives.<br />
+                        Unlimited premium designs.<br />
                         <span className="text-blue-400 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200 inline-block min-h-[2.4em] md:min-h-0 leading-[1.2]">
                             <Typewriter words={words} speed={100} delayBetweenWords={2000} cursor={true} />
                         </span>

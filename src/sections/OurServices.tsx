@@ -29,6 +29,10 @@ const serviceGroups = [
     {
         category: "Creative Design",
         accent: "from-violet-500 to-purple-500",
+        headerBg: "bg-violet-50/70",
+        headerText: "text-violet-700",
+        headerChevron: "text-violet-400",
+        countBg: "bg-violet-100 text-violet-600",
         iconBg: "bg-violet-50",
         iconColor: "text-violet-500",
         services: [
@@ -46,6 +50,10 @@ const serviceGroups = [
     {
         category: "Digital Experience",
         accent: "from-blue-500 to-cyan-500",
+        headerBg: "bg-blue-50/70",
+        headerText: "text-blue-700",
+        headerChevron: "text-blue-400",
+        countBg: "bg-blue-100 text-blue-600",
         iconBg: "bg-blue-50",
         iconColor: "text-blue-500",
         services: [
@@ -57,6 +65,10 @@ const serviceGroups = [
     {
         category: "Motion & Immersive",
         accent: "from-pink-500 to-rose-500",
+        headerBg: "bg-pink-50/70",
+        headerText: "text-pink-700",
+        headerChevron: "text-pink-400",
+        countBg: "bg-pink-100 text-pink-600",
         iconBg: "bg-pink-50",
         iconColor: "text-pink-500",
         services: [
@@ -68,6 +80,10 @@ const serviceGroups = [
     {
         category: "AI Services",
         accent: "from-amber-500 to-orange-500",
+        headerBg: "bg-amber-50/70",
+        headerText: "text-amber-700",
+        headerChevron: "text-amber-400",
+        countBg: "bg-amber-100 text-amber-600",
         iconBg: "bg-amber-50",
         iconColor: "text-amber-500",
         services: [
@@ -78,6 +94,10 @@ const serviceGroups = [
     {
         category: "Marketing & Growth",
         accent: "from-emerald-500 to-teal-500",
+        headerBg: "bg-emerald-50/70",
+        headerText: "text-emerald-700",
+        headerChevron: "text-emerald-400",
+        countBg: "bg-emerald-100 text-emerald-600",
         iconBg: "bg-emerald-50",
         iconColor: "text-emerald-500",
         services: [
@@ -123,22 +143,22 @@ export function OurServices() {
                                 {/* Category Header — Clickable */}
                                 <button
                                     onClick={() => toggle(group.category)}
-                                    className="w-full flex items-center justify-between py-5 group cursor-pointer"
+                                    className={`w-full flex items-center justify-between px-5 py-4 rounded-xl group cursor-pointer transition-all duration-200 ${group.headerBg} hover:shadow-sm`}
                                 >
                                     <div className="flex items-center gap-3">
-                                        <div className={`h-2 w-2 rounded-full bg-gradient-to-r ${group.accent}`} />
-                                        <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                                        <div className={`h-2.5 w-2.5 rounded-full bg-gradient-to-r ${group.accent}`} />
+                                        <h3 className={`text-base font-semibold ${group.headerText} transition-colors`}>
                                             {group.category}
                                         </h3>
-                                        <span className="text-xs text-muted-foreground/60 font-medium">
-                                            {group.services.length} services
+                                        <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${group.countBg}`}>
+                                            {group.services.length}
                                         </span>
                                     </div>
                                     <motion.div
                                         animate={{ rotate: isOpen ? 180 : 0 }}
                                         transition={{ duration: 0.3, ease: "easeInOut" }}
                                     >
-                                        <ChevronDown className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        <ChevronDown className={`h-5 w-5 ${group.headerChevron} transition-colors`} />
                                     </motion.div>
                                 </button>
 

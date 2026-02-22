@@ -23,7 +23,7 @@ export default defineConfig({
             output: {
                 manualChunks: {
                     'vendor-react': ['react', 'react-dom', 'framer-motion', 'motion'],
-                    'vendor-three': ['three', '@types/three'],
+                    'vendor-three': ['three'],
                     'vendor-ui': ['@radix-ui/react-accordion', '@radix-ui/react-slot', 'lucide-react', 'clsx', 'tailwind-merge'],
                 },
             },

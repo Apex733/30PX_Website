@@ -117,9 +117,9 @@ export function Header() {
                     <button
                         onClick={() => scrollToSection("ai-lab")}
                         className="relative px-4 py-2 rounded-full cursor-pointer"
-                        onMouseEnter={() => setHoveredTab("AI Ads")}
+                        onMouseEnter={() => setHoveredTab("AI Workflow")}
                     >
-                        {hoveredTab === "AI Ads" && (
+                        {hoveredTab === "AI Workflow" && (
                             <motion.div
                                 layoutId="nav-pill"
                                 className={cn(
@@ -136,7 +136,7 @@ export function Header() {
                             />
                         )}
                         <span className="relative z-10 ai-lab-gradient ai-lab-glow">
-                            ✨ AI Ads
+                            ✨ AI Workflow
                         </span>
                     </button>
                 </nav>
@@ -188,7 +188,7 @@ export function Header() {
                                 onClick={() => scrollToSection("ai-lab")}
                                 className="text-left px-4 py-3 text-lg font-medium rounded-md hover:bg-muted"
                             >
-                                <span className="ai-lab-gradient ai-lab-glow">✨ AI Ads</span>
+                                <span className="ai-lab-gradient ai-lab-glow">✨ AI Workflow</span>
                             </button>
                             <div className="px-4 py-2 mt-2 border-t border-border">
                                 <ShimmerButton

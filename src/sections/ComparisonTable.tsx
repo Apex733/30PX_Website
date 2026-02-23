@@ -11,7 +11,6 @@ interface ComparisonRow {
     thirtyPX: string | boolean;
     inHouse: string;
     freelancers: string;
-    diyPlatforms: string;
 }
 
 const comparisonData: ComparisonRow[] = [
@@ -20,35 +19,30 @@ const comparisonData: ComparisonRow[] = [
         thirtyPX: true,
         inHouse: "High fixed salary",
         freelancers: "Unpredictable rates",
-        diyPlatforms: "Hidden time cost",
     },
     {
         feature: "Fast & reliable (24-48h)",
         thirtyPX: true,
         inHouse: "Limited by one person",
         freelancers: "Unreliable deadlines",
-        diyPlatforms: "Slow for quality work",
     },
     {
         feature: "Vetted pro designers",
         thirtyPX: true,
         inHouse: "Single skill set",
         freelancers: "Hit or miss quality",
-        diyPlatforms: "DIY = amateur results",
     },
     {
         feature: "Fully managed",
         thirtyPX: true,
         inHouse: "Full HR burden",
         freelancers: "You manage everything",
-        diyPlatforms: "Diverts your team",
     },
     {
         feature: "Instantly scalable",
         thirtyPX: true,
         inHouse: "Slow & costly to scale",
         freelancers: "Hard to scale quickly",
-        diyPlatforms: "Does not scale",
     },
 ];
 
@@ -89,7 +83,7 @@ export function ComparisonTable() {
                 </div>
 
                 {/* Comparison Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-0 max-w-6xl mx-auto overflow-hidden rounded-[14px] border border-border shadow-sm relative isolate">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 max-w-6xl mx-auto overflow-hidden rounded-[14px] border border-border shadow-sm relative isolate">
                     {/* 30PX Column - Highlighted (Always Visible) */}
                     <motion.div
                         initial={{ opacity: 0, x: -50, filter: "blur(20px)" }}
@@ -167,7 +161,7 @@ export function ComparisonTable() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
                         className={cn(
-                            "bg-card/50 text-card-foreground p-6 border-r border-border transition-all duration-500",
+                            "bg-card/50 text-card-foreground p-6 transition-all duration-500",
                             !isExpanded ? "hidden lg:block" : "block"
                         )}
                     >
@@ -182,33 +176,6 @@ export function ComparisonTable() {
                                     )}
                                 >
                                     <NegativeCell text={row.freelancers} />
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* DIY Platforms Column */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                        className={cn(
-                            "bg-card/50 text-card-foreground p-6 transition-all duration-500",
-                            !isExpanded ? "hidden lg:block" : "block"
-                        )}
-                    >
-                        <h3 className="font-semibold text-lg mb-8 text-foreground/80">DIY Platforms</h3>
-                        <div className="space-y-0">
-                            {comparisonData.map((row, index) => (
-                                <div
-                                    key={`diy-${index}`}
-                                    className={cn(
-                                        "py-5",
-                                        index !== comparisonData.length - 1 && "border-b border-border"
-                                    )}
-                                >
-                                    <NegativeCell text={row.diyPlatforms} />
                                 </div>
                             ))}
                         </div>

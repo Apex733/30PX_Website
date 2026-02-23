@@ -27,62 +27,62 @@ export function AILab() {
                     <SectionHeading
                         badge="AI Lab"
                         title="From Concept to Campaign"
-                        description="See exactly how our AI-driven workflow transforms your raw product photos into production-ready assets in seconds."
+                        description="See exactly how we use AI to accelerate our workflow so we can deliver production-ready assets in seconds. We run AI—it doesn't run us."
                         align="center"
                     />
                 </div>
 
                 {/* Main Horizontal Scrollable Pipeline */}
-                <div className="w-full max-w-7xl overflow-x-auto no-scrollbar pb-10 -mx-4 px-4 md:mx-0 md:px-0">
-                    <div className="flex flex-row items-center justify-start md:justify-center gap-4 md:gap-8 min-w-max mx-auto w-fit relative z-10 py-6">
+                <div className="w-full max-w-7xl pb-10 px-4 xl:px-0">
+                    <div className="flex flex-col md:flex-row items-stretch justify-center md:justify-center gap-8 md:gap-8 mx-auto w-full md:w-fit relative z-10 py-6">
 
                         {/* =========================================
                 STAGE 1: INPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[14px] p-6 w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow h-full">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">1</div>
 
                             <div className="flex items-center justify-between mb-5 mt-2">
                                 <h2 className="text-sm font-bold text-foreground tracking-widest flex items-center gap-2">
-                                    <Upload size={16} className="text-muted-foreground" /> Client Input
+                                    <Upload size={16} className="text-muted-foreground" /> Upload Images
                                 </h2>
                                 <Badge variant="secondary" className="text-[10px] font-medium px-2 py-0">Original</Badge>
                             </div>
 
-                            <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border bg-muted/30 p-1.5 mb-5 group">
+                            <div className="relative w-full aspect-video rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-5 group">
                                 <img
                                     src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600"
                                     alt="Raw Asset"
                                     className="w-full h-full object-cover rounded-lg opacity-90 transition-transform duration-500 group-hover:scale-105"
                                     loading="lazy"
                                 />
-                                <div className="absolute inset-0 border border-black/5 rounded-lg pointer-events-none" />
+                                <div className="absolute inset-0 border border-black/5 rounded-[5px] pointer-events-none" />
                             </div>
 
                             {/* Detailed Metadata */}
                             <div className="grid grid-cols-2 gap-3 mt-auto">
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-lg">
+                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
                                     <FileImage size={14} className="text-muted-foreground" />
                                     <div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Format</p>
                                         <p className="text-[11px] text-foreground font-medium">JPEG Image</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-lg">
+                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
                                     <Maximize size={14} className="text-muted-foreground" />
                                     <div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Resolution</p>
                                         <p className="text-[11px] text-foreground font-medium">1080 x 1080</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-lg">
+                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
                                     <HardDrive size={14} className="text-muted-foreground" />
                                     <div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Size</p>
                                         <p className="text-[11px] text-foreground font-medium">2.4 MB</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-lg">
+                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
                                     <Palette size={14} className="text-muted-foreground" />
                                     <div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Color</p>
@@ -92,8 +92,8 @@ export function AILab() {
                             </div>
                         </div>
 
-                        {/* Animated Horizontal Connector 1 */}
-                        <div className="flex items-center justify-center w-8 md:w-16 shrink-0 relative">
+                        {/* Animated Down/Right Connector 1 */}
+                        <div className="flex md:items-center justify-center w-8 h-8 md:w-16 md:h-auto shrink-0 relative self-center rotate-90 md:rotate-0">
                             <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
                                 <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
                             </div>
@@ -103,7 +103,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 2: AI MAGIC
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[14px] p-6 w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow h-full">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">2</div>
 
                             <div className="flex items-center justify-between mb-6 mt-2">
@@ -119,7 +119,7 @@ export function AILab() {
 
                             <div className="flex flex-col gap-5">
                                 {/* Visual Node */}
-                                <div className="relative w-full h-24 flex items-center justify-center bg-muted/10 border border-border/50 rounded-xl overflow-hidden">
+                                <div className="relative w-full h-24 flex items-center justify-center bg-muted/10 border border-border/50 rounded-[5px] overflow-hidden">
                                     <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50" />
                                     <div className="w-12 h-12 bg-card border border-border rounded-full flex items-center justify-center shadow-lg relative z-10">
                                         <Sparkles size={20} className="text-primary animate-pulse" />
@@ -144,15 +144,20 @@ export function AILab() {
                                 </div>
 
                                 {/* Model Tags */}
-                                <div className="pt-4 border-t border-border/50 flex gap-2">
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded px-2">Midjourney v6</Badge>
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded px-2">Sora Video</Badge>
+                                <div className="pt-4 border-t border-border/50 flex flex-wrap gap-2">
+                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Midjourney</Badge>
+                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Sora</Badge>
+                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Gemini</Badge>
+                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Claude</Badge>
+                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Nano Banana Pro</Badge>
+                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Kling AI</Badge>
+                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Google VEO</Badge>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Animated Horizontal Connector 2 */}
-                        <div className="flex items-center justify-center w-8 md:w-16 shrink-0 relative">
+                        {/* Animated Down/Right Connector 2 */}
+                        <div className="flex md:items-center justify-center w-8 h-8 md:w-16 md:h-auto shrink-0 relative self-center rotate-90 md:rotate-0">
                             <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
                                 <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
                             </div>
@@ -162,7 +167,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 3: OUTPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[14px] p-6 w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow h-full">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-sm">
                                 <CheckCircle2 size={18} className="text-green-500" />
                             </div>
@@ -176,7 +181,7 @@ export function AILab() {
 
                             <div className="w-full flex flex-col gap-2 relative z-10">
                                 {/* Main Image */}
-                                <div className="w-full h-32 rounded-xl overflow-hidden relative group border border-border bg-muted/30">
+                                <div className="w-full h-32 rounded-[5px] overflow-hidden relative group border border-border bg-muted/30">
                                     <img
                                         src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=800"
                                         alt="Final Hero"
@@ -189,7 +194,7 @@ export function AILab() {
                                 </div>
                                 {/* Sub Assets row */}
                                 <div className="flex gap-2 w-full h-16">
-                                    <div className="flex-1 rounded-lg overflow-hidden relative border border-border bg-muted/30 group">
+                                    <div className="flex-1 rounded-[5px] overflow-hidden relative border border-border bg-muted/30 group">
                                         <img
                                             src="https://images.unsplash.com/photo-1552346154-21d32810baa3?auto=format&fit=crop&q=80&w=400"
                                             alt="Final Var"
@@ -197,7 +202,7 @@ export function AILab() {
                                             loading="lazy"
                                         />
                                     </div>
-                                    <div className="flex-1 rounded-lg overflow-hidden relative border border-border bg-muted/30 group">
+                                    <div className="flex-1 rounded-[5px] overflow-hidden relative border border-border bg-muted/30 group">
                                         <img
                                             src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=400"
                                             alt="Video"

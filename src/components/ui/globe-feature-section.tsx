@@ -19,7 +19,11 @@ export default function Featured_05() {
                         align="left"
                     />
                     <div className="flex justify-center md:justify-start">
-                        <ShimmerButton background="#7C3AED" className="shadow-2xl">
+                        <ShimmerButton
+                            background="#7C3AED"
+                            className="shadow-2xl"
+                            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
                             <span className="flex items-center gap-2 font-semibold">
                                 Start for $24 <ArrowRight className="h-4 w-4" />
                             </span>

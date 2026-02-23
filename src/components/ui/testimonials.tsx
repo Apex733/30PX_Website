@@ -171,13 +171,13 @@ export default function Testimonials() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <div className="flex justify-end gap-2 mt-8 md:hidden">
+                    <div className="flex justify-between mt-8 md:hidden px-4">
                         <CarouselPrevious className="static translate-y-0" />
                         <CarouselNext className="static translate-y-0" />
                     </div>
                     <div className="hidden md:block">
-                        <CarouselPrevious className="-left-4 lg:-left-12" />
-                        <CarouselNext className="-right-4 lg:-right-12" />
+                        <CarouselPrevious className="absolute top-1/2 -translate-y-1/2" style={{ left: '-48px', right: 'auto' }} />
+                        <CarouselNext className="absolute top-1/2 -translate-y-1/2" style={{ right: '-48px', left: 'auto' }} />
                     </div>
                 </Carousel>
             </div>

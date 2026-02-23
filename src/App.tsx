@@ -34,6 +34,8 @@ function App() {
                     <Route path="/about" element={<AboutUs />} />
                 </Routes>
             </Suspense>
+            {/* Added subtle bottom chin blur to the whole website */}
+            <div className="fixed bottom-0 left-0 w-full h-12 bg-gradient-to-t from-background/80 to-transparent backdrop-blur-[2px] pointer-events-none z-50"></div>
         </>
     );
 }

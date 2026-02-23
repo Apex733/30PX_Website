@@ -35,7 +35,11 @@ export function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start w-full">
-                        <Button size="lg" className="h-14 px-8 text-xl w-full sm:w-auto shadow-lg shadow-blue-900/20 bg-[#FAFAFA] text-black hover:bg-gray-100 rounded-full">
+                        <Button
+                            size="lg"
+                            className="h-14 px-8 text-xl w-full sm:w-auto shadow-lg shadow-blue-900/20 bg-[#FAFAFA] text-black hover:bg-gray-100 rounded-full"
+                            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
                             Start for $24/month
                         </Button>
                         <Button

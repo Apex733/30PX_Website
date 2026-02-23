@@ -10,13 +10,7 @@ export function AIDesignPerformance() {
             <div className="container px-4 md:px-12 mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="flex flex-col gap-6"
-                    >
+                    <div className="flex flex-col gap-6">
                         <SectionHeading
                             badge="Efficiency"
                             title={<>Tired of design fatigue? <span className="block text-primary mt-2">It's time to refresh your design production</span></>}
@@ -35,16 +29,10 @@ export function AIDesignPerformance() {
                                 You know it has a direct impact on your ROI but tight deadlines, limited resources, and talent gaps make it hard to keep up with the demand for compelling creative. That's what 30PX is for.
                             </p>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right Image */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="relative"
-                    >
+                    <div className="relative">
                         <div className="aspect-[4/3] relative rounded-[5px] overflow-hidden shadow-2xl">
                             <img
                                 src="/ai-design-performance.webp"
@@ -59,7 +47,7 @@ export function AIDesignPerformance() {
                         {/* Decorative elements */}
                         <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-50" />
                         <div className="absolute -z-10 -top-10 -left-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl opacity-50" />
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

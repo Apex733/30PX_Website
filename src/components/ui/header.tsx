@@ -3,7 +3,8 @@
 import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
     { label: "Services", sectionId: "services" },
@@ -15,6 +16,7 @@ export function Header() {
     const [isDark] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const { scrollY } = useScroll();
 
@@ -31,6 +33,7 @@ export function Header() {
             // We're on a different page — navigate home then scroll
             window.location.href = `/#/?scrollTo=${sectionId}`;
         }
+        setIsMobileMenuOpen(false);
     }, []);
 
     return (
@@ -138,18 +141,69 @@ export function Header() {
                     </button>
                 </nav>
 
-                <div className="flex gap-4">
+                <div className="hidden md:flex gap-4">
                     <ShimmerButton
                         className={cn(
                             "h-10 text-sm px-6 py-2 transition-all duration-300",
                         )}
                         shimmerColor={"#ffffff"}
                         background="#7C3AED"
+                        onClick={() => scrollToSection("pricing")}
                     >
                         Start for $24
                     </ShimmerButton>
                 </div>
+
+                {/* Mobile Menu Toggle */}
+                <button
+                    className="md:hidden p-2 text-foreground"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle mobile menu"
+                >
+                    {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </button>
             </div>
+
+            {/* Mobile Nav Overlay */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-20 left-0 right-0 bg-background border-b border-border shadow-lg md:hidden z-40"
+                    >
+                        <nav className="flex flex-col p-4 gap-4">
+                            {navItems.map((item) => (
+                                <button
+                                    key={item.label}
+                                    onClick={() => scrollToSection(item.sectionId)}
+                                    className="text-left px-4 py-3 text-lg font-medium rounded-md hover:bg-muted"
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
+                            <button
+                                onClick={() => scrollToSection("ai-lab")}
+                                className="text-left px-4 py-3 text-lg font-medium rounded-md hover:bg-muted"
+                            >
+                                <span className="ai-lab-gradient ai-lab-glow">✨ AI Ads</span>
+                            </button>
+                            <div className="px-4 py-2 mt-2 border-t border-border">
+                                <ShimmerButton
+                                    className="w-full h-12 text-base"
+                                    shimmerColor={"#ffffff"}
+                                    background="#7C3AED"
+                                    onClick={() => scrollToSection("pricing")}
+                                >
+                                    Start for $24
+                                </ShimmerButton>
+                            </div>
+                        </nav>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 }

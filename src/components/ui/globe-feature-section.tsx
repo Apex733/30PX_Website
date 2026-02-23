@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 
 export default function Featured_05() {
     return (
-        <section className="relative w-full mx-auto overflow-hidden bg-[#FAFAFA] px-6 py-16 md:px-16 md:py-24">
+        <section className="relative w-full mx-auto overflow-hidden bg-[#FAFAFA] px-6 py-12 md:px-16 md:py-16">
             <div className="container mx-auto flex flex-col-reverse items-center justify-between gap-24 md:flex-row md:gap-12">
                 <div className="z-20 max-w-xl text-center md:text-left">
                     <SectionHeading

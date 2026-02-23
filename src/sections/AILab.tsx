@@ -19,7 +19,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function AILab() {
     return (
-        <section className="py-16 md:py-24 bg-background overflow-hidden" id="ai-lab">
+        <section className="py-12 md:py-16 bg-background overflow-hidden" id="ai-lab">
             <div className="container mx-auto px-4 md:px-12 flex flex-col items-center justify-center">
 
                 {/* Title Section */}

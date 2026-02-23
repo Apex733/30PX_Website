@@ -10,7 +10,7 @@ const afterSrc = Object.entries(images).find(([path]) => path.includes("After.we
 
 export function Comparison() {
     return (
-        <section className="py-16">
+        <section className="py-12 md:py-16">
             <div className="container mx-auto px-4 md:px-12">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl font-bold">Make a lasting impression.</h2>

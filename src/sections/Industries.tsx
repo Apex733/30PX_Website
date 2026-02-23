@@ -3,7 +3,7 @@ import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 
 export function Industries() {
     return (
-        <section className="py-16 md:py-24 bg-muted/30" id="industries">
+        <section className="py-12 md:py-16 bg-muted/30" id="industries">
             <div className="container mx-auto mb-12">
                 <SectionHeading
                     badge="Industries"

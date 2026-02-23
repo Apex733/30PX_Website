@@ -42,7 +42,7 @@ const timelineData = [
 
 export function JourneyTimeline() {
     return (
-        <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+        <section className="py-12 md:py-16 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
             <div className="flex flex-col items-center mb-16 text-center gap-6">
                 <SectionHeading
                     badge="Your Journey"

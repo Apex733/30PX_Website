@@ -27,7 +27,7 @@ export function Logos() {
     const allLogos = [...allModules, ...allModules, ...allModules, ...allModules];
 
     return (
-        <section className="py-16 md:py-24 bg-[#FAFAFA]">
+        <section className="py-12 md:py-16 bg-[#FAFAFA]">
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="text-center mb-12">
                     <h3 className="text-3xl font-bold tracking-tight text-neutral-950">

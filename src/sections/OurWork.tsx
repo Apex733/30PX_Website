@@ -62,7 +62,7 @@ export function OurWork() {
     };
 
     return (
-        <section className="py-16 md:py-24 bg-[#FAFAFA]">
+        <section className="py-12 md:py-16 bg-[#FAFAFA]">
             <div className="container mx-auto px-4 max-w-7xl">
                 {/* Heading */}
                 <SectionHeading

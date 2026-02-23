@@ -70,7 +70,7 @@ export function ComparisonTable() {
     const [isExpanded, setIsExpanded] = React.useState(false);
 
     return (
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-12 md:py-16 bg-background">
             <div className="container mx-auto px-4 md:px-12">
                 {/* Section Header */}
                 <div className="text-center mb-16">

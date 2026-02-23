@@ -124,7 +124,7 @@ export function OurServices() {
     };
 
     return (
-        <section className="py-16 md:py-24 bg-background" id="services">
+        <section className="py-12 md:py-16 bg-background" id="services">
             <div className="container mx-auto px-4 md:px-12 max-w-7xl">
                 <SectionHeading
                     badge="Services"

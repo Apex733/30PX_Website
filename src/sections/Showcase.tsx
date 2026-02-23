@@ -56,7 +56,7 @@ const items = [
 
 export function Showcase() {
     return (
-        <section className="py-16 bg-background border-t">
+        <section className="py-12 md:py-16 bg-background border-t">
             <div className="container mx-auto px-4 md:px-12 max-w-6xl">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl font-bold">Our Work Speaks for Itself.</h2>

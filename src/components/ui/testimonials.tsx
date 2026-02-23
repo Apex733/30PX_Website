@@ -72,7 +72,7 @@ export default function Testimonials() {
     }, [api, isHovered])
 
     return (
-        <section className="py-16 md:py-24 bg-background" id="reviews">
+        <section className="py-12 md:py-16 bg-background" id="reviews">
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                     <div className="space-y-4 max-w-2xl">

@@ -6,6 +6,7 @@ import { Logos } from "@/sections/Logos";
 import { OurWork } from "@/sections/OurWork";
 import { OurServices } from "@/sections/OurServices";
 import GlobeSection from "@/components/ui/globe-feature-section";
+import { AILab } from "@/sections/AILab";
 import { ComparisonTable } from "@/sections/ComparisonTable";
 import { PricingSection } from "@/components/ui/pricing-section";
 import { DetailedComparison } from "@/sections/DetailedComparison";
@@ -182,6 +183,7 @@ function Home() {
 
                 <GlobeSection />
 
+                <AILab />
 
                 <ComparisonTable />
 

@@ -39,7 +39,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 1: INPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow h-full">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">1</div>
 
                             <div className="flex items-center justify-between mb-5 mt-2">
@@ -103,7 +103,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 2: AI MAGIC
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow h-full">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">2</div>
 
                             <div className="flex items-center justify-between mb-6 mt-2">
@@ -167,7 +167,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 3: OUTPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow h-full">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-sm">
                                 <CheckCircle2 size={18} className="text-green-500" />
                             </div>

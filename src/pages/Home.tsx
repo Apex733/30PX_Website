@@ -13,6 +13,7 @@ import { DetailedComparison } from "@/sections/DetailedComparison";
 import { AIDesignPerformance } from "@/sections/AIDesignPerformance";
 
 import Testimonials from "@/components/ui/testimonials";
+import { FreePDFDownload } from "@/sections/FreePDFDownload";
 
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 import { Footer } from "@/components/ui/footer-section";
@@ -215,6 +216,8 @@ function Home() {
                 <AIDesignPerformance />
 
                 <Testimonials />
+
+                <FreePDFDownload />
 
                 <JourneyTimeline />
 

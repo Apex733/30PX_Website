@@ -35,72 +35,80 @@ export function FreePDFDownload() {
 
     return (
         <section className="py-24 bg-background border-t border-border">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                    Get Your Free Digital Guide
-                </h2>
-                <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-                    Discover the secrets to scaling your agency with our exclusive PDF. Enter your details below to download it instantly.
-                </p>
-
-                {status === "success" ? (
-                    <div className="bg-primary/10 text-primary p-6 rounded-2xl border border-primary/20 max-w-md mx-auto">
-                        <h3 className="text-xl font-semibold mb-2">Success!</h3>
-                        <p>Check your email for your free PDF.</p>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    {/* Left Column: Text Content */}
+                    <div className="text-left">
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+                            Get Your Free Digital Guide
+                        </h2>
+                        <p className="mt-6 text-lg text-muted-foreground">
+                            Discover the secrets to scaling your agency with our exclusive PDF. Enter your details below to download it instantly.
+                        </p>
                     </div>
-                ) : (
-                    <form onSubmit={handleSubmit} className="bg-card w-full max-w-md mx-auto p-8 rounded-3xl shadow-xl border border-border/50 text-left relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
 
-                        <div className="space-y-6 relative z-10">
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
-                                    Email Address
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    className="block w-full rounded-xl border-border bg-background focus:border-primary focus:ring-primary h-12 px-4 shadow-sm"
-                                    placeholder="you@company.com"
-                                    disabled={status === "submitting"}
-                                />
+                    {/* Right Column: Form */}
+                    <div className="w-full max-w-md mx-auto md:ml-auto md:mr-0">
+                        {status === "success" ? (
+                            <div className="bg-primary/10 text-primary p-6 rounded-2xl border border-primary/20">
+                                <h3 className="text-xl font-semibold mb-2">Success!</h3>
+                                <p>Check your email for your free PDF.</p>
                             </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="bg-card w-full p-8 rounded-3xl border border-border/50 text-left relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
 
-                            <div>
-                                <label htmlFor="occupation" className="block text-sm font-medium text-foreground mb-1.5">
-                                    Occupation
-                                </label>
-                                <input
-                                    type="text"
-                                    id="occupation"
-                                    value={occupation}
-                                    onChange={(e) => setOccupation(e.target.value)}
-                                    required
-                                    className="block w-full rounded-xl border-border bg-background focus:border-primary focus:ring-primary h-12 px-4 shadow-sm"
-                                    placeholder="e.g. Agency Owner"
-                                    disabled={status === "submitting"}
-                                />
-                            </div>
+                                <div className="space-y-6 relative z-10">
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
+                                            Email Address
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required
+                                            className="block w-full rounded-[5px] border border-border bg-background focus:border-primary focus:ring-primary h-12 px-4 outline-none"
+                                            placeholder="you@company.com"
+                                            disabled={status === "submitting"}
+                                        />
+                                    </div>
 
-                            {status === "error" && (
-                                <p className="text-destructive text-sm font-medium">
-                                    Something went wrong. Please try again.
-                                </p>
-                            )}
+                                    <div>
+                                        <label htmlFor="occupation" className="block text-sm font-medium text-foreground mb-1.5">
+                                            Occupation
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="occupation"
+                                            value={occupation}
+                                            onChange={(e) => setOccupation(e.target.value)}
+                                            required
+                                            className="block w-full rounded-[5px] border border-border bg-background focus:border-primary focus:ring-primary h-12 px-4 outline-none"
+                                            placeholder="e.g. Agency Owner"
+                                            disabled={status === "submitting"}
+                                        />
+                                    </div>
 
-                            <Button
-                                type="submit"
-                                className="w-full h-12 text-base font-semibold rounded-xl mt-4"
-                                disabled={status === "submitting"}
-                            >
-                                {status === "submitting" ? "Sending..." : "Download Now"}
-                            </Button>
-                        </div>
-                    </form>
-                )}
+                                    {status === "error" && (
+                                        <p className="text-destructive text-sm font-medium">
+                                            Something went wrong. Please try again.
+                                        </p>
+                                    )}
+
+                                    <Button
+                                        type="submit"
+                                        className="w-full h-12 text-base font-semibold rounded-full mt-4"
+                                        disabled={status === "submitting"}
+                                    >
+                                        {status === "submitting" ? "Sending..." : "Download Now"}
+                                    </Button>
+                                </div>
+                            </form>
+                        )}
+                    </div>
+                </div>
             </div>
         </section>
     );

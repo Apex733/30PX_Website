@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import ScrollToTop from "@/components/ScrollToTop";
+import { SharedScrollProvider } from "@/lib/scroll-context";
 
 const LoudMindsPortfolio = lazy(() => import("@/pages/LoudMindsPortfolio"));
 const GhostTongueProject = lazy(() => import("@/pages/GhostTongueProject"));
@@ -17,7 +18,7 @@ const AboutUs = lazy(() => import("@/pages/AboutUs"));
 
 function App() {
     return (
-        <>
+        <SharedScrollProvider>
             <ScrollToTop />
             <Suspense fallback={<div className="min-h-screen bg-[#020817]"></div>}>
                 <Routes>
@@ -36,7 +37,7 @@ function App() {
             </Suspense>
             {/* Added subtle bottom chin blur to the whole website */}
             <div className="fixed bottom-0 left-0 w-full h-24 pointer-events-none z-50 backdrop-blur-md [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
-        </>
+        </SharedScrollProvider>
     );
 }
 

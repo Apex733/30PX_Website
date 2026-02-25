@@ -3,7 +3,8 @@
 import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { useSharedScroll } from "@/lib/scroll-context";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -18,7 +19,7 @@ export function Header() {
     const [hoveredTab, setHoveredTab] = useState<string | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const { scrollY } = useScroll();
+    const { scrollY } = useSharedScroll();
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setScrolled(latest > 50);

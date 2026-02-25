@@ -5,13 +5,11 @@ import {
     motion,
     useAnimationFrame,
     useMotionValue,
-    useScroll,
-    useSpring,
     useTransform,
-    useVelocity,
 } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { useSharedScroll } from "@/lib/scroll-context";
 
 interface VelocityScrollProps {
     children: React.ReactNode;
@@ -58,12 +56,7 @@ function ParallaxText({
     velocity_sensitivity,
 }: ParallaxProps) {
     const baseX = useMotionValue(0);
-    const { scrollY } = useScroll();
-    const scrollVelocity = useVelocity(scrollY);
-    const smoothVelocity = useSpring(scrollVelocity, {
-        damping: 120,
-        stiffness: 200,
-    });
+    const { smoothVelocity } = useSharedScroll();
 
     const velocityFactor = useTransform(smoothVelocity, [0, 500], [0, velocity_sensitivity], {
         clamp: true,

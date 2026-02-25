@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/ui/section-heading"
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState } from "react";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { cn } from "@/lib/utils";
 
@@ -52,57 +52,14 @@ function getImagesByCategory(categoryId: string): { src: string; name: string; t
         });
 }
 
-// Pre-compute category counts once at module level (never changes)
-const categoryCountMap: Record<string, number> = {};
-for (const cat of categories) {
-    categoryCountMap[cat.id] = getImagesByCategory(cat.id).length;
-}
-
-/**
- * LazyVideo: Only plays when visible in the viewport.
- * Pauses and releases decode resources when scrolled off-screen.
- */
-function LazyVideo({ src }: { src: string }) {
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        const container = containerRef.current;
-        if (!video || !container) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    video.play().catch(() => { });
-                } else {
-                    video.pause();
-                }
-            },
-            { rootMargin: "200px" }
-        );
-        observer.observe(container);
-        return () => observer.disconnect();
-    }, []);
-
-    return (
-        <div ref={containerRef}>
-            <video
-                ref={videoRef}
-                src={src}
-                className="h-full w-auto object-contain pointer-events-none"
-                muted
-                loop
-                playsInline
-                preload="metadata"
-            />
-        </div>
-    );
-}
-
 export function OurWork() {
     const [activeCategory, setActiveCategory] = useState<string>("3D");
-    const images = useMemo(() => getImagesByCategory(activeCategory), [activeCategory]);
+    const images = getImagesByCategory(activeCategory);
+
+    // Helper to check if a category has content
+    const getCategoryCount = (categoryId: string) => {
+        return getImagesByCategory(categoryId).length;
+    };
 
     return (
         <section className="py-12 md:py-16 bg-[#FAFAFA]">
@@ -117,7 +74,7 @@ export function OurWork() {
                 {/* Category Buttons */}
                 <div className="flex flex-wrap justify-center gap-3 mb-12 max-w-7xl mx-auto">
                     {categories.map((category) => {
-                        const count = categoryCountMap[category.id];
+                        const count = getCategoryCount(category.id);
                         const isEmpty = count === 0;
 
                         return (
@@ -175,7 +132,14 @@ export function OurWork() {
                                                 className="h-[36rem] md:h-[40rem] overflow-hidden rounded-[5px] bg-neutral-100 relative group"
                                             >
                                                 {item.type === "video" ? (
-                                                    <LazyVideo src={item.src} />
+                                                    <video
+                                                        src={item.src}
+                                                        className="h-full w-auto object-contain pointer-events-none"
+                                                        autoPlay
+                                                        muted
+                                                        loop
+                                                        playsInline
+                                                    />
                                                 ) : (
                                                     <img
                                                         src={item.src}
@@ -188,7 +152,7 @@ export function OurWork() {
 
                                                 {/* Image Name Label (Only for 3D and AI) */}
                                                 {(activeCategory === "3D" || activeCategory === "AI") && (
-                                                    <div className="absolute top-3 right-3 px-3 py-1 bg-black/30 border border-white/20 rounded-full shadow-sm z-10">
+                                                    <div className="absolute top-3 right-3 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm z-10">
                                                         <span className="text-xs font-medium text-white tracking-wide">
                                                             {item.name}
                                                         </span>

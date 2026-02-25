@@ -35,8 +35,8 @@ function App() {
                     <Route path="/about" element={<AboutUs />} />
                 </Routes>
             </Suspense>
-            {/* Added subtle bottom chin blur to the whole website */}
-            <div className="fixed bottom-0 left-0 w-full h-24 pointer-events-none z-50 backdrop-blur-md [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
+            {/* Subtle bottom chin fade — uses gradient instead of backdrop-blur for performance */}
+            <div className="fixed bottom-0 left-0 w-full h-24 pointer-events-none z-50 bg-gradient-to-t from-white/80 to-transparent"></div>
         </SharedScrollProvider>
     );
 }

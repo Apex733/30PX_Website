@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30PX - AI-Powered Growth for Plumbing Businesses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 30PX Design System Tokens */
+        :root {
+            --color-bg-primary: #000000;
+            --color-bg-secondary: #0A0A0A;
+            --color-bg-card: #121212;
+            --color-accent: #7C3AED;
+            --color-accent-hover: #8B5CF6;
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #A1A1AA;
+
+            --font-family: 'Inter', system-ui, sans-serif;
+
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 16px;
+            --space-4: 24px;
+            --space-5: 32px;
+            --space-6: 48px;
+            --space-7: 64px;
+            --space-8: 96px;
+            --space-9: 128px;
+
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+
+            --transition-fast: 150ms ease-in-out;
+            --transition-normal: 300ms ease-out;
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(28px, 4vw, 48px);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(20px, 3vw, 24px);
+            font-weight: 600;
+        }
+
+        p.large {
+            font-size: 20px;
+            color: var(--color-text-secondary);
+        }
+
+        p {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Layout & Spacing */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        section {
+            padding: var(--space-9) 0;
+            position: relative;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: transform var(--transition-fast), background-color var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: white;
+            transform: scale(1.02);
+        }
+
+        /* Ripple Effect */
+        .ripple-span {
+            position: absolute;
+            border-radius: 50%;
+            background-color: currentColor;
+            opacity: 0.12;
+            transform: scale(0);
+            pointer-events: none;
+            animation: btn-ripple-expand 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes btn-ripple-expand {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-6);
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-circle {
+            width: 24px;
+            height: 24px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        /* 1. Hero Section */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: var(--space-9);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .hero-tags {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            font-size: 14px;
+            color: var(--color-accent-hover);
+            margin-bottom: var(--space-4);
+        }
+
+        .hero h1 {
+            margin-bottom: var(--space-4);
+        }
+
+        .hero p.large {
+            margin-bottom: var(--space-6);
+            max-width: 480px;
+        }
+
+        .hero-graphics {
+            position: relative;
+        }
+
+        .hero-card {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            padding: var(--space-5);
+            margin-left: auto;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: var(--space-4);
+        }
+
+        .hero-card-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #27272A;
+        }
+
+        .hero-card-title {
+            font-weight: 600;
+            color: white;
+        }
+
+        .hero-card-subtitle {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-stat-value {
+            font-weight: 700;
+            color: var(--color-accent-hover);
+            font-size: 20px;
+        }
+
+        .hero-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: pulse-blob 8s infinite alternate;
+        }
+
+        @keyframes pulse-blob {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* 2. Social Proof / Stats */
+        .social-proof {
+            background-color: var(--color-bg-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: var(--space-7) 0;
+            overflow: hidden;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-7);
+        }
+
+        .stat-card {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stat-number span {
+            color: var(--color-accent);
+        }
+
+        .marquee-wrapper {
+            display: flex;
+            width: 200%;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .logo-placeholder {
+            font-size: 20px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* 3. What We Handle (Bento Grid) */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-7);
+        }
+
+        .section-header h2 {
+            margin-bottom: var(--space-3);
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-4);
+        }
+
+        .bento-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        .bento-card.tall {
+            grid-row: span 2;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .bento-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+        }
+
+        .bento-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .bento-card h3 {
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-card.tall {
+                grid-row: auto;
+            }
+        }
+
+        /* 4. $24/Month Value Proposition */
+        .value-prop {
+            background: linear-gradient(180deg, var(--color-bg-primary) 0%, #170d2b 100%);
+        }
+
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-5);
+            margin-top: var(--space-6);
+        }
+
+        .compare-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .compare-card.highlight {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid var(--color-accent);
+            position: relative;
+        }
+
+        .compare-card.highlight::before {
+            content: "UNBELIEVABLE VALUE";
+            position: absolute;
+            top: -14px;
+            border-radius: var(--radius-full);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            letter-spacing: 1px;
+        }
+
+        .compare-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin: var(--space-4) 0;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .compare-price span {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: var(--space-6);
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-list li.negative {
+            color: var(--color-text-secondary);
+        }
+
+        .feature-list li.negative svg {
+            color: #EF4444;
+        }
+
+        .feature-list li svg {
+            color: #10B981;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* 5. Portfolio Section */
+        .portfolio {
+            background: var(--color-bg-secondary);
+        }
+
+        .masonry {
+            column-count: 3;
+            column-gap: var(--space-4);
+        }
+
+        @media (max-width: 900px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--color-bg-card);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .masonry-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #1f1f22, #27272a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.2);
+            transition: transform var(--transition-slow);
+        }
+
+        .masonry-item:nth-child(2n) .masonry-image {
+            height: 350px;
+        }
+
+        .masonry-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all var(--transition-normal);
+        }
+
+        .masonry-item:hover .masonry-image {
+            transform: scale(1.05);
+        }
+
+        .masonry-item:hover .masonry-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* 6. AI-Powered Growth */
+        .ai-pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: var(--space-6);
+            overflow-x: auto;
+        }
+
+        .pipeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 150px;
+            position: relative;
+        }
+
+        .pipeline-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            z-index: 2;
+        }
+
+        .pipeline-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .pipeline-arrow {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.2), var(--color-accent), rgba(124, 58, 237, 0.2));
+            margin: 0 16px;
+            position: relative;
+            min-width: 40px;
+            background-size: 200% 100%;
+            animation: move-line 2s linear infinite;
+        }
+
+        @keyframes move-line {
+            0% {
+                background-position: 100% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ai-pipeline {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .pipeline-arrow {
+                width: 2px;
+                height: 40px;
+                margin: 16px 0;
+                min-width: auto;
+            }
+        }
+
+        /* 7. Process Section */
+        .process-section {
+            background: var(--color-bg-secondary);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: var(--space-5);
+            margin-bottom: var(--space-6);
+            position: relative;
+        }
+
+        .timeline-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-bg-card);
+            border: 2px solid var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: var(--color-bg-card);
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            flex-grow: 1;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 8px;
+        }
+
+        /* 8. Final CTA */
+        .final-cta {
+            text-align: center;
+            background: linear-gradient(0deg, #170d2b 0%, var(--color-bg-primary) 100%);
+            padding-bottom: 120px;
+        }
+
+        .cta-box {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: var(--radius-xl);
+            padding: var(--space-7) var(--space-4);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 32px;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: var(--space-6) 0;
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 800ms cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* SVG Icons */
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-circle"></div>
+                30PX
+            </a>
+            <a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="hero reveal">
+        <div class="container grid-2">
+            <div class="hero-content">
+                <div class="hero-tags">
+                    <svg class="icon" style="width: 16px; height: 16px" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    Made for Plumbing Businesses
+                </div>
+                <h1>Stop losing jobs to businesses with better websites.</h1>
+                <p class="large">You handle the plumbing. We handle your social media, video, and website. All powered
+                    by AI so your phone keeps ringing.</p>
+
+                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <a href="#pricing" class="btn btn-primary">Get Your Proposal — $24/mo</a>
+                    <span style="color: var(--color-text-secondary); font-size: 14px;">No hidden fees. Cancel
+                        anytime.</span>
+                </div>
+            </div>
+
+            <div class="hero-graphics">
+                <div class="hero-blob"></div>
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-avatar"></div>
+                        <div>
+                            <div class="hero-card-title">Monthly Growth Report</div>
+                            <div class="hero-card-subtitle">AI-Powered Campaigns</div>
+                        </div>
+                    </div>
+                    <div class="hero-stat">
+                        <span style="color: var(--color-text-secondary)">New Leads Generated</span>
+                        <span class="hero-stat-value">+42 This Month</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span style="color: var(--color-text-secondary)">Website Traffic</span>
+                        <span class="hero-stat-value">+315%</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span style="color: var(--color-text-secondary)">Social Engagement</span>
+                        <span class="hero-stat-value">+890%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Social Proof Section -->
+    <section class="social-proof reveal">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number"><span>$</span><output>2.4</output>M+</div>
+                    <p>Client Revenue Generated</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number"><output>10</output>k+</div>
+                    <p>Leads Sent to Plumbers</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number"><output>98</output>%</div>
+                    <p>Client Retention Rate</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-bottom: 24px; font-weight: 500;">Trusted by growing service businesses
+            </p>
+            <div class="marquee-wrapper">
+                <div class="marquee-content">
+                    <div class="logo-placeholder">Elite Plumbing</div>
+                    <div class="logo-placeholder">Rooter Bros</div>
+                    <div class="logo-placeholder">Pro-Pipe Solutions</div>
+                    <div class="logo-placeholder">AquaFlow Experts</div>
+                    <div class="logo-placeholder">City Drain</div>
+                </div>
+                <div class="marquee-content">
+                    <div class="logo-placeholder">Elite Plumbing</div>
+                    <div class="logo-placeholder">Rooter Bros</div>
+                    <div class="logo-placeholder">Pro-Pipe Solutions</div>
+                    <div class="logo-placeholder">AquaFlow Experts</div>
+                    <div class="logo-placeholder">City Drain</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. What We Handle Section -->
+    <section class="reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need, Handled.</h2>
+                <p class="large">We don't just build a website. We become your full-time marketing department powered by
+                    high-end design and smart AI.</p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card tall">
+                    <div class="bento-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"></path>
+                        </svg>
+                    </div>
+                    <h3>Website Design & Maintenance</h3>
+                    <p>High-converting, lightning-fast websites that make you look like the biggest player in town. We
+                        handle all hosting and updates.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Video Production</h3>
+                    <p>Professional video content that builds trust with homeowners before you even step foot in their
+                        house.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Social Media Fuel</h3>
+                    <p>We manage your Facebook, Instagram, and NextDoor so you stay top-of-mind when an emergency
+                        strikes.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>3D Visuals & Branding</h3>
+                    <p>Premium branding that justifies premium pricing. Stand out instantly from "a guy in a truck."</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Smart AI Insights</h3>
+                    <p>We use AI to find out exactly what people are searching for in your area and capture that demand.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. $24/mo Value Prop -->
+    <section class="value-prop reveal" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Easiest Decision You'll Make Today.</h2>
+                <p class="large">Stop overpaying agencies or losing time doing it yourself.</p>
+            </div>
+
+            <div class="comparison-cards">
+                <div class="compare-card">
+                    <h3>Doing It Yourself</h3>
+                    <div class="compare-price"><span>Time</span></div>
+                    <ul class="feature-list">
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Missed phone calls</li>
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Clunky website</li>
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Stress about "marketing"</li>
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Losing to competitors</li>
+                    </ul>
+                </div>
+
+                <div class="compare-card highlight">
+                    <div style="font-weight: 700; color: var(--color-accent); margin-bottom: 8px;">30PX CREATIVE</div>
+                    <h3>Everything Handled.</h3>
+                    <div class="compare-price">$24<span>/month</span></div>
+                    <ul class="feature-list">
+                        <li><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Custom High-Converting Website</li>
+                        <li><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> AI-Powered Social Media</li>
+                        <li><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Premium Branding & Video</li>
+                        <li><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Local SEO & Analytics</li>
+                        <li><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Hands-free Growth</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%;">Get Started Now</a>
+                </div>
+
+                <div class="compare-card">
+                    <h3>Traditional Agency</h3>
+                    <div class="compare-price">$2,500+<span>/month</span></div>
+                    <ul class="feature-list">
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Huge upfront fees</li>
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Long contracts</li>
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Slow turnaround</li>
+                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg> Jargon you don't care about</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Portfolio Section -->
+    <section class="portfolio reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>What We've Built For Businesses Like Yours.</h2>
+                <p class="large">A glimpse into premium web presences and branding.</p>
+            </div>
+
+            <div class="masonry">
+                <!-- Placeholders for actual design screenshots -->
+                <div class="masonry-item">
+                    <div class="masonry-image">Project Preview 1</div>
+                    <div class="masonry-overlay">
+                        <h4 style="color: white; margin-bottom: 4px;">Elite Plumbing Redesign</h4>
+                        <p style="font-size: 14px; margin: 0;">Web Design • Local SEO</p>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="masonry-image">Project Preview 2</div>
+                    <div class="masonry-overlay">
+                        <h4 style="color: white; margin-bottom: 4px;">Rooter Bros Rebrand</h4>
+                        <p style="font-size: 14px; margin: 0;">3D Visuals • Social Media</p>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="masonry-image">Project Preview 3</div>
+                    <div class="masonry-overlay">
+                        <h4 style="color: white; margin-bottom: 4px;">AquaFlow Campaigns</h4>
+                        <p style="font-size: 14px; margin: 0;">AI Content • Video Production</p>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="masonry-image">Project Preview 4</div>
+                    <div class="masonry-overlay">
+                        <h4 style="color: white; margin-bottom: 4px;">City Drain Leads</h4>
+                        <p style="font-size: 14px; margin: 0;">Landing Page Optimization</p>
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="masonry-image">Project Preview 5</div>
+                    <div class="masonry-overlay">
+                        <h4 style="color: white; margin-bottom: 4px;">Pro-Pipe Socials</h4>
+                        <p style="font-size: 14px; margin: 0;">Automated AI Posting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. AI-Powered Growth Section -->
+    <section class="reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your 24/7 AI-Powered Sales Team.</h2>
+                <p class="large">This isn't just a website. We use AI to automate the things you used to pay an agency
+                    thousands for.</p>
+            </div>
+
+            <div class="ai-pipeline">
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>AI Strategy</h3>
+                    <p style="font-size: 14px; margin-top: 8px;">Finds homeowners searching for help.</p>
+                </div>
+
+                <div class="pipeline-arrow"></div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Content Engine</h3>
+                    <p style="font-size: 14px; margin-top: 8px;">Generates beautiful posts automatically.</p>
+                </div>
+
+                <div class="pipeline-arrow"></div>
+
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Leads & Calls</h3>
+                    <p style="font-size: 14px; margin-top: 8px;">Fills your calendar with actual jobs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Process Section -->
+    <section class="process-section reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p class="large">Fast, simple, and entirely hands-off for you.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Sign Up ($24/mo)</h3>
+                        <p>Lock in your spot. Takes less than 2 minutes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>We Learn Your Business</h3>
+                        <p>A quick 15-minute onboarding chat so we understand your specific services and service areas.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>We Build & Launch</h3>
+                        <p>Our team and AI get to work building your digital empire: website, socials, and visual brand.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>You Get Clients</h3>
+                        <p>You go back to running your business while we ensure you look like the #1 choice online.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Final CTA -->
+    <section class="final-cta reveal" style="padding-top: 64px;">
+        <div class="container">
+            <div class="cta-box">
+                <h2 style="margin-bottom: 24px;">Focus on Plumbing.<br>We'll handle the Growth.</h2>
+                <p class="large" style="margin-bottom: 40px; color: white;">Join hundreds of tradespeople trusting 30PX
+                    to run their digital presence.</p>
+                <a href="#pricing" class="btn btn-primary btn-lg" style="padding: 20px 48px; font-size: 20px;">Get
+                    Started for $24/mo</a>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--color-text-secondary);">Limited onboarding
+                    spots available this month.</p>
+
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <svg class="icon" style="width: 16px; height: 16px; color: #10B981;" viewBox="0 0 24 24">
+                            <path d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Secure Checkout
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="icon" style="width: 16px; height: 16px; color: #10B981;" viewBox="0 0 24 24">
+                            <path d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Cancel Anytime
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="icon" style="width: 16px; height: 16px; color: #10B981;" viewBox="0 0 24 24">
+                            <path d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        No Hidden Fees
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 30PX | Thirtypixels. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts for animations -->
+    <script>
+        // 1. Scroll Reveal Animation via IntersectionObserver
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal(); // Trigger on load
+
+        // 2. Button Ripple Effect
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                // If the button links to #, prevent default just for aesthetic show
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+
+                let ripple = document.createElement("span");
+                ripple.classList.add("ripple-span");
+                this.appendChild(ripple);
+
+                let rect = btn.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // 3. Simple Animated Counters for Stats
+        const statCounters = document.querySelectorAll('output');
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseFloat(entry.target.innerText);
+                    const isDecimal = target % 1 !== 0;
+                    animateValue(entry.target, 0, target, 2000, isDecimal);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statCounters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        function animateValue(obj, start, end, duration, isDecimal) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // ease out cubic
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const current = start + easeProgress * (end - start);
+
+                if (isDecimal) {
+                    obj.innerHTML = current.toFixed(1);
+                } else {
+                    obj.innerHTML = Math.floor(current);
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    obj.innerHTML = end;
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
+</body>
+
+</html>

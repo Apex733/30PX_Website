@@ -114,6 +114,35 @@ export function Header() {
                         </button>
                     ))}
 
+                    <a
+                        href="/landingpage_plumber.html"
+                        className="relative px-4 py-2 rounded-full cursor-pointer"
+                        onMouseEnter={() => setHoveredTab("Plumbers")}
+                    >
+                        {hoveredTab === "Plumbers" && (
+                            <motion.div
+                                layoutId="nav-pill"
+                                className={cn(
+                                    "absolute inset-0 rounded-full -z-10",
+                                    isDark
+                                        ? "bg-white/15 backdrop-blur-lg"
+                                        : "bg-black/5"
+                                )}
+                                transition={{
+                                    type: "spring",
+                                    bounce: 0.2,
+                                    duration: 0.6,
+                                }}
+                            />
+                        )}
+                        <span className={cn(
+                            "relative z-10 transition-colors duration-200",
+                            hoveredTab === "Plumbers" && (isDark ? "text-white" : "text-black")
+                        )}>
+                            Plumbers
+                        </span>
+                    </a>
+
                     {/* AI Lab - Special gradient item */}
                     <button
                         onClick={() => scrollToSection("ai-lab")}
@@ -185,6 +214,12 @@ export function Header() {
                                     {item.label}
                                 </button>
                             ))}
+                            <a
+                                href="/landingpage_plumber.html"
+                                className="text-left px-4 py-3 text-lg font-medium rounded-md hover:bg-muted"
+                            >
+                                Plumbers
+                            </a>
                             <button
                                 onClick={() => scrollToSection("ai-lab")}
                                 className="text-left px-4 py-3 text-lg font-medium rounded-md hover:bg-muted"

@@ -114,8 +114,9 @@ export function Header() {
                         </button>
                     ))}
 
-                    <a
-                        href="/landingpage_plumber.html"
+                    {/* Plumbers Landing Page */}
+                    <button
+                        onClick={() => { window.location.href = '/landingpage_plumber.html'; }}
                         className="relative px-4 py-2 rounded-full cursor-pointer"
                         onMouseEnter={() => setHoveredTab("Plumbers")}
                     >
@@ -141,7 +142,7 @@ export function Header() {
                         )}>
                             Plumbers
                         </span>
-                    </a>
+                    </button>
 
                     {/* AI Lab - Special gradient item */}
                     <button
@@ -214,12 +215,12 @@ export function Header() {
                                     {item.label}
                                 </button>
                             ))}
-                            <a
-                                href="/landingpage_plumber.html"
+                            <button
+                                onClick={() => { window.location.href = '/landingpage_plumber.html'; }}
                                 className="text-left px-4 py-3 text-lg font-medium rounded-md hover:bg-muted"
                             >
                                 Plumbers
-                            </a>
+                            </button>
                             <button
                                 onClick={() => scrollToSection("ai-lab")}
                                 className="text-left px-4 py-3 text-lg font-medium rounded-md hover:bg-muted"

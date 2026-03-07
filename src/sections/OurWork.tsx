@@ -61,6 +61,48 @@ export function OurWork() {
         return getImagesByCategory(categoryId).length;
     };
 
+    // Distribute images into 3 columns
+    const cols: typeof images[] = [[], [], []];
+    images.forEach((item, i) => {
+        cols[i % 3].push(item);
+    });
+    const [col1, col2, col3] = cols;
+
+    // Internal component to render media correctly without duplicating code
+    const MediaItem = ({ item }: { item: typeof images[0] }) => (
+        <div className="w-full relative group rounded-[5px] overflow-hidden bg-neutral-100 mb-4 break-inside-avoid">
+            {item.type === "video" ? (
+                <video
+                    src={item.src}
+                    className="w-full h-auto object-cover pointer-events-none"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                />
+            ) : (
+                <img
+                    src={item.src}
+                    alt={`${activeCategory} work`}
+                    className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
+                    draggable={false}
+                />
+            )}
+
+            {(activeCategory === "3D" || activeCategory === "AI") && (
+                <div className="absolute top-3 right-3 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-xs font-medium text-white tracking-wide">
+                        {item.name}
+                    </span>
+                </div>
+            )}
+        </div>
+    );
+
+    // Normalize velocity passing for component that uses absolute value with a direction ref or positive/negative velocity
+    const absVelocity = (v: number) => v;
+
     return (
         <section className="py-12 md:py-16 bg-[#FAFAFA]">
             <div className="container mx-auto px-4 max-w-7xl">
@@ -113,66 +155,73 @@ export function OurWork() {
                 </div>
             </div>
 
-            {/* Velocity Grid Carousel - FULL WIDTH without Scroll Speed */}
+            {/* Vertical Multi-column Scrolling Grid */}
             {images.length > 0 ? (
-                <div className="relative w-full overflow-hidden">
-                    <div className="relative w-full">
-                        <VelocityScroll
-                            default_velocity={3}
-                            velocity_sensitivity={0}
-                            className="flex items-center"
-                        >
-                            <div className="flex">
-                                {images.map((item, index) => {
-                                    return (
-                                        <div
-                                            key={`${activeCategory}-${index}`}
-                                            className="pl-4 shrink-0"
-                                        >
-                                            <div
-                                                className="h-[36rem] md:h-[40rem] overflow-hidden rounded-[5px] bg-neutral-100 relative group"
-                                            >
-                                                {item.type === "video" ? (
-                                                    <video
-                                                        src={item.src}
-                                                        className="h-full w-auto object-contain pointer-events-none"
-                                                        autoPlay
-                                                        muted
-                                                        loop
-                                                        playsInline
-                                                    />
-                                                ) : (
-                                                    <img
-                                                        src={item.src}
-                                                        alt={`${activeCategory} work ${index + 1}`}
-                                                        className="h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
-                                                        loading="lazy"
-                                                        draggable={false}
-                                                    />
-                                                )}
+                <div className="container mx-auto px-4 max-w-7xl">
+                    <div className="relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-xl bg-white shadow-2xl [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_95%,transparent)]">
+                        {images.length >= 3 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full w-full">
+                                {/* Column 1 - Up */}
+                                <VelocityScroll
+                                    axis="vertical"
+                                    default_velocity={absVelocity(3)}
+                                    velocity_sensitivity={0}
+                                    className="gap-4"
+                                >
+                                    <div className="flex flex-col gap-4 pb-4">
+                                        {col1.map((item, i) => <MediaItem key={`c1-${i}`} item={item} />)}
+                                    </div>
+                                </VelocityScroll>
 
-                                                {/* Image Name Label (Only for 3D and AI) */}
-                                                {(activeCategory === "3D" || activeCategory === "AI") && (
-                                                    <div className="absolute top-3 right-3 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm z-10">
-                                                        <span className="text-xs font-medium text-white tracking-wide">
-                                                            {item.name}
-                                                        </span>
-                                                    </div>
-                                                )}
-                                            </div>
+                                {/* Column 2 - Down */}
+                                <div className="hidden md:block">
+                                    <VelocityScroll
+                                        axis="vertical"
+                                        default_velocity={absVelocity(-4)}
+                                        velocity_sensitivity={0}
+                                        className="gap-4"
+                                    >
+                                        <div className="flex flex-col gap-4 pb-4">
+                                            {col2.map((item, i) => <MediaItem key={`c2-${i}`} item={item} />)}
                                         </div>
-                                    );
-                                })}
+                                    </VelocityScroll>
+                                </div>
+
+                                {/* Column 3 - Up */}
+                                <div className="hidden md:block">
+                                    <VelocityScroll
+                                        axis="vertical"
+                                        default_velocity={absVelocity(2.5)}
+                                        velocity_sensitivity={0}
+                                        className="gap-4"
+                                    >
+                                        <div className="flex flex-col gap-4 pb-4">
+                                            {col3.map((item, i) => <MediaItem key={`c3-${i}`} item={item} />)}
+                                        </div>
+                                    </VelocityScroll>
+                                </div>
                             </div>
-                        </VelocityScroll>
+                        ) : (
+                            /* Fallback for small number of items */
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full p-4 overflow-y-auto">
+                                {images.map((item, i) => (
+                                    <div key={`fb-${i}`} className="w-full">
+                                        <MediaItem item={item} />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             ) : (
-                <div className="text-center py-16 text-neutral-500">
-                    {/* This fallback should ideally not be reached if buttons are disabled, but keeping it for safety */}
+
+            ): (
+                    <div className = "text-center py-16 text-neutral-500">
+                    {/* This fallback should ideally not be reached if buttons are disabled, but keeping it for safety */ }
                     Coming soon...
-                </div>
-            )}
-        </section>
+        </div>
+    )
+}
+        </section >
     );
 }

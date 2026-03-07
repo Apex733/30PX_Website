@@ -34,12 +34,12 @@ export function AILab() {
 
                 {/* Main Horizontal Scrollable Pipeline */}
                 <div className="w-full max-w-7xl pb-10 px-4 xl:px-0">
-                    <div className="flex flex-col md:flex-row items-stretch justify-center md:justify-center gap-8 md:gap-8 mx-auto w-full md:w-fit relative z-10 py-6">
+                    <div className="flex flex-col lg:flex-row items-stretch justify-center lg:justify-center gap-8 lg:gap-8 mx-auto w-full lg:w-fit relative z-10 py-6">
 
                         {/* =========================================
                 STAGE 1: INPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">1</div>
 
                             <div className="flex items-center justify-between mb-5 mt-2">
@@ -49,7 +49,7 @@ export function AILab() {
                                 <Badge variant="secondary" className="text-[10px] font-medium px-2 py-0">Original</Badge>
                             </div>
 
-                            <div className="relative w-full aspect-video rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-5 group">
+                            <div className="relative w-full aspect-square rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-5 group">
                                 <img
                                     src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600"
                                     alt="Raw Asset"
@@ -93,7 +93,7 @@ export function AILab() {
                         </div>
 
                         {/* Animated Down/Right Connector 1 */}
-                        <div className="flex md:items-center justify-center w-8 h-8 md:w-16 md:h-auto shrink-0 relative self-center rotate-90 md:rotate-0">
+                        <div className="flex lg:items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
                             <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
                                 <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
                             </div>
@@ -103,7 +103,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 2: AI MAGIC
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">2</div>
 
                             <div className="flex items-center justify-between mb-6 mt-2">
@@ -157,7 +157,7 @@ export function AILab() {
                         </div>
 
                         {/* Animated Down/Right Connector 2 */}
-                        <div className="flex md:items-center justify-center w-8 h-8 md:w-16 md:h-auto shrink-0 relative self-center rotate-90 md:rotate-0">
+                        <div className="flex lg:items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
                             <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
                                 <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
                             </div>
@@ -167,7 +167,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 3: OUTPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full md:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-sm">
                                 <CheckCircle2 size={18} className="text-green-500" />
                             </div>
@@ -180,8 +180,8 @@ export function AILab() {
                             </div>
 
                             <div className="w-full flex flex-col gap-2 relative z-10">
-                                {/* Main Image */}
-                                <div className="w-full h-32 rounded-[5px] overflow-hidden relative group border border-border bg-muted/30">
+                                {/* Main Image 1:1 */}
+                                <div className="w-full aspect-square rounded-[5px] overflow-hidden relative group border border-border bg-muted/30">
                                     <img
                                         src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=800"
                                         alt="Final Hero"
@@ -192,34 +192,10 @@ export function AILab() {
                                         4K HDR
                                     </div>
                                 </div>
-                                {/* Sub Assets row */}
-                                <div className="flex gap-2 w-full h-16">
-                                    <div className="flex-1 rounded-[5px] overflow-hidden relative border border-border bg-muted/30 group">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1552346154-21d32810baa3?auto=format&fit=crop&q=80&w=400"
-                                            alt="Final Var"
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                    <div className="flex-1 rounded-[5px] overflow-hidden relative border border-border bg-muted/30 group">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=400"
-                                            alt="Video"
-                                            className="w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-110"
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                            <div className="bg-background/90 border border-border text-foreground p-1.5 rounded-full shadow-sm">
-                                                <Video size={12} />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             {/* Action Footer */}
-                            <div className="pt-5 mt-auto flex items-center justify-between border-t border-border/50 mt-4">
+                            <div className="pt-5 flex items-center justify-between border-t border-border/50 mt-auto">
                                 <div className="flex flex-col">
                                     <span className="text-[9px] text-muted-foreground uppercase font-semibold">Total Time</span>
                                     <span className="text-xs text-foreground font-bold">45 Seconds</span>

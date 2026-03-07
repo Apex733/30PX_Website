@@ -209,7 +209,7 @@ export function AILab() {
 
                             <div className="w-full flex flex-col gap-2 relative z-10">
                                 {/* Main Image 1:1 */}
-                                <div className="w-full aspect-square rounded-[5px] overflow-hidden relative group border border-border bg-muted/30">
+                                <div className="w-full aspect-square rounded-[5px] overflow-hidden relative group border border-border bg-muted/30 mb-4">
                                     <video
                                         src="/assets/ai-lab/woman_cycling.mp4"
                                         className="w-full h-full object-cover rounded-[5px] transition-transform duration-500 group-hover:scale-105"
@@ -221,6 +221,17 @@ export function AILab() {
                                     <div className="absolute top-2 right-2 bg-background/90 backdrop-blur border border-border px-2 py-1 rounded text-[9px] font-bold flex items-center gap-1 text-foreground shadow-sm">
                                         4K HDR
                                     </div>
+                                </div>
+                            </div>
+
+                            {/* Prompt Input Simulation */}
+                            <div className="relative mb-5 w-full flex-shrink-0">
+                                <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                                    <Video size={10} className="text-green-500" /> AI Video Prompt
+                                </div>
+                                <div className="bg-muted/20 border border-green-500/30 rounded-[5px] p-3 text-[11px] text-muted-foreground font-medium leading-relaxed shadow-inner">
+                                    <span className="text-foreground">"Dynamic tracking shot of a young woman cycling through a sunlit urban environment, natural lighting, high dynamic range, photorealistic physics, 60fps cinematic movement ..."</span>
+                                    <span className="inline-block w-1 h-3 bg-green-500 animate-pulse ml-1 align-middle" />
                                 </div>
                             </div>
 

@@ -51,7 +51,7 @@ export function AILab() {
 
                             <div className="relative w-full aspect-square rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-5 group">
                                 <img
-                                    src="/assets/ai-lab/woman_cycling.png"
+                                    src="/assets/ai-lab/woman_cycling.webp"
                                     alt="Raw Asset"
                                     className="w-full h-full object-cover rounded-[5px] opacity-90 transition-transform duration-500 group-hover:scale-105"
                                     loading="lazy"
@@ -65,7 +65,7 @@ export function AILab() {
                                     <FileImage size={14} className="text-muted-foreground" />
                                     <div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Format</p>
-                                        <p className="text-[11px] text-foreground font-medium">PNG Image</p>
+                                        <p className="text-[11px] text-foreground font-medium">WEBP Image</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
@@ -119,7 +119,7 @@ export function AILab() {
 
                             <div className="flex flex-col gap-5">
                                 {/* Visual Node - Flow representation */}
-                                <div className="relative w-full h-24 flex items-center justify-center gap-4 bg-muted/10 border border-border/50 rounded-[5px] overflow-hidden">
+                                <div className="relative w-full aspect-square flex items-center justify-center gap-4 bg-muted/10 border border-border/50 rounded-[5px] overflow-hidden">
                                     <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50" />
 
                                     {/* Node 1 */}

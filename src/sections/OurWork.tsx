@@ -157,7 +157,7 @@ export function OurWork() {
             {/* Vertical Multi-column Scrolling Grid */}
             {images.length > 0 ? (
                 <div className="container mx-auto px-4 max-w-7xl">
-                    <div className="relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-xl bg-white shadow-2xl [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_95%,transparent)]">
+                    <div className="relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-xl bg-white shadow-2xl">
                         {images.length >= 3 ? (
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full w-full">
                                 {/* Column 1 - Up */}

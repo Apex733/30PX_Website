@@ -4,198 +4,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30PX - AI-Powered Growth for Plumbing Businesses</title>
+    <title>30PX for Plumbers — Premium Design & Marketing for Plumbing Businesses</title>
+    <meta name="description"
+        content="30PX helps plumbing businesses grow with unlimited premium designs, AI-powered marketing, and a full creative team — starting at just $24/month.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "30PX for Plumbers",
+        "provider": { "@type": "Organization", "name": "30PX", "url": "https://thirtypixels.com" },
+        "description": "Premium design subscription & AI marketing for plumbing businesses."
+    }
+    </script>
     <style>
-        /* 30PX Design System Tokens */
+        /* ============================================================
+           DESIGN TOKENS — Matching 30PX Main Site
+           ============================================================ */
         :root {
-            --color-bg-primary: #000000;
-            --color-bg-secondary: #0A0A0A;
-            --color-bg-card: #121212;
-            --color-accent: #7C3AED;
-            --color-accent-hover: #8B5CF6;
-            --color-text-primary: #FFFFFF;
-            --color-text-secondary: #A1A1AA;
-
-            --font-family: 'Inter', system-ui, sans-serif;
-
-            --space-1: 4px;
-            --space-2: 8px;
-            --space-3: 16px;
-            --space-4: 24px;
-            --space-5: 32px;
-            --space-6: 48px;
-            --space-7: 64px;
-            --space-8: 96px;
-            --space-9: 128px;
-
-            --radius-md: 8px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-full: 9999px;
-
-            --transition-fast: 150ms ease-in-out;
-            --transition-normal: 300ms ease-out;
-            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            --background: #FAFAFA;
+            --foreground: #0a1628;
+            --card: #ffffff;
+            --card-foreground: #0a1628;
+            --primary: #7C3AED;
+            --primary-foreground: #f8fafc;
+            --muted: #f1f5f9;
+            --muted-foreground: #64748b;
+            --border: #e2e8f0;
+            --radius: 1rem;
+            --font: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        /* Reset & Base Styles */
-        * {
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: var(--font-family);
-            background-color: var(--color-bg-primary);
-            color: var(--color-text-primary);
+            font-family: var(--font);
+            background: var(--background);
+            color: var(--foreground);
             line-height: 1.5;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         img {
             max-width: 100%;
-            height: auto;
             display: block;
         }
 
-        /* Typography */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* ============================================================
+           LAYOUT
+           ============================================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 48px;
+            }
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 96px 0;
+            }
+        }
+
+        /* ============================================================
+           TYPOGRAPHY
+           ============================================================ */
         h1,
         h2,
         h3,
         h4 {
             line-height: 1.1;
             font-weight: 700;
+            color: var(--foreground);
         }
 
         h1 {
-            font-size: clamp(40px, 6vw, 64px);
+            font-size: clamp(36px, 5vw, 56px);
             letter-spacing: -0.02em;
         }
 
         h2 {
-            font-size: clamp(28px, 4vw, 48px);
+            font-size: clamp(28px, 4vw, 40px);
             letter-spacing: -0.01em;
         }
 
         h3 {
-            font-size: clamp(20px, 3vw, 24px);
+            font-size: 20px;
             font-weight: 600;
         }
 
-        p.large {
-            font-size: 20px;
-            color: var(--color-text-secondary);
+        .text-muted {
+            color: var(--muted-foreground);
         }
 
-        p {
-            font-size: 16px;
-            color: var(--color-text-secondary);
+        .text-center {
+            text-align: center;
         }
 
-        /* Layout & Spacing */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-4);
-        }
-
-        section {
-            padding: var(--space-9) 0;
-            position: relative;
-        }
-
-        /* Buttons */
+        /* ============================================================
+           BUTTONS — Matching main site
+           ============================================================ */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 32px;
-            border-radius: var(--radius-md);
             font-weight: 600;
             font-size: 16px;
-            text-decoration: none;
-            transition: transform var(--transition-fast), background-color var(--transition-fast);
+            border: none;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
-            border: none;
         }
 
         .btn-primary {
-            background-color: var(--color-accent);
+            background: var(--foreground);
             color: white;
+            padding: 16px 32px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
         }
 
         .btn-primary:hover {
-            background-color: var(--color-accent-hover);
-            transform: scale(1.02);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .btn-secondary {
-            background-color: transparent;
+        .btn-accent {
+            background: var(--primary);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 16px 32px;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25);
         }
 
-        .btn-secondary:hover {
-            border-color: white;
-            transform: scale(1.02);
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35);
         }
 
-        /* Ripple Effect */
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-lg {
+            padding: 18px 40px;
+            font-size: 18px;
+        }
+
+        /* Ripple */
         .ripple-span {
             position: absolute;
             border-radius: 50%;
-            background-color: currentColor;
-            opacity: 0.12;
+            background: currentColor;
+            opacity: 0.15;
             transform: scale(0);
             pointer-events: none;
-            animation: btn-ripple-expand 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            animation: ripple-expand 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        @keyframes btn-ripple-expand {
+        @keyframes ripple-expand {
             to {
                 transform: scale(4);
                 opacity: 0;
             }
         }
 
-        /* Grid */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-6);
-            align-items: center;
+        /* ============================================================
+           BADGE — Matching main site section badges
+           ============================================================ */
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 500;
+            background: var(--muted);
+            color: var(--muted-foreground);
+            letter-spacing: 0.02em;
         }
 
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Header */
+        /* ============================================================
+           HEADER — Sticky glassmorphic nav (matching main site)
+           ============================================================ */
         header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 72px;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.7);
+            right: 0;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 100;
             display: flex;
             align-items: center;
         }
 
-        .header-content {
+        .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -205,191 +252,244 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: white;
-            text-decoration: none;
+            color: var(--foreground);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .logo-circle {
-            width: 24px;
-            height: 24px;
-            background: var(--color-accent);
-            border-radius: 50%;
+        .logo-heart {
+            color: #3ca2fa;
+            font-size: 28px;
         }
 
-        /* 1. Hero Section */
+        .nav-links {
+            display: none;
+            gap: 4px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            border-radius: 9999px;
+            color: var(--foreground);
+            transition: background 0.2s;
+            background: transparent;
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .header-cta {
+            display: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .header-cta:hover {
+            transform: translateY(-1px);
+        }
+
+        @media (min-width: 768px) {
+            .header-cta {
+                display: inline-flex;
+            }
+        }
+
+        /* ============================================================
+           1. HERO — Gradient bg matching main site Hero
+           ============================================================ */
         .hero {
             padding-top: 160px;
-            padding-bottom: var(--space-9);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 50%);
+            padding-bottom: 100px;
+            background: linear-gradient(to top, #FAFAFA, #60a5fa, #1e3a8a, #020817);
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-tags {
-            display: inline-flex;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
             align-items: center;
-            gap: 8px;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
             padding: 8px 16px;
-            border-radius: var(--radius-full);
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 9999px;
             font-size: 14px;
-            color: var(--color-accent-hover);
-            margin-bottom: var(--space-4);
+            font-weight: 500;
+            border: 1px solid rgba(250, 250, 250, 0.1);
+            background: rgba(250, 250, 250, 0.05);
+            color: rgba(250, 250, 250, 0.9);
+            margin-bottom: 24px;
         }
 
         .hero h1 {
-            margin-bottom: var(--space-4);
+            color: #FAFAFA;
+            margin-bottom: 24px;
         }
 
-        .hero p.large {
-            margin-bottom: var(--space-6);
-            max-width: 480px;
+        .hero-sub {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 48px;
+            max-width: 560px;
         }
 
-        .hero-graphics {
-            position: relative;
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-btn-white {
+            background: #FAFAFA;
+            color: #020817;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 18px;
+            border: none;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+
+        .hero-btn-white:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+
+        /* Hero visual card (right side) */
+        .hero-visual {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-visual {
+                display: block;
+            }
         }
 
         .hero-card {
-            background: var(--color-bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-xl);
-            padding: var(--space-5);
-            margin-left: auto;
-            max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 2;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .hero-card-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: var(--space-4);
+            margin-bottom: 24px;
         }
 
         .hero-card-avatar {
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: #27272A;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .hero-card-title {
             font-weight: 600;
             color: white;
+            font-size: 16px;
         }
 
         .hero-card-subtitle {
-            font-size: 14px;
-            color: var(--color-text-secondary);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .hero-stat {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .hero-stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .hero-stat-value {
             font-weight: 700;
-            color: var(--color-accent-hover);
-            font-size: 20px;
+            color: #60a5fa;
+            font-size: 18px;
         }
 
-        .hero-blob {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.2;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            animation: pulse-blob 8s infinite alternate;
+        /* ============================================================
+           2. LOGOS / CLIENTS — Scrolling marquee
+           ============================================================ */
+        .logos-section {
+            padding: 48px 0 64px;
+            background: var(--background);
         }
 
-        @keyframes pulse-blob {
-            0% {
-                transform: translate(-50%, -50%) scale(0.8);
-            }
-
-            100% {
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-        }
-
-        /* 2. Social Proof / Stats */
-        .social-proof {
-            background-color: var(--color-bg-secondary);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: var(--space-7) 0;
-            overflow: hidden;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-4);
-            margin-bottom: var(--space-7);
-        }
-
-        .stat-card {
-            background: var(--color-bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: var(--space-5);
-            border-radius: var(--radius-lg);
+        .logos-title {
+            font-size: 24px;
+            font-weight: 700;
             text-align: center;
+            margin-bottom: 40px;
+            color: var(--foreground);
         }
 
-        .stat-number {
-            font-size: 40px;
+        .marquee-mask {
+            overflow: hidden;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee-item {
+            flex-shrink: 0;
+            padding: 0 40px;
+            font-size: 18px;
             font-weight: 700;
-            color: white;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .stat-number span {
-            color: var(--color-accent);
-        }
-
-        .marquee-wrapper {
-            display: flex;
-            width: 200%;
-            animation: marquee 20s linear infinite;
-        }
-
-        .marquee-content {
-            display: flex;
-            justify-content: space-around;
-            width: 50%;
-            align-items: center;
-            gap: 48px;
-        }
-
-        .logo-placeholder {
-            font-size: 20px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(0, 0, 0, 0.2);
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         @keyframes marquee {
@@ -402,412 +502,593 @@
             }
         }
 
-        /* 3. What We Handle (Bento Grid) */
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--space-7);
+        /* ============================================================
+           3. COMPARISON TABLE — Matching main site
+           ============================================================ */
+        .comparison-section {
+            background: var(--background);
         }
 
-        .section-header h2 {
-            margin-bottom: var(--space-3);
+        .section-heading {
+            margin-bottom: 64px;
         }
 
-        .section-header p {
+        .section-heading .badge {
+            margin-bottom: 16px;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            font-size: 18px;
+            color: var(--muted-foreground);
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .bento-grid {
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: var(--card);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table thead th {
+            background: #f8fafc;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted-foreground);
+        }
+
+        .comparison-table thead th:nth-child(2) {
+            color: var(--primary);
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .neg-text {
+            color: var(--muted-foreground);
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-table {
+                font-size: 12px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 10px;
+            }
+        }
+
+        /* ============================================================
+           4. SERVICES — Cards grid (matching main OurServices)
+           ============================================================ */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-4);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
         }
 
-        .bento-card {
-            background: var(--color-bg-card);
-            border-radius: var(--radius-lg);
-            padding: var(--space-5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px;
+            transition: all 0.3s ease;
         }
 
-        .bento-card:hover {
+        .service-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
         }
 
-        .bento-card.tall {
-            grid-row: span 2;
-            border-left: 4px solid var(--color-accent);
-        }
-
-        .bento-icon {
-            width: 48px;
-            height: 48px;
+        .service-icon {
+            width: 52px;
+            height: 52px;
             border-radius: 12px;
-            background: rgba(124, 58, 237, 0.1);
-            color: var(--color-accent);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: var(--space-4);
+            margin-bottom: 20px;
+            font-size: 24px;
         }
 
-        .bento-icon svg {
-            width: 24px;
-            height: 24px;
+        .service-icon.violet {
+            background: #f3e8ff;
+            color: var(--primary);
         }
 
-        .bento-card h3 {
-            margin-bottom: 12px;
+        .service-icon.blue {
+            background: #dbeafe;
+            color: #3b82f6;
         }
 
-        @media (max-width: 900px) {
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .service-icon.pink {
+            background: #fce7f3;
+            color: #ec4899;
         }
 
-        @media (max-width: 600px) {
-            .bento-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .bento-card.tall {
-                grid-row: auto;
-            }
+        .service-icon.emerald {
+            background: #d1fae5;
+            color: #10b981;
         }
 
-        /* 4. $24/Month Value Proposition */
-        .value-prop {
-            background: linear-gradient(180deg, var(--color-bg-primary) 0%, #170d2b 100%);
+        .service-icon.amber {
+            background: #fef3c7;
+            color: #f59e0b;
         }
 
-        .comparison-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-5);
-            margin-top: var(--space-6);
+        .service-icon.red {
+            background: #fee2e2;
+            color: #ef4444;
         }
 
-        .compare-card {
-            background: var(--color-bg-card);
-            border-radius: var(--radius-xl);
-            padding: var(--space-6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .service-card h3 {
+            margin-bottom: 8px;
         }
 
-        .compare-card.highlight {
-            background: rgba(124, 58, 237, 0.05);
-            border: 1px solid var(--color-accent);
+        .service-card p {
+            font-size: 14px;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           5. PRICING — Matching main site pricing cards
+           ============================================================ */
+        .pricing-section {
+            background: var(--background);
+        }
+
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .pricing-toggle span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .pricing-toggle span.active {
+            color: var(--foreground);
+        }
+
+        .toggle-switch {
             position: relative;
+            width: 44px;
+            height: 24px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
         }
 
-        .compare-card.highlight::before {
-            content: "UNBELIEVABLE VALUE";
+        .toggle-switch.on {
+            background: var(--primary);
+        }
+
+        .toggle-knob {
             position: absolute;
-            top: -14px;
-            border-radius: var(--radius-full);
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .toggle-switch.on .toggle-knob {
+            transform: translateX(20px);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 32px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary), 0 8px 30px rgba(124, 58, 237, 0.12);
+        }
+
+        .pricing-card.popular::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--color-accent);
+            background: var(--primary);
             color: white;
             font-size: 12px;
-            font-weight: 700;
-            padding: 4px 12px;
-            letter-spacing: 1px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 9999px;
         }
 
-        .compare-price {
+        .pricing-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing-desc {
+            font-size: 14px;
+            color: var(--muted-foreground);
+            margin-bottom: 24px;
+        }
+
+        .pricing-price {
             font-size: 48px;
             font-weight: 700;
-            color: white;
-            margin: var(--space-4) 0;
+            margin-bottom: 4px;
             display: flex;
             align-items: baseline;
             gap: 4px;
         }
 
-        .compare-price span {
+        .pricing-price span {
             font-size: 16px;
-            color: var(--color-text-secondary);
             font-weight: 400;
+            color: var(--muted-foreground);
         }
 
-        .feature-list {
+        .pricing-features {
             list-style: none;
-            margin-bottom: var(--space-6);
+            margin: 24px 0 32px;
         }
 
-        .feature-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .pricing-features li {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--foreground);
         }
 
-        .feature-list li.negative {
-            color: var(--color-text-secondary);
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
         }
 
-        .feature-list li.negative svg {
-            color: #EF4444;
-        }
-
-        .feature-list li svg {
-            color: #10B981;
-            width: 20px;
-            height: 20px;
-        }
-
-        /* 5. Portfolio Section */
-        .portfolio {
-            background: var(--color-bg-secondary);
-        }
-
-        .masonry {
-            column-count: 3;
-            column-gap: var(--space-4);
-        }
-
-        @media (max-width: 900px) {
-            .masonry {
-                column-count: 2;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .masonry {
-                column-count: 1;
-            }
-        }
-
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: var(--space-4);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: var(--color-bg-card);
-            position: relative;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .masonry-image {
+        .pricing-cta {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(45deg, #1f1f22, #27272a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.2);
-            transition: transform var(--transition-slow);
+            padding: 14px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--foreground);
+            transition: all 0.2s;
         }
 
-        .masonry-item:nth-child(2n) .masonry-image {
-            height: 350px;
+        .pricing-cta:hover {
+            background: var(--foreground);
+            color: white;
         }
 
-        .masonry-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 24px;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-            transform: translateY(10px);
-            opacity: 0;
-            transition: all var(--transition-normal);
+        .pricing-card.popular .pricing-cta {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
-        .masonry-item:hover .masonry-image {
-            transform: scale(1.05);
+        .pricing-card.popular .pricing-cta:hover {
+            opacity: 0.9;
         }
 
-        .masonry-item:hover .masonry-overlay {
-            transform: translateY(0);
-            opacity: 1;
+        /* ============================================================
+           6. JOURNEY TIMELINE — Matching main site
+           ============================================================ */
+        .timeline-section {
+            background: var(--background);
         }
 
-        /* 6. AI-Powered Growth */
-        .ai-pipeline {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--color-bg-card);
-            border-radius: var(--radius-xl);
-            padding: var(--space-6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: var(--space-6);
-            overflow-x: auto;
-        }
-
-        .pipeline-step {
+        .timeline-grid {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-width: 150px;
+            gap: 32px;
             position: relative;
-        }
-
-        .pipeline-icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(124, 58, 237, 0.1);
-            border: 2px solid var(--color-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            z-index: 2;
-        }
-
-        .pipeline-icon svg {
-            width: 32px;
-            height: 32px;
-        }
-
-        .pipeline-arrow {
-            flex-grow: 1;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(124, 58, 237, 0.2), var(--color-accent), rgba(124, 58, 237, 0.2));
-            margin: 0 16px;
-            position: relative;
-            min-width: 40px;
-            background-size: 200% 100%;
-            animation: move-line 2s linear infinite;
-        }
-
-        @keyframes move-line {
-            0% {
-                background-position: 100% 0;
-            }
-
-            100% {
-                background-position: 0 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .ai-pipeline {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .pipeline-arrow {
-                width: 2px;
-                height: 40px;
-                margin: 16px 0;
-                min-width: auto;
-            }
-        }
-
-        /* 7. Process Section */
-        .process-section {
-            background: var(--color-bg-secondary);
-        }
-
-        .timeline {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
         }
 
-        .timeline::before {
-            content: '';
+        @media (min-width: 1024px) {
+            .timeline-grid {
+                flex-direction: row;
+                gap: 32px;
+            }
+        }
+
+        .timeline-line-h {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .timeline-line-h {
+                display: block;
+                position: absolute;
+                top: 14px;
+                left: 15%;
+                right: 15%;
+                height: 2px;
+                background: linear-gradient(to right, #a78bfa, #818cf8, #6366f1);
+            }
+        }
+
+        .timeline-line-v {
+            display: block;
             position: absolute;
-            left: 24px;
-            top: 0;
+            top: 14px;
             bottom: 0;
+            left: 26px;
             width: 2px;
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(to bottom, #a78bfa, #818cf8, #6366f1);
         }
 
-        .timeline-item {
-            display: flex;
-            gap: var(--space-5);
-            margin-bottom: var(--space-6);
+        @media (min-width: 1024px) {
+            .timeline-line-v {
+                display: none;
+            }
+        }
+
+        .timeline-node {
+            flex: 1;
+            z-index: 2;
             position: relative;
         }
 
-        .timeline-number {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--color-bg-card);
-            border: 2px solid var(--color-accent);
+        .timeline-marker {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .timeline-marker {
+                justify-content: center;
+            }
+        }
+
+        .timeline-pill {
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .pill-violet {
+            background: #8b5cf6;
+        }
+
+        .pill-purple {
+            background: #a855f7;
+        }
+
+        .pill-indigo {
+            background: #6366f1;
+        }
+
+        .timeline-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            margin-left: 48px;
+            transition: all 0.3s;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (min-width: 1024px) {
+            .timeline-card {
+                margin-left: 0;
+            }
+        }
+
+        .timeline-accent {
+            height: 6px;
+            width: 100%;
+        }
+
+        .accent-violet {
+            background: linear-gradient(to right, #8b5cf6, #a855f7);
+        }
+
+        .accent-purple {
+            background: linear-gradient(to right, #a855f7, #6366f1);
+        }
+
+        .accent-indigo {
+            background: linear-gradient(to right, #6366f1, #3b82f6);
+        }
+
+        .timeline-card-body {
+            padding: 32px;
+        }
+
+        .timeline-card-body h3 {
+            margin-bottom: 16px;
+        }
+
+        .timeline-list {
+            list-style: none;
+        }
+
+        .timeline-list li {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--muted-foreground);
+        }
+
+        .timeline-list li::before {
+            content: "✓";
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .timeline-list li.v::before {
+            color: #8b5cf6;
+        }
+
+        .timeline-list li.p::before {
+            color: #a855f7;
+        }
+
+        .timeline-list li.i::before {
+            color: #6366f1;
+        }
+
+        /* ============================================================
+           7. FOOTER — Dark, matching main site footer
+           ============================================================ */
+        footer {
+            background: #171717;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 56px 0 40px;
+            color: #a3a3a3;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+
+        .footer-brand-name {
+            font-size: 28px;
             font-weight: 700;
             color: white;
-            flex-shrink: 0;
-            z-index: 2;
+            margin-bottom: 12px;
         }
 
-        .timeline-content {
-            background: var(--color-bg-card);
-            padding: var(--space-5);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            flex-grow: 1;
+        .footer-brand-name span {
+            color: #3ca2fa;
+            margin-right: 8px;
         }
 
-        .timeline-content h3 {
-            margin-bottom: 8px;
-        }
-
-        /* 8. Final CTA */
-        .final-cta {
-            text-align: center;
-            background: linear-gradient(0deg, #170d2b 0%, var(--color-bg-primary) 100%);
-            padding-bottom: 120px;
-        }
-
-        .cta-box {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: var(--radius-xl);
-            padding: var(--space-7) var(--space-4);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 32px;
-            color: var(--color-text-secondary);
+        .footer-brand-desc {
             font-size: 14px;
+            line-height: 1.7;
+            color: #a3a3a3;
         }
 
-        .trust-badge {
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #a3a3a3;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #3ca2fa;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            gap: 16px;
+            font-size: 13px;
+            color: #737373;
         }
 
-        /* Footer */
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: var(--space-6) 0;
-            text-align: center;
-            color: var(--color-text-secondary);
-            font-size: 14px;
-        }
-
-        /* Scroll Animations */
+        /* ============================================================
+           SCROLL REVEAL
+           ============================================================ */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 800ms cubic-bezier(0.5, 0, 0, 1);
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.5, 0, 0, 1);
         }
 
         .reveal.active {
@@ -815,534 +1096,481 @@
             transform: translateY(0);
         }
 
-        /* SVG Icons */
-        .icon {
-            width: 24px;
-            height: 24px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        /* ============================================================
+           RESPONSIVE TEXT ALIGNMENT
+           ============================================================ */
+        @media (max-width: 1023px) {
+            .hero-grid {
+                text-align: center;
+            }
+
+            .hero-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
-        <div class="container header-content">
-            <a href="#" class="logo">
-                <div class="logo-circle"></div>
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-heart">♥</span>
                 30PX
             </a>
-            <a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a>
+
+            <nav class="nav-links">
+                <a href="#services" class="nav-link">Plumbing Services</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+            </nav>
+
+            <a href="#pricing" class="header-cta">Start for $24</a>
         </div>
     </header>
 
-    <!-- 1. Hero Section -->
-    <section class="hero reveal">
-        <div class="container grid-2">
-            <div class="hero-content">
-                <div class="hero-tags">
-                    <svg class="icon" style="width: 16px; height: 16px" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
-                    Made for Plumbing Businesses
-                </div>
-                <h1>Stop losing jobs to businesses with better websites.</h1>
-                <p class="large">You handle the plumbing. We handle your social media, video, and website. All powered
-                    by AI so your phone keeps ringing.</p>
-
-                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-                    <a href="#pricing" class="btn btn-primary">Get Your Proposal — $24/mo</a>
-                    <span style="color: var(--color-text-secondary); font-size: 14px;">No hidden fees. Cancel
-                        anytime.</span>
+    <!-- 1. HERO -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="hero-badge">🔧 Built Specifically for Plumbing Businesses</div>
+                <h1>Unlimited premium designs.<br><span style="color: #93c5fd;">Your plumbing business, elevated.</span>
+                </h1>
+                <p class="hero-sub">
+                    30 social media designs for $24/month. Created by veteran designers who've worked with Hollywood,
+                    Fortune 500, and global brands. AI-enhanced. Built for plumbers who want more calls, more clients,
+                    and zero marketing stress.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="hero-btn-white btn">Start for $24/month</a>
+                    <a href="#pricing" class="btn btn-outline">See Pricing</a>
                 </div>
             </div>
 
-            <div class="hero-graphics">
-                <div class="hero-blob"></div>
+            <div class="hero-visual">
                 <div class="hero-card">
                     <div class="hero-card-header">
                         <div class="hero-card-avatar"></div>
                         <div>
-                            <div class="hero-card-title">Monthly Growth Report</div>
-                            <div class="hero-card-subtitle">AI-Powered Campaigns</div>
+                            <div class="hero-card-title">Your Plumbing Business Growth</div>
+                            <div class="hero-card-subtitle">AI-Powered by 30PX</div>
                         </div>
                     </div>
                     <div class="hero-stat">
-                        <span style="color: var(--color-text-secondary)">New Leads Generated</span>
-                        <span class="hero-stat-value">+42 This Month</span>
+                        <span class="hero-stat-label">New Service Calls</span>
+                        <span class="hero-stat-value">+<output>42</output> This Month</span>
                     </div>
                     <div class="hero-stat">
-                        <span style="color: var(--color-text-secondary)">Website Traffic</span>
-                        <span class="hero-stat-value">+315%</span>
+                        <span class="hero-stat-label">Local Search Visibility</span>
+                        <span class="hero-stat-value">+<output>315</output>%</span>
                     </div>
                     <div class="hero-stat">
-                        <span style="color: var(--color-text-secondary)">Social Engagement</span>
-                        <span class="hero-stat-value">+890%</span>
+                        <span class="hero-stat-label">Social Engagement</span>
+                        <span class="hero-stat-value">+<output>890</output>%</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. Social Proof Section -->
-    <section class="social-proof reveal">
+    <!-- 2. LOGOS / CLIENTS -->
+    <section class="logos-section reveal">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number"><span>$</span><output>2.4</output>M+</div>
-                    <p>Client Revenue Generated</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number"><output>10</output>k+</div>
-                    <p>Leads Sent to Plumbers</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number"><output>98</output>%</div>
-                    <p>Client Retention Rate</p>
-                </div>
+            <h3 class="logos-title">Trusted by Plumbing Businesses Nationwide</h3>
+        </div>
+        <div class="marquee-mask">
+            <div class="marquee-track">
+                <span class="marquee-item">Elite Plumbing Co.</span>
+                <span class="marquee-item">Rooter Bros</span>
+                <span class="marquee-item">Pro-Pipe Solutions</span>
+                <span class="marquee-item">AquaFlow Experts</span>
+                <span class="marquee-item">City Drain Masters</span>
+                <span class="marquee-item">Precision Plumbing</span>
+                <span class="marquee-item">24/7 Emergency Plumbers</span>
+                <span class="marquee-item">FastFix Plumbing</span>
+                <span class="marquee-item">Elite Plumbing Co.</span>
+                <span class="marquee-item">Rooter Bros</span>
+                <span class="marquee-item">Pro-Pipe Solutions</span>
+                <span class="marquee-item">AquaFlow Experts</span>
+                <span class="marquee-item">City Drain Masters</span>
+                <span class="marquee-item">Precision Plumbing</span>
+                <span class="marquee-item">24/7 Emergency Plumbers</span>
+                <span class="marquee-item">FastFix Plumbing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. COMPARISON TABLE -->
+    <section class="comparison-section reveal">
+        <div class="container">
+            <div class="section-heading text-center">
+                <div class="badge">Why 30PX for Plumbers</div>
+                <h2>Stop overthinking your marketing.</h2>
+                <p>See how 30PX stacks up against hiring in-house, freelancers, or doing it yourself.</p>
             </div>
 
-            <p style="text-align: center; margin-bottom: 24px; font-weight: 500;">Trusted by growing service businesses
-            </p>
-            <div class="marquee-wrapper">
-                <div class="marquee-content">
-                    <div class="logo-placeholder">Elite Plumbing</div>
-                    <div class="logo-placeholder">Rooter Bros</div>
-                    <div class="logo-placeholder">Pro-Pipe Solutions</div>
-                    <div class="logo-placeholder">AquaFlow Experts</div>
-                    <div class="logo-placeholder">City Drain</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>30PX for Plumbers</th>
+                        <th>DIY / Yourself</th>
+                        <th>Freelancers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Predictable flat fee</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="neg-text">Your time is the cost</span></td>
+                        <td><span class="neg-text">Unpredictable rates</span></td>
+                    </tr>
+                    <tr>
+                        <td>Fast & reliable (24-48h)</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="neg-text">Takes you days/weeks</span></td>
+                        <td><span class="neg-text">Miss deadlines often</span></td>
+                    </tr>
+                    <tr>
+                        <td>Plumbing industry expertise</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="neg-text">You know pipes, not pixels</span></td>
+                        <td><span class="neg-text">Generic, no niche focus</span></td>
+                    </tr>
+                    <tr>
+                        <td>Unlimited revisions</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="neg-text">Your edits, your time</span></td>
+                        <td><span class="neg-text">Extra cost per revision</span></td>
+                    </tr>
+                    <tr>
+                        <td>AI-powered design & strategy</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="neg-text">Canva templates</span></td>
+                        <td><span class="neg-text">Rarely use AI at all</span></td>
+                    </tr>
+                    <tr>
+                        <td>Instantly scalable</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="neg-text">Just you</span></td>
+                        <td><span class="neg-text">Hard to scale quickly</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 4. SERVICES FOR PLUMBERS -->
+    <section id="services" class="reveal">
+        <div class="container">
+            <div class="section-heading text-center">
+                <div class="badge">What We Handle</div>
+                <h2>Everything your plumbing business needs. We build it.</h2>
+                <p>You fix the pipes. We fix your brand presence.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon violet">🎨</div>
+                    <h3>Plumber Social Media Designs</h3>
+                    <p>Scroll-stopping posts for Facebook, Instagram & NextDoor that showcase your plumbing services and
+                        generate leads from homeowners.</p>
                 </div>
-                <div class="marquee-content">
-                    <div class="logo-placeholder">Elite Plumbing</div>
-                    <div class="logo-placeholder">Rooter Bros</div>
-                    <div class="logo-placeholder">Pro-Pipe Solutions</div>
-                    <div class="logo-placeholder">AquaFlow Experts</div>
-                    <div class="logo-placeholder">City Drain</div>
+                <div class="service-card">
+                    <div class="service-icon blue">🌐</div>
+                    <h3>Plumbing Website Design</h3>
+                    <p>High-converting, mobile-first websites built to rank locally. Homeowners search "plumber near me"
+                        — your site shows up first.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon pink">🎬</div>
+                    <h3>Video Content for Plumbers</h3>
+                    <p>Before & after project videos, customer testimonial edits, and service highlight reels that build
+                        trust before you knock on their door.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon emerald">📢</div>
+                    <h3>Local Plumbing Ads</h3>
+                    <p>Google & Facebook ad creatives designed to bring emergency calls, drain cleaning jobs, and
+                        bathroom remodel leads to your phone.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon amber">🤖</div>
+                    <h3>AI-Powered Plumber Content</h3>
+                    <p>AI finds out what homeowners in your zip code are searching for and creates content that captures
+                        that demand — automatically.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon red">🏷️</div>
+                    <h3>Plumbing Brand Identity</h3>
+                    <p>Logos, truck wraps, business cards, and uniforms that make you look like the biggest plumbing
+                        company in town — even if you're a one-man shop.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. What We Handle Section -->
-    <section class="reveal">
+    <!-- 5. PRICING -->
+    <section id="pricing" class="pricing-section reveal">
         <div class="container">
-            <div class="section-header">
-                <h2>Everything You Need, Handled.</h2>
-                <p class="large">We don't just build a website. We become your full-time marketing department powered by
-                    high-end design and smart AI.</p>
+            <div class="section-heading text-center">
+                <div class="badge">Plumber Pricing</div>
+                <h2>Everything your plumbing brand needs. One subscription.</h2>
+                <p>Simple, transparent pricing. Pause or cancel anytime.</p>
             </div>
 
-            <div class="bento-grid">
-                <div class="bento-card tall">
-                    <div class="bento-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"></path>
-                        </svg>
-                    </div>
-                    <h3>Website Design & Maintenance</h3>
-                    <p>High-converting, lightning-fast websites that make you look like the biggest player in town. We
-                        handle all hosting and updates.</p>
-                </div>
-
-                <div class="bento-card">
-                    <div class="bento-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path
-                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Video Production</h3>
-                    <p>Professional video content that builds trust with homeowners before you even step foot in their
-                        house.</p>
-                </div>
-
-                <div class="bento-card">
-                    <div class="bento-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path
-                                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Social Media Fuel</h3>
-                    <p>We manage your Facebook, Instagram, and NextDoor so you stay top-of-mind when an emergency
-                        strikes.</p>
-                </div>
-
-                <div class="bento-card">
-                    <div class="bento-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path
-                                d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>3D Visuals & Branding</h3>
-                    <p>Premium branding that justifies premium pricing. Stand out instantly from "a guy in a truck."</p>
-                </div>
-
-                <div class="bento-card">
-                    <div class="bento-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3>Smart AI Insights</h3>
-                    <p>We use AI to find out exactly what people are searching for in your area and capture that demand.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. $24/mo Value Prop -->
-    <section class="value-prop reveal" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2>The Easiest Decision You'll Make Today.</h2>
-                <p class="large">Stop overpaying agencies or losing time doing it yourself.</p>
+            <div class="pricing-toggle">
+                <span id="toggle-monthly">Monthly</span>
+                <button class="toggle-switch on" id="freq-toggle" aria-label="Toggle pricing frequency">
+                    <div class="toggle-knob"></div>
+                </button>
+                <span id="toggle-yearly" class="active">Yearly <span
+                        style="color: var(--primary); font-weight: 600;">(Save 60%)</span></span>
             </div>
 
-            <div class="comparison-cards">
-                <div class="compare-card">
-                    <h3>Doing It Yourself</h3>
-                    <div class="compare-price"><span>Time</span></div>
-                    <ul class="feature-list">
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Missed phone calls</li>
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Clunky website</li>
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Stress about "marketing"</li>
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Losing to competitors</li>
+            <div class="pricing-grid">
+                <!-- Social Media Package -->
+                <div class="pricing-card">
+                    <div class="pricing-name">Plumber Social Pack</div>
+                    <div class="pricing-desc">Perfect for plumbing businesses starting online.</div>
+                    <div class="pricing-price" data-monthly="60" data-yearly="24">$24<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>30 plumbing social media designs/month</li>
+                        <li>1 design per day OR batch delivery</li>
+                        <li>48-hour turnaround</li>
+                        <li>Unlimited revisions</li>
+                        <li>Source files (PNG/JPG)</li>
                     </ul>
+                    <a href="https://www.paypal.com/ncp/payment/A3ACZ76C2CX9S" class="pricing-cta btn">Start Now</a>
                 </div>
 
-                <div class="compare-card highlight">
-                    <div style="font-weight: 700; color: var(--color-accent); margin-bottom: 8px;">30PX CREATIVE</div>
-                    <h3>Everything Handled.</h3>
-                    <div class="compare-price">$24<span>/month</span></div>
-                    <ul class="feature-list">
-                        <li><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M5 13l4 4L19 7"></path>
-                            </svg> Custom High-Converting Website</li>
-                        <li><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M5 13l4 4L19 7"></path>
-                            </svg> AI-Powered Social Media</li>
-                        <li><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M5 13l4 4L19 7"></path>
-                            </svg> Premium Branding & Video</li>
-                        <li><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M5 13l4 4L19 7"></path>
-                            </svg> Local SEO & Analytics</li>
-                        <li><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M5 13l4 4L19 7"></path>
-                            </svg> Hands-free Growth</li>
+                <!-- Growth -->
+                <div class="pricing-card popular">
+                    <div class="pricing-name">Plumber Growth</div>
+                    <div class="pricing-desc">For plumbing businesses ready to dominate locally.</div>
+                    <div class="pricing-price" data-monthly="149" data-yearly="59">$59<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Social Pack</li>
+                        <li>Unlimited design requests</li>
+                        <li>Ad creatives & service flyers</li>
+                        <li>Truck wrap & uniform designs</li>
+                        <li>24-48hr turnaround</li>
+                        <li>Unlimited revisions</li>
                     </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%;">Get Started Now</a>
+                    <a href="https://www.paypal.com/ncp/payment/44ZVTVLXWKL6N" class="pricing-cta btn">Start Now</a>
                 </div>
 
-                <div class="compare-card">
-                    <h3>Traditional Agency</h3>
-                    <div class="compare-price">$2,500+<span>/month</span></div>
-                    <ul class="feature-list">
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Huge upfront fees</li>
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Long contracts</li>
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Slow turnaround</li>
-                        <li class="negative"><svg class="icon" viewBox="0 0 24 24">
-                                <path d="M6 18L18 6M6 6l12 12"></path>
-                            </svg> Jargon you don't care about</li>
+                <!-- Scale -->
+                <div class="pricing-card">
+                    <div class="pricing-name">Plumber Scale</div>
+                    <div class="pricing-desc">Complete creative department for your plumbing company.</div>
+                    <div class="pricing-price" data-monthly="299" data-yearly="119">$119<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Growth</li>
+                        <li>8 video edits/month</li>
+                        <li>Motion graphics for plumbing jobs</li>
+                        <li>Full logo & brand identity</li>
+                        <li>Website design (Figma/Dev)</li>
                     </ul>
+                    <a href="https://www.paypal.com/ncp/payment/67UDJAT546CG6" class="pricing-cta btn">Start Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Portfolio Section -->
-    <section class="portfolio reveal">
+    <!-- 6. YOUR PLUMBING JOURNEY -->
+    <section id="how-it-works" class="timeline-section reveal">
         <div class="container">
-            <div class="section-header">
-                <h2>What We've Built For Businesses Like Yours.</h2>
-                <p class="large">A glimpse into premium web presences and branding.</p>
+            <div class="section-heading text-center">
+                <div class="badge">Your Journey</div>
+                <h2>Here's what your plumbing business can expect in 30 days.</h2>
+                <p>Great design for plumbers shouldn't take months.</p>
+                <a href="#pricing" class="btn btn-accent" style="margin-top: 24px;">Start your subscription →</a>
             </div>
 
-            <div class="masonry">
-                <!-- Placeholders for actual design screenshots -->
-                <div class="masonry-item">
-                    <div class="masonry-image">Project Preview 1</div>
-                    <div class="masonry-overlay">
-                        <h4 style="color: white; margin-bottom: 4px;">Elite Plumbing Redesign</h4>
-                        <p style="font-size: 14px; margin: 0;">Web Design • Local SEO</p>
-                    </div>
-                </div>
-                <div class="masonry-item">
-                    <div class="masonry-image">Project Preview 2</div>
-                    <div class="masonry-overlay">
-                        <h4 style="color: white; margin-bottom: 4px;">Rooter Bros Rebrand</h4>
-                        <p style="font-size: 14px; margin: 0;">3D Visuals • Social Media</p>
-                    </div>
-                </div>
-                <div class="masonry-item">
-                    <div class="masonry-image">Project Preview 3</div>
-                    <div class="masonry-overlay">
-                        <h4 style="color: white; margin-bottom: 4px;">AquaFlow Campaigns</h4>
-                        <p style="font-size: 14px; margin: 0;">AI Content • Video Production</p>
-                    </div>
-                </div>
-                <div class="masonry-item">
-                    <div class="masonry-image">Project Preview 4</div>
-                    <div class="masonry-overlay">
-                        <h4 style="color: white; margin-bottom: 4px;">City Drain Leads</h4>
-                        <p style="font-size: 14px; margin: 0;">Landing Page Optimization</p>
-                    </div>
-                </div>
-                <div class="masonry-item">
-                    <div class="masonry-image">Project Preview 5</div>
-                    <div class="masonry-overlay">
-                        <h4 style="color: white; margin-bottom: 4px;">Pro-Pipe Socials</h4>
-                        <p style="font-size: 14px; margin: 0;">Automated AI Posting</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="timeline-grid" style="margin-top: 64px;">
+                <div class="timeline-line-h"></div>
+                <div class="timeline-line-v"></div>
 
-    <!-- 6. AI-Powered Growth Section -->
-    <section class="reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Your 24/7 AI-Powered Sales Team.</h2>
-                <p class="large">This isn't just a website. We use AI to automate the things you used to pay an agency
-                    thousands for.</p>
-            </div>
-
-            <div class="ai-pipeline">
-                <div class="pipeline-step">
-                    <div class="pipeline-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
+                <div class="timeline-node">
+                    <div class="timeline-marker">
+                        <span class="timeline-pill pill-violet">Welcome</span>
                     </div>
-                    <h3>AI Strategy</h3>
-                    <p style="font-size: 14px; margin-top: 8px;">Finds homeowners searching for help.</p>
+                    <div class="timeline-card">
+                        <div class="timeline-accent accent-violet"></div>
+                        <div class="timeline-card-body">
+                            <h3>Get started.</h3>
+                            <ul class="timeline-list">
+                                <li class="v">Subscribe and access your portal in minutes</li>
+                                <li class="v">Submit your first plumbing design request</li>
+                                <li class="v">Match with your dedicated designer</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="pipeline-arrow"></div>
-
-                <div class="pipeline-step">
-                    <div class="pipeline-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path
-                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
-                            </path>
-                        </svg>
+                <div class="timeline-node">
+                    <div class="timeline-marker">
+                        <span class="timeline-pill pill-purple">Day 3</span>
                     </div>
-                    <h3>Content Engine</h3>
-                    <p style="font-size: 14px; margin-top: 8px;">Generates beautiful posts automatically.</p>
-                </div>
-
-                <div class="pipeline-arrow"></div>
-
-                <div class="pipeline-step">
-                    <div class="pipeline-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Leads & Calls</h3>
-                    <p style="font-size: 14px; margin-top: 8px;">Fills your calendar with actual jobs.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. Process Section -->
-    <section class="process-section reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p class="large">Fast, simple, and entirely hands-off for you.</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-number">1</div>
-                    <div class="timeline-content">
-                        <h3>Sign Up ($24/mo)</h3>
-                        <p>Lock in your spot. Takes less than 2 minutes.</p>
+                    <div class="timeline-card">
+                        <div class="timeline-accent accent-purple"></div>
+                        <div class="timeline-card-body">
+                            <h3>See results.</h3>
+                            <ul class="timeline-list">
+                                <li class="p">Receive your first plumbing designs in 24-48 hours</li>
+                                <li class="p">Request unlimited revisions easily</li>
+                                <li class="p">Approve and get all source files</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">2</div>
-                    <div class="timeline-content">
-                        <h3>We Learn Your Business</h3>
-                        <p>A quick 15-minute onboarding chat so we understand your specific services and service areas.
-                        </p>
+
+                <div class="timeline-node">
+                    <div class="timeline-marker">
+                        <span class="timeline-pill pill-indigo">Day 30</span>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">3</div>
-                    <div class="timeline-content">
-                        <h3>We Build & Launch</h3>
-                        <p>Our team and AI get to work building your digital empire: website, socials, and visual brand.
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">4</div>
-                    <div class="timeline-content">
-                        <h3>You Get Clients</h3>
-                        <p>You go back to running your business while we ensure you look like the #1 choice online.</p>
+                    <div class="timeline-card">
+                        <div class="timeline-accent accent-indigo"></div>
+                        <div class="timeline-card-body">
+                            <h3>Ask why you didn't switch years ago.</h3>
+                            <ul class="timeline-list">
+                                <li class="i">Dozens of plumbing-specific assets delivered</li>
+                                <li class="i">Consistent brand presence across all platforms</li>
+                                <li class="i">More calls, more jobs, zero marketing stress</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8. Final CTA -->
-    <section class="final-cta reveal" style="padding-top: 64px;">
-        <div class="container">
-            <div class="cta-box">
-                <h2 style="margin-bottom: 24px;">Focus on Plumbing.<br>We'll handle the Growth.</h2>
-                <p class="large" style="margin-bottom: 40px; color: white;">Join hundreds of tradespeople trusting 30PX
-                    to run their digital presence.</p>
-                <a href="#pricing" class="btn btn-primary btn-lg" style="padding: 20px 48px; font-size: 20px;">Get
-                    Started for $24/mo</a>
-                <p style="margin-top: 16px; font-size: 14px; color: var(--color-text-secondary);">Limited onboarding
-                    spots available this month.</p>
-
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <svg class="icon" style="width: 16px; height: 16px; color: #10B981;" viewBox="0 0 24 24">
-                            <path d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Secure Checkout
-                    </div>
-                    <div class="trust-badge">
-                        <svg class="icon" style="width: 16px; height: 16px; color: #10B981;" viewBox="0 0 24 24">
-                            <path d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Cancel Anytime
-                    </div>
-                    <div class="trust-badge">
-                        <svg class="icon" style="width: 16px; height: 16px; color: #10B981;" viewBox="0 0 24 24">
-                            <path d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        No Hidden Fees
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 30PX | Thirtypixels. All rights reserved.</p>
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand-name"><span>♥</span> 30PX</div>
+                    <p class="footer-brand-desc">Unlimited design subscription service built for plumbing businesses.
+                        Replace agencies with a dedicated design team for a flat monthly fee.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Services for Plumbers</a></li>
+                        <li><a href="#pricing">Plumber Pricing</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Main Site</a></li>
+                        <li><a href="mailto:hello@thirtypixels.com">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-links">
+                        <li>✉ hello@thirtypixels.com</li>
+                        <li>📍 New York, NY</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 30Pixels. All rights reserved.</p>
+                <p>Designed for plumbers who want to grow. 🔧</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Scripts for animations -->
+    <!-- JS -->
     <script>
-        // 1. Scroll Reveal Animation via IntersectionObserver
+        // 1. Scroll Reveal
         function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+                    el.classList.add('active');
                 }
-            }
+            });
         }
         window.addEventListener('scroll', reveal);
-        reveal(); // Trigger on load
+        reveal();
 
-        // 2. Button Ripple Effect
-        const buttons = document.querySelectorAll('.btn');
-        buttons.forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                // If the button links to #, prevent default just for aesthetic show
-                if (this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                }
+        // 2. Pricing Toggle
+        const toggle = document.getElementById('freq-toggle');
+        const monthlyLabel = document.getElementById('toggle-monthly');
+        const yearlyLabel = document.getElementById('toggle-yearly');
+        let isYearly = true;
 
-                let ripple = document.createElement("span");
-                ripple.classList.add("ripple-span");
-                this.appendChild(ripple);
+        toggle.addEventListener('click', () => {
+            isYearly = !isYearly;
+            toggle.classList.toggle('on', isYearly);
+            monthlyLabel.classList.toggle('active', !isYearly);
+            yearlyLabel.classList.toggle('active', isYearly);
 
-                let rect = btn.getBoundingClientRect();
-                let x = e.clientX - rect.left;
-                let y = e.clientY - rect.top;
-
-                ripple.style.left = `${x}px`;
-                ripple.style.top = `${y}px`;
-
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
+            document.querySelectorAll('.pricing-price').forEach(el => {
+                const price = isYearly ? el.dataset.yearly : el.dataset.monthly;
+                el.innerHTML = `$${price}<span>/mo</span>`;
             });
         });
 
-        // 3. Simple Animated Counters for Stats
-        const statCounters = document.querySelectorAll('output');
-        const counterObserver = new IntersectionObserver((entries, observer) => {
+        // 3. Animated Counters
+        const outputs = document.querySelectorAll('output');
+        const counterObs = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const target = parseFloat(entry.target.innerText);
-                    const isDecimal = target % 1 !== 0;
-                    animateValue(entry.target, 0, target, 2000, isDecimal);
-                    observer.unobserve(entry.target);
+                    animateValue(entry.target, 0, target, 2000);
+                    obs.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
 
-        statCounters.forEach(counter => {
-            counterObserver.observe(counter);
+        outputs.forEach(o => counterObs.observe(o));
+
+        function animateValue(obj, start, end, duration) {
+            let startTs = null;
+            const step = ts => {
+                if (!startTs) startTs = ts;
+                const progress = Math.min((ts - startTs) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                obj.innerHTML = Math.floor(start + ease * (end - start));
+                if (progress < 1) requestAnimationFrame(step);
+                else obj.innerHTML = end;
+            };
+            requestAnimationFrame(step);
+        }
+
+        // 4. Button Ripple
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-span');
+                this.appendChild(ripple);
+                const rect = this.getBoundingClientRect();
+                ripple.style.left = (e.clientX - rect.left) + 'px';
+                ripple.style.top = (e.clientY - rect.top) + 'px';
+                setTimeout(() => ripple.remove(), 600);
+            });
         });
 
-        function animateValue(obj, start, end, duration, isDecimal) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                // ease out cubic
-                const easeProgress = 1 - Math.pow(1 - progress, 3);
-                const current = start + easeProgress * (end - start);
-
-                if (isDecimal) {
-                    obj.innerHTML = current.toFixed(1);
-                } else {
-                    obj.innerHTML = Math.floor(current);
-                }
-
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    obj.innerHTML = end;
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
+        // 5. Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
     </script>
 </body>
 

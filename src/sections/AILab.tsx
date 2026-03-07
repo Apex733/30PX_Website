@@ -53,7 +53,7 @@ export function AILab() {
                                 <img
                                     src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600"
                                     alt="Raw Asset"
-                                    className="w-full h-full object-cover rounded-lg opacity-90 transition-transform duration-500 group-hover:scale-105"
+                                    className="w-full h-full object-cover rounded-[5px] opacity-90 transition-transform duration-500 group-hover:scale-105"
                                     loading="lazy"
                                 />
                                 <div className="absolute inset-0 border border-black/5 rounded-[5px] pointer-events-none" />
@@ -110,21 +110,38 @@ export function AILab() {
                                 <h2 className="text-sm font-bold text-foreground tracking-widest flex items-center gap-2">
                                     <Cpu size={16} className="text-muted-foreground" /> Processing Engine
                                 </h2>
-                                <div className="flex gap-1">
+                                <div className="flex gap-1.5">
                                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse delay-75" />
                                     <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
                                 </div>
                             </div>
 
                             <div className="flex flex-col gap-5">
-                                {/* Visual Node */}
-                                <div className="relative w-full h-24 flex items-center justify-center bg-muted/10 border border-border/50 rounded-[5px] overflow-hidden">
+                                {/* Visual Node - Flow representation */}
+                                <div className="relative w-full h-24 flex items-center justify-center gap-4 bg-muted/10 border border-border/50 rounded-[5px] overflow-hidden">
                                     <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50" />
-                                    <div className="w-12 h-12 bg-card border border-border rounded-full flex items-center justify-center shadow-lg relative z-10">
-                                        <Sparkles size={20} className="text-primary animate-pulse" />
+
+                                    {/* Node 1 */}
+                                    <div className="relative">
+                                        <div className="w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center shadow-md relative z-10">
+                                            <Sparkles size={16} className="text-primary/70" />
+                                        </div>
+                                        <div className="absolute inset-0 w-10 h-10 border border-primary/30 rounded-full animate-ping opacity-50" />
                                     </div>
-                                    <div className="absolute w-24 h-24 border border-primary/30 rounded-full animate-[ping_3s_ease-in-out_infinite]" />
+
+                                    {/* Flow line */}
+                                    <div className="w-8 h-[2px] bg-border relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-primary/40 animate-[slide_1s_linear_infinite]" />
+                                    </div>
+
+                                    {/* Node 2 */}
+                                    <div className="relative">
+                                        <div className="w-12 h-12 bg-card border border-border rounded-full flex items-center justify-center shadow-lg relative z-10">
+                                            <Sparkles size={20} className="text-primary animate-pulse" />
+                                        </div>
+                                        <div className="absolute inset-[-6px] w-[calc(100%+12px)] h-[calc(100%+12px)] border border-primary/20 rounded-full animate-[ping_3s_ease-in-out_infinite]" />
+                                    </div>
                                 </div>
 
                                 {/* Processing Checklist */}
@@ -185,7 +202,7 @@ export function AILab() {
                                     <img
                                         src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=800"
                                         alt="Final Hero"
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        className="w-full h-full object-cover rounded-[5px] transition-transform duration-500 group-hover:scale-105"
                                         loading="lazy"
                                     />
                                     <div className="absolute top-2 right-2 bg-background/90 backdrop-blur border border-border px-2 py-1 rounded text-[9px] font-bold flex items-center gap-1 text-foreground shadow-sm">

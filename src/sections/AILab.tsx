@@ -235,8 +235,26 @@ export function AILab() {
                                 </div>
                             </div>
 
+                            {/* Detailed Metadata */}
+                            <div className="grid grid-cols-2 gap-3 mt-auto mb-5">
+                                <div className="flex items-center gap-2 bg-muted/20 border border-green-500/20 p-2 rounded-[5px]">
+                                    <Video size={14} className="text-green-600 dark:text-green-400" />
+                                    <div>
+                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Format</p>
+                                        <p className="text-[11px] text-foreground font-medium">MP4 Video</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-2 bg-muted/20 border border-green-500/20 p-2 rounded-[5px]">
+                                    <Maximize size={14} className="text-green-600 dark:text-green-400" />
+                                    <div>
+                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Resolution</p>
+                                        <p className="text-[11px] text-foreground font-medium">1080 x 1080</p>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Action Footer */}
-                            <div className="pt-5 flex items-center justify-between border-t border-border/50 mt-auto">
+                            <div className="pt-5 flex items-center justify-between border-t border-border/50">
                                 <div className="flex flex-col">
                                     <span className="text-[9px] text-muted-foreground uppercase font-semibold">Total Time</span>
                                     <span className="text-xs text-foreground font-bold">45 Seconds</span>

@@ -182,6 +182,21 @@ export function AILab() {
                                     <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Google VEO</Badge>
                                 </div>
                             </div>
+
+                            {/* Server Load Footer to balance the bottom of the card */}
+                            <div className="pt-5 flex items-center justify-between border-t border-border/50 mt-auto">
+                                <div className="flex flex-col w-full">
+                                    <div className="flex justify-between items-center mb-1.5">
+                                        <span className="text-[9px] text-muted-foreground uppercase font-semibold flex items-center gap-1">
+                                            <Cpu size={10} /> Active Compute
+                                        </span>
+                                        <span className="text-[10px] text-primary font-bold">94%</span>
+                                    </div>
+                                    <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+                                        <div className="h-full bg-primary animate-[pulse_2s_ease-in-out_infinite]" style={{ width: '94%' }} />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Animated Down/Right Connector 2 */}

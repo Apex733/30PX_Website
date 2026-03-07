@@ -1,6 +1,5 @@
-
 import { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "@/pages/Home";
 import ScrollToTop from "@/components/ScrollToTop";
 import { SharedScrollProvider } from "@/lib/scroll-context";
@@ -33,6 +32,9 @@ function App() {
                     <Route path="/dmca" element={<DMCA />} />
                     <Route path="/faqs" element={<FAQs />} />
                     <Route path="/about" element={<AboutUs />} />
+
+                    {/* Catch-all route to prevent white screen crashes on unknown URLs like /services */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Suspense>
             {/* Added subtle bottom chin blur to the whole website */}

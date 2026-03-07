@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/ui/section-heading"
 import { useState } from "react";
+import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { cn } from "@/lib/utils";
 
 // Define categories with content
@@ -112,52 +113,58 @@ export function OurWork() {
                 </div>
             </div>
 
-            {/* Horizontal Scroll Carousel - FULL WIDTH */}
+            {/* Velocity Grid Carousel - FULL WIDTH without Scroll Speed */}
             {images.length > 0 ? (
                 <div className="relative w-full overflow-hidden">
-                    <div className="w-full overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                        <div className="flex items-center w-max pb-4 pr-4">
-                            {images.map((item, index) => {
-                                return (
-                                    <div
-                                        key={`${activeCategory}-${index}`}
-                                        className="pl-4 shrink-0"
-                                    >
+                    <div className="relative w-full">
+                        <VelocityScroll
+                            default_velocity={3}
+                            velocity_sensitivity={0}
+                            className="flex items-center"
+                        >
+                            <div className="flex">
+                                {images.map((item, index) => {
+                                    return (
                                         <div
-                                            className="h-[36rem] md:h-[40rem] overflow-hidden rounded-[5px] bg-neutral-100 relative group"
+                                            key={`${activeCategory}-${index}`}
+                                            className="pl-4 shrink-0"
                                         >
-                                            {item.type === "video" ? (
-                                                <video
-                                                    src={item.src}
-                                                    className="h-full w-auto object-contain pointer-events-none"
-                                                    autoPlay
-                                                    muted
-                                                    loop
-                                                    playsInline
-                                                />
-                                            ) : (
-                                                <img
-                                                    src={item.src}
-                                                    alt={`${activeCategory} work ${index + 1}`}
-                                                    className="h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
-                                                    loading="lazy"
-                                                    draggable={false}
-                                                />
-                                            )}
+                                            <div
+                                                className="h-[36rem] md:h-[40rem] overflow-hidden rounded-[5px] bg-neutral-100 relative group"
+                                            >
+                                                {item.type === "video" ? (
+                                                    <video
+                                                        src={item.src}
+                                                        className="h-full w-auto object-contain pointer-events-none"
+                                                        autoPlay
+                                                        muted
+                                                        loop
+                                                        playsInline
+                                                    />
+                                                ) : (
+                                                    <img
+                                                        src={item.src}
+                                                        alt={`${activeCategory} work ${index + 1}`}
+                                                        className="h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
+                                                        loading="lazy"
+                                                        draggable={false}
+                                                    />
+                                                )}
 
-                                            {/* Image Name Label (Only for 3D and AI) */}
-                                            {(activeCategory === "3D" || activeCategory === "AI") && (
-                                                <div className="absolute top-3 right-3 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm z-10">
-                                                    <span className="text-xs font-medium text-white tracking-wide">
-                                                        {item.name}
-                                                    </span>
-                                                </div>
-                                            )}
+                                                {/* Image Name Label (Only for 3D and AI) */}
+                                                {(activeCategory === "3D" || activeCategory === "AI") && (
+                                                    <div className="absolute top-3 right-3 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-sm z-10">
+                                                        <span className="text-xs font-medium text-white tracking-wide">
+                                                            {item.name}
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                                    );
+                                })}
+                            </div>
+                        </VelocityScroll>
                     </div>
                 </div>
             ) : (

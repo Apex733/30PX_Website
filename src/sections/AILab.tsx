@@ -49,7 +49,7 @@ export function AILab() {
                                 <Badge variant="secondary" className="text-[10px] font-medium px-2 py-0">Original</Badge>
                             </div>
 
-                            <div className="relative w-full aspect-square rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-5 group">
+                            <div className="relative w-full aspect-square rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-4 group">
                                 <img
                                     src="/assets/ai-lab/woman_cycling.webp"
                                     alt="Raw Asset"
@@ -57,6 +57,17 @@ export function AILab() {
                                     loading="lazy"
                                 />
                                 <div className="absolute inset-0 border border-black/5 rounded-[5px] pointer-events-none" />
+                            </div>
+
+                            {/* Prompt Input Simulation */}
+                            <div className="relative mb-5 w-full flex-shrink-0">
+                                <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                                    <Sparkles size={10} className="text-primary" /> AI Generation Prompt
+                                </div>
+                                <div className="bg-muted/20 border border-border/50 rounded-[5px] p-3 text-[11px] text-muted-foreground font-medium leading-relaxed shadow-inner">
+                                    <span className="text-foreground">"High-chroma urban portrait utilizing a shallow depth of field to isolate a subject on a matte-black BMX, featuring complex texture mapping ..."</span>
+                                    <span className="inline-block w-1 h-3 bg-primary animate-pulse ml-1 align-middle" />
+                                </div>
                             </div>
 
                             {/* Detailed Metadata */}

@@ -17,11 +17,10 @@ const categories = [
     { id: "Social Media Management", label: "Management" },
 ];
 
-// Import all work images and videos dynamically
-const workModules = import.meta.glob<{ default: string }>(
+const workModules = import.meta.glob(
     "/Work/**/*.{jpg,jpeg,png,webp,mp4,webm}",
-    { eager: true }
-);
+    { eager: true, query: "?url", import: "default" }
+) as Record<string, string>;
 
 // Group images by category with metadata
 function getImagesByCategory(categoryId: string): { src: string; name: string; type: "image" | "video" }[] {
@@ -45,7 +44,7 @@ function getImagesByCategory(categoryId: string): { src: string; name: string; t
             const isVideo = /\.(mp4|webm)$/i.test(path);
 
             return {
-                src: module.default,
+                src: module, // explicitly resolved string via '?url'
                 name: fileName,
                 type: isVideo ? "video" : "image"
             };

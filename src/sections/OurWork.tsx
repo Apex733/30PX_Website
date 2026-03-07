@@ -214,14 +214,11 @@ export function OurWork() {
                     </div>
                 </div>
             ) : (
-
-            ): (
-                    <div className = "text-center py-16 text-neutral-500">
-                    {/* This fallback should ideally not be reached if buttons are disabled, but keeping it for safety */ }
+                <div className="text-center py-16 text-neutral-500">
+                    {/* This fallback should ideally not be reached if buttons are disabled, but keeping it for safety */}
                     Coming soon...
-        </div>
-    )
-}
-        </section >
+                </div>
+            )}
+        </section>
     );
 }

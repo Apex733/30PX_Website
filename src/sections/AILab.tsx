@@ -39,7 +39,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 1: INPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full max-w-[320px] mx-auto lg:max-w-none lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">1</div>
 
                             <div className="flex items-center justify-between mb-5 mt-2">
@@ -51,7 +51,7 @@ export function AILab() {
 
                             <div className="relative w-full aspect-square rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-5 group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600"
+                                    src="/assets/ai-lab/woman_cycling.png"
                                     alt="Raw Asset"
                                     className="w-full h-full object-cover rounded-[5px] opacity-90 transition-transform duration-500 group-hover:scale-105"
                                     loading="lazy"
@@ -65,7 +65,7 @@ export function AILab() {
                                     <FileImage size={14} className="text-muted-foreground" />
                                     <div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Format</p>
-                                        <p className="text-[11px] text-foreground font-medium">JPEG Image</p>
+                                        <p className="text-[11px] text-foreground font-medium">PNG Image</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
@@ -79,7 +79,7 @@ export function AILab() {
                                     <HardDrive size={14} className="text-muted-foreground" />
                                     <div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-semibold">Size</p>
-                                        <p className="text-[11px] text-foreground font-medium">2.4 MB</p>
+                                        <p className="text-[11px] text-foreground font-medium">9.5 MB</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
@@ -103,7 +103,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 2: AI MAGIC
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full max-w-[320px] mx-auto lg:max-w-none lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">2</div>
 
                             <div className="flex items-center justify-between mb-6 mt-2">
@@ -184,7 +184,7 @@ export function AILab() {
                         {/* =========================================
                 STAGE 3: OUTPUT
             ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
+                        <div className="bg-card border border-border rounded-[5px] p-6 w-full max-w-[320px] mx-auto lg:max-w-none lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-sm">
                                 <CheckCircle2 size={18} className="text-green-500" />
                             </div>
@@ -199,11 +199,13 @@ export function AILab() {
                             <div className="w-full flex flex-col gap-2 relative z-10">
                                 {/* Main Image 1:1 */}
                                 <div className="w-full aspect-square rounded-[5px] overflow-hidden relative group border border-border bg-muted/30">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=800"
-                                        alt="Final Hero"
+                                    <video
+                                        src="/assets/ai-lab/woman_cycling.mp4"
                                         className="w-full h-full object-cover rounded-[5px] transition-transform duration-500 group-hover:scale-105"
-                                        loading="lazy"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
                                     />
                                     <div className="absolute top-2 right-2 bg-background/90 backdrop-blur border border-border px-2 py-1 rounded text-[9px] font-bold flex items-center gap-1 text-foreground shadow-sm">
                                         4K HDR

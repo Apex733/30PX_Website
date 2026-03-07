@@ -72,11 +72,11 @@ export function RollingTextButton({
         >
             <span className="block overflow-hidden h-[1.2em] relative">
                 {/* Original text — slides up on hover */}
-                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                <span className="block transition-transform duration-500 [animation-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                     {children}
                 </span>
                 {/* Duplicate text — slides in from below */}
-                <span className="absolute top-full left-0 w-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                <span className="absolute top-full left-0 w-full transition-transform duration-500 [animation-timing-function:cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
                     {children}
                 </span>
             </span>

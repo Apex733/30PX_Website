@@ -15,7 +15,8 @@ export function LegalPage({ title, lastUpdated, children }: LegalPageProps) {
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
             <SEO
                 title={title}
-                description={`Read our ${title}. Last updated on ${lastUpdated}.`}
+                description={`${title} for 30PX (Thirty Pixels Agency). Last updated ${lastUpdated}.`}
+                noindex={true}
             />
             <Header />
             <main className="flex-grow pt-32 pb-24">

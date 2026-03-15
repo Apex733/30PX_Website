@@ -84,8 +84,8 @@ export default function FAQs() {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
             <SEO
-                title="Frequently Asked Questions"
-                description="Everything you need to know about 30PX's design subscription, turnaround times, pause features, and billing."
+                title="FAQs — Frequently Asked Questions"
+                description="Everything you need to know about 30PX (Thirty Pixels Agency) — design subscription plans, turnaround times, pause features, revisions, and billing."
             />
             {/* Inject JSON-LD FAQ Schema */}
             <script

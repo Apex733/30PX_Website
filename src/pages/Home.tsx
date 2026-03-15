@@ -163,7 +163,7 @@ function Home() {
                 const el = document.getElementById(sectionId);
                 if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                 // Clean up the URL
-                window.history.replaceState(null, "", "/#/");
+                window.history.replaceState(null, "", "/");
             }, 300);
         }
     }, []);
@@ -171,8 +171,9 @@ function Home() {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10">
             <SEO
-                title="Premium Design. Startup Pricing."
-                description="30PX is an unlimited design subscription service. Replace your expensive agency with a dedicated design team for a flat monthly fee."
+                title="30PX — Unlimited Premium Design & AI Creative Subscription | Thirty Pixels Agency"
+                description="30PX (Thirty Pixels Agency) is an unlimited AI-enhanced design subscription. Get premium social media designs, branding, web design, and motion graphics from veteran designers. Plans start at $24/month."
+                keywords="AI design subscription, unlimited graphic design, social media design service, affordable design agency"
             />
             <Header />
 

@@ -9,8 +9,8 @@ export default function AboutUs() {
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
             <SEO
-                title="About Us"
-                description="We're a team of veteran designers, animators, and AI specialists replacing the traditional agency model with a simple, scalable subscription."
+                title="About Us — Meet the Team Behind 30PX"
+                description="30PX (Thirty Pixels Agency) is a team of veteran designers, animators, and AI specialists replacing the traditional agency model with a simple, scalable design subscription."
             />
             <Header />
 

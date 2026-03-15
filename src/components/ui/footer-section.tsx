@@ -103,7 +103,7 @@ export function Footer() {
                         if (el) {
                             el.scrollIntoView({ behavior: "smooth", block: "start" });
                         } else {
-                            window.location.href = `/#/?scrollTo=${href.slice(1)}`;
+                            window.location.href = `/?scrollTo=${href.slice(1)}`;
                         }
                     }}
                     {...props}
@@ -113,8 +113,8 @@ export function Footer() {
             );
         }
 
-        // Internal routes: use /#/path for HashRouter
-        const resolvedHref = isInternal ? `/#${href}` : href;
+        // Internal routes: use clean paths with BrowserRouter
+        const resolvedHref = href;
 
         return (
             <a href={resolvedHref} className={className} {...props}>

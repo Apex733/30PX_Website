@@ -32,7 +32,7 @@ export function Header() {
             el.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
             // We're on a different page — navigate home then scroll
-            window.location.href = `/#/?scrollTo=${sectionId}`;
+            window.location.href = `/?scrollTo=${sectionId}`;
         }
         setIsMobileMenuOpen(false);
     }, []);

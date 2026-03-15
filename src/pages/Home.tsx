@@ -152,12 +152,11 @@ function Home() {
     const [frequency, setFrequency] = React.useState(PAYMENT_FREQUENCIES[1]) // Default to yearly
     const [isComparisonOpen, setIsComparisonOpen] = React.useState(false)
 
-    // Handle scroll-to from cross-page navigation (e.g. portfolio → /#/?scrollTo=pricing)
+    // Handle scroll-to from cross-page navigation (e.g. portfolio → /?scrollTo=pricing)
     React.useEffect(() => {
-        const hash = window.location.hash; // e.g. "#/?scrollTo=services"
-        const match = hash.match(/scrollTo=(\w+)/);
-        if (match) {
-            const sectionId = match[1];
+        const params = new URLSearchParams(window.location.search);
+        const sectionId = params.get('scrollTo');
+        if (sectionId) {
             // Small delay to let DOM render
             setTimeout(() => {
                 const el = document.getElementById(sectionId);

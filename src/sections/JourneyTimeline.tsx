@@ -51,7 +51,7 @@ export function JourneyTimeline() {
                     align="center"
                 />
                 <a
-                    href="/#pricing"
+                    href="/?scrollTo=pricing"
                     className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
                 >
                     Start your subscription <ArrowRight className="h-4 w-4" />

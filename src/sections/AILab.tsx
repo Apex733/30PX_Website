@@ -104,11 +104,11 @@ export function AILab() {
                         </div>
 
                         {/* Animated Down/Right Connector 1 */}
-                        <div className="flex lg:items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
+                        <div className="flex items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
                             <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
                                 <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
                             </div>
-                            <ArrowRight className="absolute text-primary bg-background px-1" size={20} />
+                            <ArrowRight className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary bg-background px-1" size={20} />
                         </div>
 
                         {/* =========================================
@@ -200,11 +200,11 @@ export function AILab() {
                         </div>
 
                         {/* Animated Down/Right Connector 2 */}
-                        <div className="flex lg:items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
+                        <div className="flex items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
                             <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
                                 <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
                             </div>
-                            <ArrowRight className="absolute text-primary bg-background px-1" size={20} />
+                            <ArrowRight className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary bg-background px-1" size={20} />
                         </div>
 
                         {/* =========================================

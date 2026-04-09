@@ -202,7 +202,7 @@ export default function Testimonials() {
                 >
                     {/* Modal Content - bottom up animation */}
                     <div 
-                        className={`relative w-full md:w-[90%] lg:w-[80%] h-[95vh] md:h-[90vh] bg-background rounded-t-[5px] md:rounded-[5px] shadow-2xl transition-transform duration-500 flex flex-col ${
+                        className={`relative w-full md:w-[90%] lg:w-[80%] h-[95vh] md:h-[90vh] bg-background rounded-t-[5px] md:rounded-[5px] shadow-2xl transition-transform duration-500 flex flex-col overflow-hidden ${
                             activeModalUrl ? "translate-y-0 md:scale-100" : "translate-y-full md:translate-y-12 md:scale-95"
                         }`}
                         onClick={e => e.stopPropagation()}

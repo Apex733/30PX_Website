@@ -41,6 +41,9 @@ const timelineData = [
 ];
 
 export function JourneyTimeline() {
+    const isModal = typeof window !== 'undefined' && window.location.search.includes('modal=true');
+    if (isModal) return null;
+
     return (
         <section className="py-12 md:py-16 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
             <div className="flex flex-col items-center mb-16 text-center gap-6">

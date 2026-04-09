@@ -16,6 +16,9 @@ import { cn } from "@/lib/utils";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 
 export function Footer() {
+    const isModal = typeof window !== 'undefined' && window.location.search.includes('modal=true');
+    if (isModal) return null;
+
     // Footer link data
     const footerLinks = [
         {

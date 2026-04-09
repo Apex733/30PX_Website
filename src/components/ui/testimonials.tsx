@@ -13,7 +13,7 @@ import {
     type CarouselApi,
 } from '@/components/ui/carousel'
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, X } from 'lucide-react'
 
 const testimonials = [
     {
@@ -54,6 +54,18 @@ const testimonials = [
 export default function Testimonials() {
     const [api, setApi] = useState<CarouselApi>()
     const [isHovered, setIsHovered] = useState(false)
+    const [activeModalUrl, setActiveModalUrl] = useState<string | null>(null)
+
+    useEffect(() => {
+        if (activeModalUrl) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = ""
+        }
+        return () => {
+            document.body.style.overflow = ""
+        }
+    }, [activeModalUrl])
 
     useEffect(() => {
         if (!api) {
@@ -120,25 +132,25 @@ export default function Testimonials() {
                                             </div>
 
                                             {testimonial.name === "Mark C. Lawrence" ? (
-                                                <Link to="/portfolio/loudminds" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                                                <button onClick={() => setActiveModalUrl("/portfolio/loudminds?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                                                     Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </Link>
+                                                </button>
                                             ) : testimonial.name === "DJ Ravi Drums" ? (
-                                                <Link to="/portfolio/ghosttongue" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                                                <button onClick={() => setActiveModalUrl("/portfolio/ghosttongue?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                                                     Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </Link>
+                                                </button>
                                             ) : testimonial.name === "James" ? (
-                                                <Link to="/portfolio/vitavibe" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                                                <button onClick={() => setActiveModalUrl("/portfolio/vitavibe?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                                                     Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </Link>
+                                                </button>
                                             ) : testimonial.name === "Doug Miller" ? (
-                                                <Link to="/portfolio/desora" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                                                <button onClick={() => setActiveModalUrl("/portfolio/desora?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                                                     Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </Link>
+                                                </button>
                                             ) : (
-                                                <a href="#" className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                                                <button onClick={(e) => e.preventDefault()} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                                                     Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </a>
+                                                </button>
                                             )}
                                         </div>
 
@@ -180,6 +192,43 @@ export default function Testimonials() {
                         <CarouselNext className="absolute top-1/2 -translate-y-1/2" style={{ right: '-48px', left: 'auto' }} />
                     </div>
                 </Carousel>
+
+                {/* Modal Overlay */}
+                <div
+                    className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-500 flex justify-center items-end md:items-center ${
+                        activeModalUrl ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    }`}
+                    onClick={() => setActiveModalUrl(null)}
+                >
+                    {/* Modal Content - bottom up animation */}
+                    <div 
+                        className={`relative w-full md:w-[90%] lg:w-[80%] h-[95vh] md:h-[90vh] bg-background rounded-t-[32px] md:rounded-[32px] shadow-2xl transition-transform duration-500 flex flex-col ${
+                            activeModalUrl ? "translate-y-0 md:scale-100" : "translate-y-full md:translate-y-12 md:scale-95"
+                        }`}
+                        onClick={e => e.stopPropagation()}
+                    >
+                        {/* Header Area with Close X Icon */}
+                        <div className="absolute top-4 right-4 z-[110] md:top-6 md:right-6 mix-blend-difference text-white border-white">
+                            <button
+                                onClick={() => setActiveModalUrl(null)}
+                                className="p-2.5 bg-black/30 hover:bg-black/60 backdrop-blur-md border border-white/20 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95"
+                                aria-label="Close modal"
+                            >
+                                <X className="h-5 w-5" />
+                            </button>
+                        </div>
+
+                        {/* Iframe for Content */}
+                        {activeModalUrl && (
+                            <iframe 
+                                src={activeModalUrl} 
+                                className="w-full h-full border-none rounded-t-[32px] md:rounded-[32px]"
+                                title="Story Modal"
+                            />
+                        )}
+                    </div>
+                </div>
+
             </div>
         </section>
     )

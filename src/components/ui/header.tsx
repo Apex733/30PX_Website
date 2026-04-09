@@ -37,6 +37,9 @@ export function Header() {
         setIsMobileMenuOpen(false);
     }, []);
 
+    const isModal = typeof window !== 'undefined' && window.location.search.includes('modal=true');
+    if (isModal) return null;
+
     return (
         <header
             className={cn(

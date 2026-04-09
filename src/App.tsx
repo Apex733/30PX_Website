@@ -16,6 +16,8 @@ const FAQs = lazy(() => import("@/pages/FAQs"));
 const AboutUs = lazy(() => import("@/pages/AboutUs"));
 
 function App() {
+    const isModal = typeof window !== 'undefined' && window.location.search.includes('modal=true');
+
     return (
         <SharedScrollProvider>
             <ScrollToTop />
@@ -38,7 +40,9 @@ function App() {
                 </Routes>
             </Suspense>
             {/* Added subtle bottom chin blur to the whole website */}
-            <div className="fixed bottom-0 left-0 w-full h-24 pointer-events-none z-50 backdrop-blur-md [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
+            {!isModal && (
+                <div className="fixed bottom-0 left-0 w-full h-24 pointer-events-none z-50 backdrop-blur-md [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
+            )}
         </SharedScrollProvider>
     );
 }

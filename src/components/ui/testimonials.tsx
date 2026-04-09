@@ -202,16 +202,16 @@ export default function Testimonials() {
                 >
                     {/* Modal Content - bottom up animation */}
                     <div 
-                        className={`relative w-full md:w-[90%] lg:w-[80%] h-[95vh] md:h-[90vh] bg-background rounded-t-[32px] md:rounded-[32px] shadow-2xl transition-transform duration-500 flex flex-col ${
+                        className={`relative w-full md:w-[90%] lg:w-[80%] h-[95vh] md:h-[90vh] bg-background rounded-t-[5px] md:rounded-[5px] shadow-2xl transition-transform duration-500 flex flex-col ${
                             activeModalUrl ? "translate-y-0 md:scale-100" : "translate-y-full md:translate-y-12 md:scale-95"
                         }`}
                         onClick={e => e.stopPropagation()}
                     >
                         {/* Header Area with Close X Icon */}
-                        <div className="absolute top-4 right-4 z-[110] md:top-6 md:right-6 mix-blend-difference text-white border-white">
+                        <div className="absolute top-4 right-4 z-[110] md:top-6 md:right-6">
                             <button
                                 onClick={() => setActiveModalUrl(null)}
-                                className="p-2.5 bg-black/30 hover:bg-black/60 backdrop-blur-md border border-white/20 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95"
+                                className="p-2 bg-white text-black hover:bg-black hover:text-white shadow-lg transition-colors hover:scale-105 active:scale-95 rounded-full flex items-center justify-center cursor-pointer"
                                 aria-label="Close modal"
                             >
                                 <X className="h-5 w-5" />
@@ -222,7 +222,7 @@ export default function Testimonials() {
                         {activeModalUrl && (
                             <iframe 
                                 src={activeModalUrl} 
-                                className="w-full h-full border-none rounded-t-[32px] md:rounded-[32px]"
+                                className="w-full h-full border-none rounded-t-[5px] md:rounded-[5px]"
                                 title="Story Modal"
                             />
                         )}

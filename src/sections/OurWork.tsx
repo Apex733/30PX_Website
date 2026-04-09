@@ -1,5 +1,5 @@
-import { SectionHeading } from "@/components/ui/section-heading"
-import { useState } from "react";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { useState, useEffect } from "react";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { cn } from "@/lib/utils";
 
@@ -53,6 +53,14 @@ function getImagesByCategory(categoryId: string): { src: string; name: string; t
 
 export function OurWork() {
     const [activeCategory, setActiveCategory] = useState<string>("3D");
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const images = getImagesByCategory(activeCategory);
 
     // Helper to check if a category has content
@@ -65,7 +73,11 @@ export function OurWork() {
     images.forEach((item, i) => {
         cols[i % 3].push(item);
     });
-    const [col1, col2, col3] = cols;
+    
+    // For mobile, all images go to col1. Desktop splits into 3 columns.
+    const col1 = isMobile ? images : cols[0];
+    const col2 = isMobile ? [] : cols[1];
+    const col3 = isMobile ? [] : cols[2];
 
     // Internal component to render media correctly without duplicating code
     const MediaItem = ({ item }: { item: typeof images[0] }) => (

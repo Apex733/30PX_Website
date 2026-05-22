@@ -67,6 +67,16 @@
     }
 }
 
+@layer components {
+    .website-pill {
+        @apply inline-flex w-fit items-center justify-center rounded-md bg-primary/10 px-3 py-1 text-sm font-semibold text-primary transition-colors;
+    }
+
+    .portfolio-card-reveal {
+        @apply absolute left-4 right-4 bottom-4 translate-y-[150%] opacity-0 blur-md group-hover:translate-y-0 group-hover:opacity-100 group-hover:blur-0 transition-all duration-700 group-hover:duration-300 ease-out z-10;
+    }
+}
+
 @layer base {
     * {
         @apply border-border;
@@ -116,19 +126,108 @@
     }
 }
 
-/* Liquid ripple effect for buttons */
-@keyframes btn-ripple-expand {
+
+.ai-flow-item {
+    will-change: transform, opacity;
+}
+
+.ai-flow-item-in {
+    animation: ai-flow-in 4.25s linear infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.ai-flow-item-in-once {
+    animation: ai-flow-in 4s linear forwards;
+}
+
+.ai-flow-item-out {
+    animation: ai-flow-out 12s linear infinite;
+    animation-delay: var(--delay, 0s);
+    animation-fill-mode: backwards;
+}
+
+.ai-flow-logo-pop {
+    animation: ai-logo-pop 12s cubic-bezier(0.2, 0.9, 0.2, 1) infinite;
+    transform-origin: center;
+    will-change: transform;
+}
+
+@keyframes ai-flow-in {
     0% {
-        transform: scale(0);
-        opacity: 0.15;
+        transform: translateX(-10%) scale(0.94);
+        opacity: 0;
     }
 
-    50% {
-        opacity: 0.1;
+    10% {
+        opacity: 1;
+    }
+
+    78% {
+        opacity: 1;
     }
 
     100% {
-        transform: scale(1);
+        transform: translateX(var(--travel, 280px)) scale(1);
         opacity: 0;
+    }
+}
+
+@keyframes ai-flow-out {
+    0% {
+        transform: translate(calc(var(--travel, 220px) * -0.08), var(--flow-y, 0)) scale(0.94);
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    30% {
+        transform: translate(var(--travel, 220px), var(--flow-y, 0)) scale(1);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(var(--travel, 220px), var(--flow-y, 0)) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes ai-logo-pop {
+    0%,
+    6%,
+    25%,
+    31%,
+    50%,
+    56%,
+    75%,
+    81%,
+    100% {
+        transform: scale(1);
+    }
+
+    2.5%,
+    27.5%,
+    52.5%,
+    77.5% {
+        transform: scale(1.12);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-flow-item-in,
+    .ai-flow-item-in-once,
+    .ai-flow-item-out,
+    .ai-flow-logo-pop {
+        animation: none !important;
+    }
+
+    .ai-flow-item {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }

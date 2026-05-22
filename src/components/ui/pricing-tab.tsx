@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
+import { ButtonLabel } from "@/components/ui/button-label"
 
 interface TabProps {
     text: string
@@ -23,12 +24,14 @@ export function Tab({
         <button
             onClick={() => setSelected(text)}
             className={cn(
-                "relative w-fit px-4 py-2 text-sm font-semibold capitalize",
+                "group/button relative w-fit px-4 py-2 text-sm font-semibold capitalize",
                 "text-foreground transition-colors",
                 discount && "flex items-center justify-center gap-2.5"
             )}
         >
-            <span className="relative z-10">{text}</span>
+            <span className="relative z-10">
+                <ButtonLabel>{text}</ButtonLabel>
+            </span>
             {selected && (
                 <motion.span
                     layoutId="tab"

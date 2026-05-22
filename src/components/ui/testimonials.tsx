@@ -2,8 +2,10 @@ import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
+import { StoryModal } from '@/components/ui/story-modal'
+import { ButtonLabel } from '@/components/ui/button-label'
 import {
     Carousel,
     CarouselContent,
@@ -13,7 +15,7 @@ import {
     type CarouselApi,
 } from '@/components/ui/carousel'
 import { Link } from 'react-router-dom'
-import { ArrowRight, X } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 const testimonials = [
     {
@@ -48,187 +50,166 @@ const testimonials = [
         initials: "DM",
         quote: "30PX did a fantastic job with my website social media integration! They have an excellent understanding of their craft and skill set.",
         impact: "Strategic Digital Progression"
+    },
+    {
+        name: "Sarah Jenkins",
+        role: "Startup Founder",
+        image: "https://i.pravatar.cc/150?img=1",
+        initials: "SJ",
+        quote: "Our entire product launch was transformed. Quality AI assets created a cohesive brand faster than anything we could have done traditionally.",
+        impact: "Exponential Speed to Market"
+    },
+    {
+        name: "David Chen",
+        role: "Creative Director",
+        image: "https://i.pravatar.cc/150?img=11",
+        initials: "DC",
+        quote: "The ability to generate tailored, high-fidelity mockups in a fraction of the time has completely changed how our agency pitches.",
+        impact: "Elevated Agency Pitches"
+    },
+    {
+        name: "Elena Ross",
+        role: "Marketing Head",
+        image: "https://i.pravatar.cc/150?img=5",
+        initials: "ER",
+        quote: "We've scaled our ad testing massively since adopting this AI-driven approach. The visual variation we get is stunning and highly converting.",
+        impact: "Scaled Ad Performance"
     }
 ]
 
 export default function Testimonials() {
-    const [api, setApi] = useState<CarouselApi>()
-    const [isHovered, setIsHovered] = useState(false)
-    const [activeModalUrl, setActiveModalUrl] = useState<string | null>(null)
+    const marqueeRef1 = useRef<HTMLDivElement>(null)
+    const marqueeRef2 = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        if (activeModalUrl) {
-            document.body.style.overflow = "hidden"
-        } else {
-            document.body.style.overflow = ""
-        }
-        return () => {
-            document.body.style.overflow = ""
-        }
-    }, [activeModalUrl])
-
-    useEffect(() => {
-        if (!api) {
-            return
-        }
-
-        if (isHovered) {
-            return
-        }
-
-        const interval = setInterval(() => {
-            api.scrollNext()
-        }, 3000)
-
-        return () => clearInterval(interval)
-    }, [api, isHovered])
+    const setPlaybackRate = (rate: number) => {
+        marqueeRef1.current?.getAnimations().forEach(a => a.playbackRate = rate)
+        marqueeRef2.current?.getAnimations().forEach(a => a.playbackRate = rate)
+    }
 
     return (
-        <section className="py-12 md:py-16 bg-background" id="reviews">
+        <section className="py-12 md:py-16 bg-background overflow-hidden" id="reviews">
+            <style>{`
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-100%); } 
+                }
+                .animate-marquee {
+                    animation: marquee 50s linear infinite;
+                }
+            `}</style>
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                     <div className="space-y-4 max-w-2xl">
                         <SectionHeading
                             badge="Customer stories"
-                            title="Trusted by Industry Leaders"
-                            description="Hear from the creative minds, producers, and entrepreneurs who trust 30PX to elevate their brand vision."
+                            title="Don't take our word for it."
+                            description="Hear from the producers, founders, and creative directors who switched to AI-powered design and never looked back."
                         />
                     </div>
-
-                    <div className="hidden md:flex gap-2">
-                        {/* Navigation will be handled by Carousel controls */}
-                        <Button variant="default" className="rounded-full">
-                            Read all stories <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                    </div>
                 </div>
+            </div>
 
-                <Carousel
-                    setApi={setApi}
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
-                    className="w-full"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                >
-                    <CarouselContent className="-ml-4">
-                        {testimonials.map((testimonial, index) => (
-                            <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 h-auto">
-                                <Card className="h-full flex flex-col justify-between overflow-hidden border-border/50 bg-card hover:shadow-lg transition-shadow duration-300 rounded-[5px]">
-                                    {/* Top Section */}
-                                    <div className="p-8 space-y-6 flex-1">
-                                        <div className="flex justify-between items-start">
-                                            <div className="flex items-center gap-3">
-                                                <Avatar className="h-10 w-10">
-                                                    <AvatarImage
-                                                        src={testimonial.image}
-                                                        alt={testimonial.name}
-                                                        className={testimonial.isLogo ? "object-contain p-1" : "object-cover"}
-                                                    />
-                                                    <AvatarFallback>{testimonial.initials}</AvatarFallback>
-                                                </Avatar>
-                                            </div>
-
-                                            {testimonial.name === "Mark C. Lawrence" ? (
-                                                <button onClick={() => setActiveModalUrl("/portfolio/loudminds?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                                                    Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </button>
-                                            ) : testimonial.name === "DJ Ravi Drums" ? (
-                                                <button onClick={() => setActiveModalUrl("/portfolio/ghosttongue?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                                                    Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </button>
-                                            ) : testimonial.name === "James" ? (
-                                                <button onClick={() => setActiveModalUrl("/portfolio/vitavibe?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                                                    Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </button>
-                                            ) : testimonial.name === "Doug Miller" ? (
-                                                <button onClick={() => setActiveModalUrl("/portfolio/desora?modal=true")} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                                                    Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </button>
-                                            ) : (
-                                                <button onClick={(e) => e.preventDefault()} className="flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                                                    Read Story <ArrowRight className="ml-1 h-3 w-3" />
-                                                </button>
-                                            )}
-                                        </div>
-
-                                        <blockquote className="text-lg font-medium leading-relaxed">
-                                            "{testimonial.quote}"
-                                        </blockquote>
-
-                                        <div>
-                                            <cite className="not-italic text-sm font-semibold text-foreground">
-                                                {testimonial.name}
-                                            </cite>
-                                            <span className="block text-sm text-muted-foreground">
-                                                {testimonial.role}
-                                            </span>
+            <div 
+                className="flex overflow-hidden group"
+                onMouseEnter={() => setPlaybackRate(0.5)}
+                onMouseLeave={() => setPlaybackRate(1)}
+            >
+                <div ref={marqueeRef1} className="flex animate-marquee gap-6 pr-6 shrink-0 w-max">
+                    {testimonials.map((testimonial, index) => (
+                        <div key={index} className="w-[320px] md:w-[400px] shrink-0 h-auto">
+                            <Card className="h-full flex flex-col justify-between overflow-hidden border-border/50 bg-card transition-colors duration-300 rounded-[5px]">
+                                {/* Top Section */}
+                                <div className="p-8 flex flex-col flex-1">
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="flex items-center gap-3">
+                                            <Avatar className="h-10 w-10">
+                                                <AvatarImage
+                                                    src={testimonial.image}
+                                                    alt={testimonial.name}
+                                                    className={testimonial.isLogo ? "object-contain p-1" : "object-cover"}
+                                                />
+                                                <AvatarFallback>{testimonial.initials}</AvatarFallback>
+                                            </Avatar>
                                         </div>
                                     </div>
 
-                                    {/* Bottom "Metric" Section */}
-                                    <div className="bg-primary p-6 mt-auto">
-                                        <div className="flex items-center gap-3 text-primary-foreground">
-                                            <div className="p-1 bg-white/20 rounded-full">
-                                                <ArrowRight className="h-4 w-4 -rotate-45" />
-                                            </div>
-                                            <span className="font-semibold text-base md:text-lg">
-                                                {testimonial.impact}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <div className="flex justify-between mt-8 md:hidden px-4">
-                        <CarouselPrevious className="static translate-y-0" />
-                        <CarouselNext className="static translate-y-0" />
-                    </div>
-                    <div className="hidden md:block">
-                        <CarouselPrevious className="absolute top-1/2 -translate-y-1/2" style={{ left: '-48px', right: 'auto' }} />
-                        <CarouselNext className="absolute top-1/2 -translate-y-1/2" style={{ right: '-48px', left: 'auto' }} />
-                    </div>
-                </Carousel>
+                                    <blockquote className="text-lg font-medium leading-relaxed mb-6">
+                                        "{testimonial.quote}"
+                                    </blockquote>
 
-                {/* Modal Overlay */}
-                <div
-                    className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-500 flex justify-center items-end md:items-center ${
-                        activeModalUrl ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                    }`}
-                    onClick={() => setActiveModalUrl(null)}
-                >
-                    {/* Modal Content - bottom up animation */}
-                    <div 
-                        className={`relative w-full md:w-[95%] lg:w-[90%] h-[95vh] md:h-[90vh] bg-background rounded-t-[5px] md:rounded-[5px] shadow-2xl transition-transform duration-500 flex flex-col overflow-hidden ${
-                            activeModalUrl ? "translate-y-0 md:scale-100" : "translate-y-full md:translate-y-12 md:scale-95"
-                        }`}
-                        onClick={e => e.stopPropagation()}
-                    >
-                        {/* Header Area with Close X Icon */}
-                        <div className="absolute top-4 right-4 z-[110] md:top-6 md:right-6">
-                            <button
-                                onClick={() => setActiveModalUrl(null)}
-                                className="p-2 bg-white text-black hover:bg-black hover:text-white shadow-lg transition-colors hover:scale-105 active:scale-95 rounded-full flex items-center justify-center cursor-pointer"
-                                aria-label="Close modal"
-                            >
-                                <X className="h-5 w-5" />
-                            </button>
+                                    <div className="mt-auto">
+                                        <cite className="not-italic text-sm font-semibold text-foreground">
+                                            {testimonial.name}
+                                        </cite>
+                                        <span className="block text-sm text-muted-foreground">
+                                            {testimonial.role}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Bottom "Metric" Section */}
+                                <div className="bg-[#020817] p-6 mt-auto">
+                                    <div className="flex items-center gap-3 text-white">
+                                        <div className="p-1 bg-white/20 rounded-full">
+                                            <ArrowRight className="h-4 w-4 -rotate-45" />
+                                        </div>
+                                        <span className="font-semibold text-base md:text-lg">
+                                            {testimonial.impact}
+                                        </span>
+                                    </div>
+                                </div>
+                            </Card>
                         </div>
-
-                        {/* Iframe for Content */}
-                        {activeModalUrl && (
-                            <iframe 
-                                src={activeModalUrl} 
-                                className="w-full h-full border-none rounded-t-[5px] md:rounded-[5px]"
-                                title="Story Modal"
-                            />
-                        )}
-                    </div>
+                    ))}
                 </div>
+                <div ref={marqueeRef2} className="flex animate-marquee gap-6 pr-6 shrink-0 w-max" aria-hidden="true">
+                    {testimonials.map((testimonial, index) => (
+                        <div key={`copy-${index}`} className="w-[320px] md:w-[400px] shrink-0 h-auto">
+                            <Card className="h-full flex flex-col justify-between overflow-hidden border-border/50 bg-card transition-colors duration-300 rounded-[5px]">
+                                {/* Top Section */}
+                                <div className="p-8 flex flex-col flex-1">
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="flex items-center gap-3">
+                                            <Avatar className="h-10 w-10">
+                                                <AvatarImage
+                                                    src={testimonial.image}
+                                                    alt={testimonial.name}
+                                                    className={testimonial.isLogo ? "object-contain p-1" : "object-cover"}
+                                                />
+                                                <AvatarFallback>{testimonial.initials}</AvatarFallback>
+                                            </Avatar>
+                                        </div>
+                                    </div>
 
+                                    <blockquote className="text-lg font-medium leading-relaxed mb-6">
+                                        "{testimonial.quote}"
+                                    </blockquote>
+
+                                    <div className="mt-auto">
+                                        <cite className="not-italic text-sm font-semibold text-foreground">
+                                            {testimonial.name}
+                                        </cite>
+                                        <span className="block text-sm text-muted-foreground">
+                                            {testimonial.role}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Bottom "Metric" Section */}
+                                <div className="bg-[#020817] p-6 mt-auto">
+                                    <div className="flex items-center gap-3 text-white">
+                                        <div className="p-1 bg-white/20 rounded-full">
+                                            <ArrowRight className="h-4 w-4 -rotate-45" />
+                                        </div>
+                                        <span className="font-semibold text-base md:text-lg">
+                                            {testimonial.impact}
+                                        </span>
+                                    </div>
+                                </div>
+                            </Card>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     )

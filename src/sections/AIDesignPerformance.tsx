@@ -13,20 +13,20 @@ export function AIDesignPerformance() {
                     <div className="flex flex-col gap-6">
                         <SectionHeading
                             badge="Efficiency"
-                            title={<>Tired of design fatigue? <span className="block text-primary mt-2">It's time to refresh your design production</span></>}
+                            title={<>Your competitors are already using AI. <span className="block text-primary mt-2">Are you keeping up?</span></>}
                             align="left"
                             className="mb-6"
                         />
 
                         <div className="space-y-4 text-lg text-muted-foreground">
                             <h3 className="font-semibold text-foreground text-xl">
-                                Designs lose effectiveness quickly.
+                                Fresh creative is not optional anymore.
                             </h3>
                             <p>
-                                If it's not your audience getting bored, it's the algorithm.
+                                Algorithms reward fresh content. Your audience craves it. The brands winning right now ship creative daily, not monthly.
                             </p>
                             <p>
-                                You know it has a direct impact on your ROI but tight deadlines, limited resources, and talent gaps make it hard to keep up with the demand for compelling creative. That's what 30PX is for.
+                                We pair experienced designers with enterprise-grade AI. Claude for strategy, Midjourney for visuals, Sora for video. You get agency-quality output at a pace and price that actually make sense.
                             </p>
                         </div>
                     </div>

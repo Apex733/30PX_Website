@@ -18,7 +18,14 @@ const EXTENSIONS = ['.png', '.jpg', '.jpeg'];
 const MAX_WIDTH = 800;
 const QUALITY = 80;
 
+function isAppleMetadataFile(fileName) {
+    const baseName = path.basename(fileName);
+    return baseName === '.DS_Store' || baseName.startsWith('._');
+}
+
 async function convertIfNeeded(filePath) {
+    if (isAppleMetadataFile(filePath)) return;
+
     const ext = path.extname(filePath).toLowerCase();
     if (!EXTENSIONS.includes(ext)) return;
 
@@ -63,6 +70,7 @@ async function scanDir(dirPath) {
     try {
         const entries = await readdir(dirPath, { withFileTypes: true });
         for (const entry of entries) {
+            if (isAppleMetadataFile(entry.name)) continue;
             const fullPath = path.join(dirPath, entry.name);
             if (entry.isDirectory()) {
                 await scanDir(fullPath);
@@ -96,6 +104,7 @@ export default function autoWebpPlugin() {
                 try {
                     const watcher = watch(dirPath, { recursive: true }, (event, filename) => {
                         if (event === 'rename' && filename) {
+                            if (isAppleMetadataFile(filename)) return;
                             const ext = path.extname(filename).toLowerCase();
                             if (EXTENSIONS.includes(ext)) {
                                 const fullPath = path.resolve(dirPath, filename);

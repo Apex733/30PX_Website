@@ -1,109 +1,73 @@
+import { CaseStudyTemplate, type CaseStudyData } from "@/components/CaseStudyTemplate";
 
-import React from 'react';
-import { Header } from "@/components/ui/header";
-import { SEO } from "@/components/SEO";
-import { Footer } from "@/components/ui/footer-section";
-import { JourneyTimeline } from "@/sections/JourneyTimeline";
-
-const IMAGES = [
-    "/portfolio/loudminds/projects-mokcup.webp",
-    "/portfolio/loudminds/1.webp",
-    "/portfolio/loudminds/2.webp",
-    "/portfolio/loudminds/4.webp",
-    "/portfolio/loudminds/6.webp",
-    "/portfolio/loudminds/7.webp",
-    "/portfolio/loudminds/8.webp",
-    "/portfolio/loudminds/11.webp",
-    "/portfolio/loudminds/22.webp",
-    "/portfolio/loudminds/33.webp",
-    "/portfolio/loudminds/44.webp",
-];
-
-const LoudMindsPortfolio = () => {
-    return (
-        <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10 flex flex-col">
-            <SEO
-                title="LoudMinds Portfolio"
-                description="Explore our complete rebrand and digital transformation for a cutting-edge creative agency, LoudMinds."
-                image="https://thirtypixels.com/portfolio/loudminds/projects-mokcup.webp"
-            />
-            <Header />
-
-            <main className="flex-grow pt-32 pb-16">
-                <div className="container mx-auto px-4 max-w-7xl space-y-24">
-                    {/* Hero Section */}
-                    <div className="text-center space-y-6 max-w-4xl mx-auto">
-                        <span className="website-pill">Portfolio</span>
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-950 dark:text-white">
-                            LoudMinds<span className="text-[#7C3AED]">.</span>
-                        </h1>
-                        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                            A complete rebrand and digital transformation for a cutting-edge creative agency.
-                        </p>
-                    </div>
-
-                    {/* Content Sections */}
-                    <div className="grid md:grid-cols-2 gap-12 md:gap-24">
-                        <div className="space-y-6">
-                            <h2 className="text-2xl font-bold border-l-4 border-[#7C3AED] pl-4">About the Project</h2>
-                            <p className="text-lg text-muted-foreground leading-relaxed">
-                                LoudMinds approached us with a challenge: their visual identity felt outdated and didn't reflect the rebellious, innovative spirit of their team. They needed a brand that could speak louder than words.
-                            </p>
-                            <p className="text-lg text-muted-foreground leading-relaxed">
-                                We stripped everything back to the core message and built a visual language that is bold, unapologetic, and impossible to ignore. From the logo to the web experience, every touchpoint screams creativity.
-                            </p>
-                        </div>
-                        <div className="space-y-6">
-                            <h2 className="text-2xl font-bold border-l-4 border-[#7C3AED] pl-4">Project Deliverables</h2>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {[
-                                    "Brand Identity System",
-                                    "Logo Design & Usage",
-                                    "Website Design & Dev",
-                                    "Social Media Assets",
-                                    "Brand Guidelines",
-                                    "Pitch Deck Templates",
-                                    "Business Cards",
-                                    "Merchandise Design"
-                                ].map((item, index) => (
-                                    <li key={index} className="flex items-center gap-3 text-lg text-muted-foreground bg-secondary/30 p-3 rounded-lg">
-                                        <div className="h-2 w-2 rounded-full bg-[#7C3AED]" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Bento Grid Gallery */}
-                    <div className="space-y-12">
-                        <div className="text-center">
-                            <h2 className="text-3xl font-bold tracking-tight mb-4">Visual Gallery</h2>
-                            <p className="text-muted-foreground">A curated selection of the work we produced.</p>
-                        </div>
-
-                        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                            {IMAGES.map((src, index) => (
-                                <div key={index} className="break-inside-avoid relative overflow-hidden rounded-[14px] group mb-6">
-                                    <img
-                                        src={src}
-                                        alt={`LoudMinds Work ${index + 1}`}
-                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            {/* Your Journey Section */}
-            <JourneyTimeline />
-
-            <Footer />
-        </div>
-    );
+/*
+AI CODER NOTE:
+This page is assembled through CaseStudyTemplate. Read its CASE STUDY MEDIA
+LAYOUT CONTRACT before adding or duplicating media. Keep heroImage wide, and
+set aspectRatio on every body media so the template can split wide rows from
+portrait/square grids.
+*/
+const DATA: CaseStudyData = {
+    seoTitle: "LoudMinds | Complete Branding",
+    seoDescription: "A complete identity system and visual rollout for LoudMinds.",
+    seoImage: "https://thirtypixels.com/portfolio/loudminds/2.webp",
+    heroImage: "/portfolio/loudminds/2.webp",
+    projectName: "LoudMinds",
+    description: "LoudMinds needed a brand that felt sharp, rebellious, and built for a creative team with a strong point of view. The work turned an outdated identity into a bold system that could carry the brand across digital, social, print, and merchandise.",
+    deliverables: [
+        "Brand identity system",
+        "Logo design and usage",
+        "Website design direction",
+        "Social media assets",
+        "Brand guidelines",
+        "Pitch deck templates",
+        "Business cards",
+        "Merchandise design"
+    ],
+    theProblem: "The old LoudMinds identity felt too quiet for the company behind it. The brand needed stronger recognition, clearer rules, and assets that matched the confidence of the team.",
+    ourSolution: "We rebuilt the visual language from the core message outward. The system uses bold marks, punchy layouts, and high-contrast applications so every touchpoint feels unmistakably LoudMinds.",
+    clientGain: "A complete brand kit that works across daily marketing, client-facing documents, merchandise, and digital presence, giving the team a clearer and louder way to show up.",
+    stats: [
+        { value: "11", label: "Brand Assets" },
+        { value: "8", label: "Deliverables" },
+        { value: "1", label: "Unified System" }
+    ],
+    images: [
+        { src: "/portfolio/loudminds/projects-mokcup.avif", aspectRatio: "4:5", description: "Brand mockup showing the refreshed LoudMinds identity in context." },
+        { src: "/portfolio/loudminds/1.webp", aspectRatio: "4:5", description: "Logo application with a direct, high-impact brand presence." },
+        { src: "/portfolio/loudminds/2.webp", aspectRatio: "16:9", description: "Identity detail designed to keep the brand sharp across small-format assets." },
+        { src: "/portfolio/loudminds/6.webp", aspectRatio: "1:1", description: "Brand application built for quick recognition in digital placements." },
+        { src: "/portfolio/loudminds/7.webp", aspectRatio: "1:1", description: "Graphic direction supporting a louder, more confident tone." },
+        { src: "/portfolio/loudminds/8.webp", aspectRatio: "1:1", description: "Supporting brand asset for social and presentation use." },
+        { src: "/portfolio/loudminds/11.webp", aspectRatio: "4:3", description: "Collateral concept extending the identity beyond the logo." },
+        { src: "/portfolio/loudminds/22.webp", aspectRatio: "wide", description: "Campaign-ready artwork with strong visual hierarchy." },
+        { src: "/portfolio/loudminds/33.webp", aspectRatio: "4:3", description: "Brand layout designed for repeated use across channels." },
+        { src: "/portfolio/loudminds/44.webp", aspectRatio: "wide", description: "Final identity application showing the system at work." }
+    ],
+    moreProjects: [
+        {
+            name: "GIGI Laurent | AI Campaign",
+            description: "AI-generated campaign visuals turning product-only assets into a full launch system.",
+            bgClass: "bg-gradient-to-br from-rose-100 to-cyan-100 dark:from-rose-950 dark:to-cyan-950",
+            image: "/portfolio/gigi-laurent/hero.webp",
+            href: "/portfolio/gigi-laurent"
+        },
+        {
+            name: "Mondly SaaS | AI Product Build",
+            description: "AI-assisted SaaS design and development for a polished dashboard product.",
+            bgClass: "bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-950 dark:to-emerald-950",
+            image: "/portfolio/mondly-saas/hero.avif",
+            href: "/portfolio/mondly-saas"
+        }
+    ],
+    accent: "#7C3AED",
+    accentClass: "border-[#7C3AED]/30",
+    cardClass: "bg-[#7C3AED]/10 border-[#7C3AED]/20",
+    statShadowClass: "shadow-violet-500/20",
+    visualsTitle: "Brand System in Use",
+    visualsDescription: "A closer look at the identity, collateral, and campaign assets delivered."
 };
+
+const LoudMindsPortfolio = () => <CaseStudyTemplate data={DATA} />;
 
 export default LoudMindsPortfolio;

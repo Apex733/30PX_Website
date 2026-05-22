@@ -14,9 +14,11 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Footer() {
     const isModal = typeof window !== 'undefined' && window.location.search.includes('modal=true');
+    const navigate = useNavigate();
     if (isModal) return null;
 
     // Footer link data
@@ -27,7 +29,7 @@ export function Footer() {
                 { label: "Features", href: "#services" },
                 { label: "Pricing", href: "#pricing" },
                 { label: "Testimonials", href: "#reviews" },
-                { label: "Integration", href: "/" },
+                { label: "Start a project", href: "/order" },
             ],
         },
         {
@@ -106,7 +108,7 @@ export function Footer() {
                         if (el) {
                             el.scrollIntoView({ behavior: "smooth", block: "start" });
                         } else {
-                            window.location.href = `/?scrollTo=${href.slice(1)}`;
+                            navigate(`/?scrollTo=${href.slice(1)}`);
                         }
                     }}
                     {...props}
@@ -120,9 +122,9 @@ export function Footer() {
         const resolvedHref = href;
 
         return (
-            <a href={resolvedHref} className={className} {...props}>
+            <Link to={resolvedHref} className={className} {...props}>
                 {children}
-            </a>
+            </Link>
         );
     };
 
@@ -139,7 +141,7 @@ export function Footer() {
                             <span className="text-white text-3xl font-bold">30PX</span>
                         </div>
                         <p className="text-sm leading-relaxed text-neutral-400">
-                            Unlimited design subscription service. Replace your expensive agency with a dedicated design team for a flat monthly fee.
+                            AI-powered design agency. Premium creative from veteran designers, accelerated by the best AI tools available. One flat monthly fee.
                         </p>
                     </div>
 
@@ -239,6 +241,41 @@ export function Footer() {
 
 
             <FooterBackgroundGradient />
+            
+            <div className="max-w-7xl mx-auto px-4 md:px-12 w-full relative z-40 pt-2 pb-16 pointer-events-none">
+                <style>{`
+                    @keyframes letter-pulse {
+                        0%, 100% { 
+                            opacity: 0.3; 
+                            transform: scale(0.95); 
+                            filter: blur(2px);
+                        }
+                        50% { 
+                            opacity: 1; 
+                            transform: scale(1.05); 
+                            filter: blur(0px);
+                            text-shadow: 
+                                0 0 20px rgba(60, 162, 250, 0.8),   /* Brand Blue inner glow */
+                                0 0 40px rgba(139, 92, 246, 0.6),   /* Purple mid glow */
+                                0 0 60px rgba(139, 92, 246, 0.4);   /* Purple outer aura */
+                        }
+                    }
+                `}</style>
+                <div className="w-full flex justify-between font-black text-white leading-none tracking-tighter uppercase whitespace-nowrap text-[13vw] xl:text-[160px]">
+                    {"30PIXELS".split("").map((char, index) => (
+                        <span
+                            key={index}
+                            style={{ 
+                                animation: "letter-pulse 2.5s ease-in-out infinite",
+                                animationDelay: `${index * 0.15}s`,
+                                display: "inline-block"
+                            }}
+                        >
+                            {char}
+                        </span>
+                    ))}
+                </div>
+            </div>
         </footer>
     );
 }

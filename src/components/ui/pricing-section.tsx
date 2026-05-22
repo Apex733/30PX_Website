@@ -88,7 +88,7 @@ export function PricingSection({
             </div>
 
             {/* Adjust grid layout dynamically: 4 columns for regular, 2 columns for professional */}
-            <div className={cn("grid w-full max-w-7xl gap-6 grid-cols-1 md:grid-cols-2", !isHireProfessional && "lg:grid-cols-4", isHireProfessional && "max-w-4xl mx-auto")}>
+            <div className={cn("grid w-full max-w-7xl auto-rows-fr items-stretch gap-6 grid-cols-1 md:grid-cols-2", !isHireProfessional && "lg:grid-cols-4", isHireProfessional && "max-w-4xl mx-auto")}>
                 {currentTiers.map((tier) => (
                     <PricingCard
                         key={tier.name}

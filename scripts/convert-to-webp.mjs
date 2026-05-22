@@ -27,11 +27,17 @@ const EXTENSIONS = ['.png', '.jpg', '.jpeg'];
 const DRY_RUN = process.argv.includes('--dry');
 // ----------------------------------------
 
+function isAppleMetadataFile(fileName) {
+    const baseName = path.basename(fileName);
+    return baseName === '.DS_Store' || baseName.startsWith('._');
+}
+
 async function findImages(dirPath) {
     const results = [];
     try {
         const entries = await readdir(dirPath, { withFileTypes: true });
         for (const entry of entries) {
+            if (isAppleMetadataFile(entry.name)) continue;
             const fullPath = path.join(dirPath, entry.name);
             if (entry.isDirectory()) {
                 results.push(...await findImages(fullPath));

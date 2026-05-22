@@ -7,6 +7,7 @@ interface SEOProps {
     type?: 'website' | 'article';
     name?: string;
     image?: string;
+    imageAlt?: string;
     canonicalUrl?: string;
     keywords?: string;
     noindex?: boolean;
@@ -20,50 +21,53 @@ export function SEO({
     type = 'website',
     name = '30PX',
     image = 'https://thirtypixels.com/30px-logo.webp',
+    imageAlt,
     canonicalUrl,
     keywords,
     noindex = false,
 }: SEOProps) {
     const location = useLocation();
+    const fullTitle = title.includes('30PX') ? title : `${title} | 30PX - Thirty Pixels Agency`;
+    const normalizedPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, '');
 
-    // Ensure the title includes the brand name for better branding in SERPs
-    const fullTitle = title.includes('30PX') ? title : `${title} | 30PX — Thirty Pixels Agency`;
+    const toAbsoluteUrl = (value: string) => {
+        if (/^https?:\/\//i.test(value)) return value;
+        return `${BASE_URL}${value.startsWith('/') ? value : `/${value}`}`;
+    };
 
-    // Auto-generate canonical URL from current route if not explicitly provided
-    const canonical = canonicalUrl || `${BASE_URL}${location.pathname === '/' ? '/' : location.pathname}`;
+    const canonical = canonicalUrl ? toAbsoluteUrl(canonicalUrl) : `${BASE_URL}${normalizedPath}`;
+    const absoluteImage = toAbsoluteUrl(image);
+    const socialImageAlt = imageAlt || fullTitle;
+    const robots = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
 
-    // Default keywords that should always be present
     const defaultKeywords = '30PX, Thirty Pixels Agency, AI 30PX, unlimited design subscription, AI design agency';
     const allKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
 
     return (
         <Helmet>
-            {/* Standard metadata tags */}
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
             <meta name="keywords" content={allKeywords} />
-
-            {/* Canonical URL — critical for avoiding duplicate content */}
             <link rel="canonical" href={canonical} />
+            <meta name="robots" content={robots} />
+            <meta name="googlebot" content={robots} />
 
-            {/* Robots directive */}
-            <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-
-            {/* Open Graph tags for Facebook, LinkedIn, etc. */}
             <meta property="og:type" content={type} />
             <meta property="og:title" content={fullTitle} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={image} />
+            <meta property="og:image" content={absoluteImage} />
+            <meta property="og:image:alt" content={socialImageAlt} />
             <meta property="og:url" content={canonical} />
             <meta property="og:site_name" content={name} />
             <meta property="og:locale" content="en_US" />
 
-            {/* Twitter Card tags */}
+            <meta name="twitter:site" content="@30px" />
             <meta name="twitter:creator" content="@30px" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={fullTitle} />
             <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={image} />
+            <meta name="twitter:image" content={absoluteImage} />
+            <meta name="twitter:image:alt" content={socialImageAlt} />
         </Helmet>
     );
 }

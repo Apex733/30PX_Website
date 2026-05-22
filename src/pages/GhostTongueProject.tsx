@@ -1,107 +1,70 @@
+import { CaseStudyTemplate, type CaseStudyData } from "@/components/CaseStudyTemplate";
 
-import React from 'react';
-import { Header } from "@/components/ui/header";
-import { SEO } from "@/components/SEO";
-import { Footer } from "@/components/ui/footer-section";
-import { JourneyTimeline } from "@/sections/JourneyTimeline";
-
-const IMAGES = [
-    "/portfolio/ghosttongue/ghost-tongue-logo3.webp",
-    "/portfolio/ghosttongue/dsc04992.webp",
-    "/portfolio/ghosttongue/mockupp.webp",
-    "/portfolio/ghosttongue/post.webp",
-    "/portfolio/ghosttongue/wall-sticker.webp",
-    "/portfolio/ghosttongue/2b9b2cfb-2e46-4091-b84a-48c2920446e5.webp",
-    "/portfolio/ghosttongue/ghost-tongue-packing.webp",
-    "/portfolio/ghosttongue/ghost-tongue-sticker-var.webp",
-    "/portfolio/ghosttongue/ghost-tongue-logovar.webp",
-];
-
-const GhostTongueProject = () => {
-    return (
-        <div className="min-h-screen bg-white font-sans text-neutral-950 antialiased selection:bg-[#7C3AED]/10 flex flex-col">
-            <SEO
-                title="GhostTongue Portfolio"
-                description="Discover the sonic branding and visual identity we created for the next-gen audio production house, GhostTongue."
-                image="https://thirtypixels.com/portfolio/ghosttongue/ghost-tongue-logo3.webp"
-            />
-            <Header />
-
-            <main className="flex-grow pt-32 pb-16">
-                <div className="container mx-auto px-4 max-w-7xl space-y-24">
-                    {/* Hero Section */}
-                    <div className="text-center space-y-6 max-w-4xl mx-auto">
-                        <span className="website-pill">Portfolio</span>
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-950">
-                            GhostTongue<span className="text-[#7C3AED]">.</span>
-                        </h1>
-                        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                            Sonic branding and visual identity for a next-gen audio production house.
-                        </p>
-                    </div>
-
-                    {/* Content Sections */}
-                    <div className="grid md:grid-cols-2 gap-12 md:gap-24">
-                        <div className="space-y-6">
-                            <h2 className="text-2xl font-bold border-l-4 border-[#7C3AED] pl-4">About the Project</h2>
-                            <p className="text-lg text-muted-foreground leading-relaxed">
-                                GhostTongue needed a visual identity that matched their sonic signature: mysterious, impactful, and unforgettable. They wanted a brand that could visualize sound and resonate with a global audience of creators.
-                            </p>
-                            <p className="text-lg text-muted-foreground leading-relaxed">
-                                We developed a dynamic visual system inspired by waveforms and frequency spectrums, creating a look that feels as immersive as their audio productions.
-                            </p>
-                        </div>
-                        <div className="space-y-6">
-                            <h2 className="text-2xl font-bold border-l-4 border-[#7C3AED] pl-4">Project Deliverables</h2>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {[
-                                    "Sonic Branding Strategy",
-                                    "Visual Identity System",
-                                    "Website Design & Dev",
-                                    "Album Art Direction",
-                                    "Social Media Kit",
-                                    "Merch Design",
-                                    "Motion Graphics",
-                                    "Event Visuals"
-                                ].map((item, index) => (
-                                    <li key={index} className="flex items-center gap-3 text-lg text-muted-foreground bg-secondary/30 p-3 rounded-lg">
-                                        <div className="h-2 w-2 rounded-full bg-[#7C3AED]" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Bento Grid Gallery */}
-                    <div className="space-y-12">
-                        <div className="text-center">
-                            <h2 className="text-3xl font-bold tracking-tight mb-4">Visual Gallery</h2>
-                            <p className="text-muted-foreground">A curated selection of the work we produced.</p>
-                        </div>
-
-                        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                            {IMAGES.map((src, index) => (
-                                <div key={index} className="break-inside-avoid relative overflow-hidden rounded-[14px] group mb-6">
-                                    <img
-                                        src={src}
-                                        alt={`GhostTongue Work ${index + 1}`}
-                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            {/* Your Journey Section */}
-            <JourneyTimeline />
-
-            <Footer />
-        </div>
-    );
+/*
+AI CODER NOTE:
+This page is assembled through CaseStudyTemplate. Read its CASE STUDY MEDIA
+LAYOUT CONTRACT before adding or duplicating media. Keep heroImage wide, and
+set aspectRatio on every body media so the template can split wide rows from
+portrait/square grids.
+*/
+const DATA: CaseStudyData = {
+    seoTitle: "GhostTongue | Complete Branding",
+    seoDescription: "A visual identity system for GhostTongue, built around sound, mystery, and recognition.",
+    seoImage: "/portfolio/ghosttongue/hero.avif",
+    heroImage: "/portfolio/ghosttongue/hero.avif",
+    projectName: "GhostTongue",
+    description: "GhostTongue needed a visual identity that could make sound feel visible. The result is a dark, tactile brand world that feels mysterious, memorable, and ready for creators who care about atmosphere.",
+    deliverables: [
+        "Sonic brand direction",
+        "Visual identity system",
+        "Logo variations",
+        "Packaging design",
+        "Sticker design",
+        "Poster artwork",
+        "Merchandise assets",
+        "Brand applications"
+    ],
+    theProblem: "The brand had a strong audio idea, but it needed a visual system that could carry that intensity across packaging, posters, stickers, and social content.",
+    ourSolution: "We shaped a moody identity around contrast, texture, and bold marks. Each application was designed to make the brand feel like an audio signal you can see and remember.",
+    clientGain: "A complete visual toolkit that gives GhostTongue a recognizable presence across physical collateral, promotional drops, and creator-facing content.",
+    stats: [
+        { value: "9", label: "Visual Assets" },
+        { value: "4", label: "Brand Formats" },
+        { value: "1", label: "Distinct Voice" }
+    ],
+    images: [
+        { src: "/portfolio/ghosttongue/ghost-tongue-sticker-var.webp", aspectRatio: "wide", description: "Sticker variation for merchandise and street-level brand touchpoints." },
+        { src: "/portfolio/ghosttongue/ghost-tongue-logovar.webp", aspectRatio: "wide", description: "Logo variation expanding the identity across formats." },
+        { src: "/portfolio/ghosttongue/dsc04992.avif", aspectRatio: "wide", description: "Atmospheric brand photography extending the visual world." },
+        { src: "/portfolio/ghosttongue/post.avif", aspectRatio: "1:1", description: "Poster-style artwork designed for campaign and social use." },
+        { src: "/portfolio/ghosttongue/wall-sticker.avif", aspectRatio: "4:5", description: "Environmental brand application for a strong physical presence." },
+        { src: "/portfolio/ghosttongue/2b9b2cfb-2e46-4091-b84a-48c2920446e5.webp", aspectRatio: "1:1", description: "Supporting visual asset for the brand system." },
+        { src: "/portfolio/ghosttongue/ghost-tongue-packing.webp", aspectRatio: "2:3", description: "Packaging concept built around dark contrast and tactile detail." }
+    ],
+    moreProjects: [
+        {
+            name: "GIGI Laurent | AI Campaign",
+            description: "AI-generated campaign visuals turning product-only assets into a full launch system.",
+            bgClass: "bg-gradient-to-br from-rose-100 to-cyan-100 dark:from-rose-950 dark:to-cyan-950",
+            image: "/portfolio/gigi-laurent/hero.webp",
+            href: "/portfolio/gigi-laurent"
+        },
+        {
+            name: "Mondly SaaS | AI Product Build",
+            description: "AI-assisted SaaS design and development for a polished dashboard product.",
+            bgClass: "bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-950 dark:to-emerald-950",
+            image: "/portfolio/mondly-saas/hero.avif",
+            href: "/portfolio/mondly-saas"
+        }
+    ],
+    accent: "#10B981",
+    accentClass: "border-emerald-500/30",
+    cardClass: "bg-emerald-500/10 border-emerald-500/20",
+    statShadowClass: "shadow-emerald-500/20",
+    visualsTitle: "Identity Across Touchpoints",
+    visualsDescription: "A closer look at the visual system, packaging, posters, and brand applications."
 };
+
+const GhostTongueProject = () => <CaseStudyTemplate data={DATA} />;
 
 export default GhostTongueProject;

@@ -7,8 +7,8 @@ export function Industries() {
             <div className="container mx-auto mb-12">
                 <SectionHeading
                     badge="Industries"
-                    title="Designed for every industry."
-                    description="We've delivered 500+ projects across every sector."
+                    title="We've shipped work across every industry."
+                    description="500+ projects delivered. From SaaS startups to established brands, our AI-assisted workflow adapts to any vertical."
                     align="center"
                 />
             </div>

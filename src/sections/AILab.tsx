@@ -1,305 +1,455 @@
 import React from 'react';
 import {
-    Upload,
-    Cpu,
-    Sparkles,
-    CheckCircle2,
-    Video,
-    Image as ImageIcon,
     ArrowRight,
-    FileImage,
-    Maximize,
-    HardDrive,
-    Palette,
-    Loader2,
-    Download
+    FileText,
+    Image,
+    Link2,
+    MessageSquare,
+    Mic,
+    Video,
+    type LucideIcon,
 } from 'lucide-react';
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+
+type IncomingItem = {
+    id: string;
+    label: string;
+    meta: string;
+    icon: LucideIcon;
+    widthClass: string;
+};
+
+type IncomingFlowStep = {
+    itemId: IncomingItem['id'];
+    top: string;
+    travel: string;
+};
+
+type ActiveIncomingCard = {
+    instanceId: number;
+    item: IncomingItem;
+    top: string;
+    travel: string;
+};
+
+type OutgoingItem = {
+    id: string;
+    description: string;
+    owner: string;
+    surfaceClass: string;
+    top: string;
+    delay: string;
+    travel: string;
+    widthClass: string;
+};
+
+const incomingItems: IncomingItem[] = [
+    {
+        id: 'links',
+        label: 'Link dump',
+        meta: 'Drive, Loom, Pinterest, old site, one broken URL',
+        icon: Link2,
+        widthClass: 'w-[244px]',
+    },
+    {
+        id: 'voice-note',
+        label: 'Audio note 2:13',
+        meta: 'Rushed feedback, context jumps, "maybe like this"',
+        icon: Mic,
+        widthClass: 'w-[252px]',
+    },
+    {
+        id: 'video',
+        label: 'Video walkthrough',
+        meta: 'Screen recording, loose examples, changing ideas',
+        icon: Video,
+        widthClass: 'w-[256px]',
+    },
+    {
+        id: 'screens',
+        label: 'Image folder',
+        meta: 'Screenshots, inspo refs, marked-up scraps, duplicates',
+        icon: Image,
+        widthClass: 'w-[256px]',
+    },
+    {
+        id: 'notes',
+        label: 'Text doc + PDF',
+        meta: 'Half brief, pasted copy, edits, unfinished lines',
+        icon: FileText,
+        widthClass: 'w-[250px]',
+    },
+    {
+        id: 'messages',
+        label: 'Client messages',
+        meta: 'Late replies, new asks, shifting priorities',
+        icon: MessageSquare,
+        widthClass: 'w-[258px]',
+    },
+];
+
+const incomingFlowSequence: IncomingFlowStep[] = [
+    {
+        itemId: 'links',
+        top: '14%',
+        travel: 'clamp(185px, 20vw, 320px)',
+    },
+    {
+        itemId: 'voice-note',
+        top: '42%',
+        travel: 'clamp(205px, 22vw, 340px)',
+    },
+    {
+        itemId: 'video',
+        top: '70%',
+        travel: 'clamp(220px, 23vw, 360px)',
+    },
+    {
+        itemId: 'screens',
+        top: '14%',
+        travel: 'clamp(195px, 21vw, 330px)',
+    },
+    {
+        itemId: 'notes',
+        top: '42%',
+        travel: 'clamp(225px, 24vw, 370px)',
+    },
+    {
+        itemId: 'messages',
+        top: '70%',
+        travel: 'clamp(180px, 19vw, 305px)',
+    },
+];
+
+const incomingFlowDurationMs = 4000;
+const incomingFlowCadenceMs = 1400;
+
+const outgoingItems: OutgoingItem[] = [
+    {
+        id: 'brand-card',
+        description: 'Brand notes become a clear creative direction.',
+        owner: 'Designer',
+        surfaceClass: 'bg-[#edf3ff] border-[#c8d7ff]',
+        top: '50%',
+        delay: '0s',
+        travel: 'clamp(170px, 18vw, 280px)',
+        widthClass: 'w-[250px]',
+    },
+    {
+        id: 'landing-card',
+        description: 'Landing notes become a ready-to-build block.',
+        owner: 'Developer',
+        surfaceClass: 'bg-[#f4efff] border-[#ddd1ff]',
+        top: '50%',
+        delay: '3s',
+        travel: 'clamp(170px, 18vw, 280px)',
+        widthClass: 'w-[252px]',
+    },
+    {
+        id: 'social-pack',
+        description: 'Mixed campaign files become a clean social pack.',
+        owner: 'Marketer',
+        surfaceClass: 'bg-[#edf8ff] border-[#c9e8ff]',
+        top: '50%',
+        delay: '6s',
+        travel: 'clamp(170px, 18vw, 280px)',
+        widthClass: 'w-[252px]',
+    },
+    {
+        id: 'motion-ready',
+        description: 'Visual references become a motion-ready handoff.',
+        owner: 'Editor',
+        surfaceClass: 'bg-[#eff6ff] border-[#d4e2ff]',
+        top: '50%',
+        delay: '9s',
+        travel: 'clamp(170px, 18vw, 280px)',
+        widthClass: 'w-[252px]',
+    },
+];
+
+function IncomingChip({
+    item,
+    className,
+    style,
+}: {
+    item: IncomingItem;
+    className?: string;
+    style?: React.CSSProperties;
+}) {
+    const Icon = item.icon;
+
+    return (
+        <div
+            className={cn(
+                "flex items-center gap-3 rounded-[5px] border border-slate-200/80 bg-white px-4 py-3",
+                item.widthClass,
+                className
+            )}
+            style={style}
+        >
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#1f3a8a]/8 text-[#1f3a8a]">
+                <Icon size={18} />
+            </div>
+            <div className="min-w-0">
+                <p className="text-sm font-semibold text-slate-900">{item.label}</p>
+                <p className="text-xs text-slate-500">{item.meta}</p>
+            </div>
+        </div>
+    );
+}
+
+function OutgoingChip({
+    item,
+    className,
+    animated = false,
+}: {
+    item: OutgoingItem;
+    className?: string;
+    animated?: boolean;
+}) {
+    return (
+        <div
+            className={cn(
+                "relative",
+                item.widthClass,
+                animated && "ai-flow-item ai-flow-item-out absolute left-0",
+                className
+            )}
+            style={
+                animated
+                    ? ({
+                        top: item.top,
+                        '--delay': item.delay,
+                        '--travel': item.travel,
+                        '--flow-y': '-50%',
+                    } as React.CSSProperties)
+                    : undefined
+            }
+        >
+            <div
+                className={cn(
+                    "rounded-[5px] border px-4 py-3",
+                    item.surfaceClass
+                )}
+            >
+                <p className="text-[11px] font-semibold text-[#1f3a8a]">Task Created</p>
+                <p className="mt-2 text-sm leading-5 text-slate-700">{item.description}</p>
+                <span className="mt-3 inline-flex rounded-full bg-[#1f3a8a] px-3 py-1.5 text-[10px] font-semibold text-white">
+                    {item.owner} Hand Off Document
+                </span>
+            </div>
+        </div>
+    );
+}
 
 export function AILab() {
-    return (
-        <section className="py-12 md:py-16 bg-background overflow-hidden" id="ai-lab">
-            <div className="container mx-auto px-4 md:px-12 flex flex-col items-center justify-center">
+    const [isDesktopViewport, setIsDesktopViewport] = React.useState(() =>
+        typeof window === 'undefined' ? false : window.innerWidth >= 1280
+    );
+    const [activeIncomingCards, setActiveIncomingCards] = React.useState<ActiveIncomingCard[]>([]);
 
-                {/* Title Section */}
-                <div className="text-center mb-16 max-w-2xl mx-auto">
+    React.useEffect(() => {
+        const handleResize = () => {
+            setIsDesktopViewport(window.innerWidth >= 1280);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    React.useEffect(() => {
+        if (!isDesktopViewport) {
+            setActiveIncomingCards([]);
+            return;
+        }
+
+        let isMounted = true;
+        let instanceId = 0;
+        let sequenceIndex = 0;
+        const timeoutIds: number[] = [];
+
+        const spawnIncomingCard = () => {
+            const step = incomingFlowSequence[sequenceIndex % incomingFlowSequence.length];
+            const item = incomingItems.find((entry) => entry.id === step.itemId);
+
+            if (!item || !isMounted) {
+                return;
+            }
+
+            const nextCard: ActiveIncomingCard = {
+                instanceId,
+                item,
+                top: step.top,
+                travel: step.travel,
+            };
+
+            instanceId += 1;
+            sequenceIndex += 1;
+
+            setActiveIncomingCards((current) => [...current, nextCard]);
+
+            const timeoutId = window.setTimeout(() => {
+                if (!isMounted) {
+                    return;
+                }
+
+                setActiveIncomingCards((current) =>
+                    current.filter((entry) => entry.instanceId !== nextCard.instanceId)
+                );
+            }, incomingFlowDurationMs);
+
+            timeoutIds.push(timeoutId);
+        };
+
+        spawnIncomingCard();
+        const intervalId = window.setInterval(spawnIncomingCard, incomingFlowCadenceMs);
+
+        return () => {
+            isMounted = false;
+            window.clearInterval(intervalId);
+            timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+        };
+    }, [isDesktopViewport]);
+
+    if (!isDesktopViewport) {
+        return null;
+    }
+
+    const scrollToPricing = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        const pricingSection = document.getElementById('pricing');
+
+        if (!pricingSection) {
+            return;
+        }
+
+        event.preventDefault();
+        pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    return (
+        <section className="overflow-hidden bg-background py-14 md:py-20" id="ai-lab">
+            <div className="container mx-auto px-4 md:px-12">
+                <div className="mx-auto max-w-3xl text-center">
                     <SectionHeading
-                        badge="AI Lab"
-                        title="From Concept to Campaign"
-                        description="See exactly how we use AI to accelerate our workflow so we can deliver production-ready assets in seconds. We run AI—it doesn't run us."
+                        badge="AI Workflow"
+                        title="PDFs, videos, images, and text go in. Organized creative comes out."
+                        description="The 30PX workflow pulls briefs, references, copy, footage, and feedback through one system, then reshapes them into clean cards, layouts, and deliverables."
                         align="center"
+                        className="mb-0"
                     />
                 </div>
 
-                {/* Main Horizontal Scrollable Pipeline */}
-                <div className="w-full max-w-7xl pb-10 px-4 xl:px-0">
-                    <div className="flex flex-col lg:flex-row items-stretch justify-center lg:justify-center gap-8 lg:gap-8 mx-auto w-full lg:w-fit relative z-10 py-6">
+                <div className="relative mt-10 overflow-hidden rounded-[5px] border border-slate-200/80 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_55%,#eef4ff_100%)] px-5 py-6 md:px-8 md:py-8 xl:px-10 xl:py-10">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-                        {/* =========================================
-                STAGE 1: INPUT
-            ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full max-w-[320px] mx-auto lg:max-w-none lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
-                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">1</div>
-
-                            <div className="flex items-center justify-between mb-5 mt-2">
-                                <h2 className="text-sm font-bold text-foreground tracking-widest flex items-center gap-2">
-                                    <Upload size={16} className="text-muted-foreground" /> Upload Images
-                                </h2>
-                                <Badge variant="secondary" className="text-[10px] font-medium px-2 py-0">Original</Badge>
+                    <div className="relative hidden min-h-[460px] items-center xl:flex">
+                        <div className="relative min-h-[420px] flex-1">
+                            <div className="absolute left-0 top-0">
+                                <p className="text-[11px] font-semibold text-slate-500">
+                                    Incoming info
+                                </p>
                             </div>
 
-                            <div className="relative w-full aspect-square rounded-[5px] overflow-hidden border border-border bg-muted/30 p-1.5 mb-4 group">
-                                <img
-                                    src="/assets/ai-lab/woman_cycling.webp"
-                                    alt="Raw Asset"
-                                    className="w-full h-full object-cover rounded-[5px] opacity-90 transition-transform duration-500 group-hover:scale-105"
-                                    loading="lazy"
+                            {activeIncomingCards.map((card) => (
+                                <IncomingChip
+                                    key={card.instanceId}
+                                    item={card.item}
+                                    className="ai-flow-item ai-flow-item-in-once absolute left-0"
+                                    style={
+                                        {
+                                            top: card.top,
+                                            '--travel': card.travel,
+                                            '--flow-y': '-50%',
+                                        } as React.CSSProperties
+                                    }
                                 />
-                                <div className="absolute inset-0 border border-black/5 rounded-[5px] pointer-events-none" />
-                            </div>
+                            ))}
+                        </div>
 
-                            {/* Prompt Input Simulation */}
-                            <div className="relative mb-5 w-full flex-shrink-0">
-                                <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
-                                    <Sparkles size={10} className="text-primary" /> AI Generation Prompt
-                                </div>
-                                <div className="bg-muted/20 border border-border/50 rounded-[5px] p-3 text-[11px] text-muted-foreground font-medium leading-relaxed shadow-inner">
-                                    <span className="text-foreground">"High-chroma urban portrait utilizing a shallow depth of field to isolate a subject on a matte-black BMX, featuring complex texture mapping ..."</span>
-                                    <span className="inline-block w-1 h-3 bg-primary animate-pulse ml-1 align-middle" />
-                                </div>
-                            </div>
-
-                            {/* Detailed Metadata */}
-                            <div className="grid grid-cols-2 gap-3 mt-auto">
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
-                                    <FileImage size={14} className="text-muted-foreground" />
-                                    <div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Format</p>
-                                        <p className="text-[11px] text-foreground font-medium">WEBP Image</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
-                                    <Maximize size={14} className="text-muted-foreground" />
-                                    <div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Resolution</p>
-                                        <p className="text-[11px] text-foreground font-medium">1080 x 1080</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
-                                    <HardDrive size={14} className="text-muted-foreground" />
-                                    <div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Size</p>
-                                        <p className="text-[11px] text-foreground font-medium">9.5 MB</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 bg-muted/20 border border-border/50 p-2 rounded-[5px]">
-                                    <Palette size={14} className="text-muted-foreground" />
-                                    <div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Color</p>
-                                        <p className="text-[11px] text-foreground font-medium">sRGB</p>
+                        <div className="relative z-10 flex w-[240px] shrink-0 justify-center">
+                            <div className="relative flex h-[152px] w-[204px] items-center justify-center rounded-[5px] border border-slate-200/80 bg-white">
+                                <div className="relative z-10 flex items-center justify-center">
+                                    <div className="ai-flow-logo-pop flex h-[78px] w-[78px] items-center justify-center rounded-[5px] bg-[#1f3a8a]">
+                                        <img src="/favicon.svg" alt="30PX favicon" className="h-12 w-12" />
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Animated Down/Right Connector 1 */}
-                        <div className="flex items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
-                            <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
-                                <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
+                        <div className="relative min-h-[420px] flex-1">
+                            <div className="absolute right-0 top-0 text-right">
+                                <p className="text-[11px] font-semibold text-slate-500">
+                                    Outputs
+                                </p>
                             </div>
-                            <ArrowRight className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary bg-background px-1" size={20} />
+
+                            {outgoingItems.map((item) => (
+                                <OutgoingChip key={item.id} item={item} animated />
+                            ))}
                         </div>
+                    </div>
 
-                        {/* =========================================
-                STAGE 2: AI MAGIC
-            ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full max-w-[320px] mx-auto lg:max-w-none lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
-                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-sm">2</div>
-
-                            <div className="flex items-center justify-between mb-6 mt-2">
-                                <h2 className="text-sm font-bold text-foreground tracking-widest flex items-center gap-2">
-                                    <Cpu size={16} className="text-muted-foreground" /> Processing Engine
-                                </h2>
-                                <div className="flex gap-1.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse delay-75" />
-                                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
+                    <div className="relative xl:hidden">
+                        <div className="grid gap-5">
+                            <div className="rounded-[5px] border border-slate-200/80 bg-white/85 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+                                <p className="text-[11px] font-semibold text-slate-500">
+                                    Incoming info
+                                </p>
+                                <div className="mt-4 flex flex-wrap gap-3">
+                                    {incomingItems.map((item) => (
+                                        <IncomingChip key={item.id} item={item} className="w-auto max-w-full" />
+                                    ))}
                                 </div>
                             </div>
 
-                            <div className="flex flex-col gap-5">
-                                {/* Visual Node - Flow representation */}
-                                <div className="relative w-full aspect-square flex items-center justify-center gap-4 bg-muted/10 border border-border/50 rounded-[5px] overflow-hidden">
-                                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50" />
-
-                                    {/* Node 1 */}
-                                    <div className="relative">
-                                        <div className="w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center shadow-md relative z-10">
-                                            <Sparkles size={16} className="text-primary/70" />
+                            <div className="flex justify-center">
+                                <div className="relative flex h-[136px] w-[176px] items-center justify-center rounded-[5px] border border-slate-200/80 bg-white">
+                                    <div className="relative z-10 flex items-center justify-center text-center">
+                                        <div className="ai-flow-logo-pop flex h-[70px] w-[70px] items-center justify-center rounded-[5px] bg-[#1f3a8a]">
+                                            <img src="/favicon.svg" alt="30PX favicon" className="h-11 w-11" />
                                         </div>
-                                        <div className="absolute inset-0 w-10 h-10 border border-primary/30 rounded-full animate-ping opacity-50" />
                                     </div>
-
-                                    {/* Flow line */}
-                                    <div className="w-8 h-[2px] bg-border relative overflow-hidden">
-                                        <div className="absolute inset-0 bg-primary/40 animate-[slide_1s_linear_infinite]" />
-                                    </div>
-
-                                    {/* Node 2 */}
-                                    <div className="relative">
-                                        <div className="w-12 h-12 bg-card border border-border rounded-full flex items-center justify-center shadow-lg relative z-10">
-                                            <Sparkles size={20} className="text-primary animate-pulse" />
-                                        </div>
-                                        <div className="absolute inset-[-6px] w-[calc(100%+12px)] h-[calc(100%+12px)] border border-primary/20 rounded-full animate-[ping_3s_ease-in-out_infinite]" />
-                                    </div>
-                                </div>
-
-                                {/* Processing Checklist */}
-                                <div className="flex flex-col gap-3">
-                                    <div className="flex items-center gap-3">
-                                        <CheckCircle2 size={16} className="text-green-500" />
-                                        <span className="text-[12px] text-muted-foreground font-medium">Subject Isolation & Analysis</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Loader2 size={16} className="text-primary animate-spin" />
-                                        <span className="text-[12px] text-foreground font-semibold">Dynamic Prompt Generation</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 opacity-40">
-                                        <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/50 ml-0.5" />
-                                        <span className="text-[12px] text-muted-foreground font-medium ml-[-2px]">High-Fidelity Rendering</span>
-                                    </div>
-                                </div>
-
-                                {/* Model Tags */}
-                                <div className="pt-4 border-t border-border/50 flex flex-wrap gap-2">
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Midjourney</Badge>
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Sora</Badge>
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Gemini</Badge>
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Claude</Badge>
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Nano Banana Pro</Badge>
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Kling AI</Badge>
-                                    <Badge variant="secondary" className="text-[9px] tracking-wider uppercase bg-muted/50 rounded-[3px] px-2">Google VEO</Badge>
                                 </div>
                             </div>
 
-                            {/* Server Load Footer to balance the bottom of the card */}
-                            <div className="pt-5 flex items-center justify-between border-t border-border/50 mt-auto">
-                                <div className="flex flex-col w-full">
-                                    <div className="flex justify-between items-center mb-1.5">
-                                        <span className="text-[9px] text-muted-foreground uppercase font-semibold flex items-center gap-1">
-                                            <Cpu size={10} /> Active Compute
-                                        </span>
-                                        <span className="text-[10px] text-primary font-bold">94%</span>
-                                    </div>
-                                    <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-                                        <div className="h-full bg-primary animate-[pulse_2s_ease-in-out_infinite]" style={{ width: '94%' }} />
-                                    </div>
+                            <div className="rounded-[5px] border border-slate-200/80 bg-white/85 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+                                <p className="text-[11px] font-semibold text-slate-500">
+                                    Outputs
+                                </p>
+                                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                                    {outgoingItems.map((item) => (
+                                        <OutgoingChip key={item.id} item={item} className="w-full" />
+                                    ))}
                                 </div>
                             </div>
                         </div>
-
-                        {/* Animated Down/Right Connector 2 */}
-                        <div className="flex items-center justify-center w-8 h-8 lg:w-16 lg:h-auto shrink-0 relative self-center rotate-90 lg:rotate-0">
-                            <div className="w-full h-[2px] bg-border relative overflow-hidden rounded-full">
-                                <div className="absolute top-0 left-0 h-full w-1/2 bg-primary animate-[slide_1.5s_linear_infinite]" />
-                            </div>
-                            <ArrowRight className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary bg-background px-1" size={20} />
-                        </div>
-
-                        {/* =========================================
-                STAGE 3: OUTPUT
-            ========================================= */}
-                        <div className="bg-card border border-border rounded-[5px] p-6 w-full max-w-[320px] mx-auto lg:max-w-none lg:w-[320px] shrink-0 flex flex-col relative shadow-sm hover:shadow-md transition-shadow flex-1">
-                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-card border border-border text-foreground w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-sm">
-                                <CheckCircle2 size={18} className="text-green-500" />
-                            </div>
-
-                            <div className="flex items-center justify-between mb-5 mt-2">
-                                <h2 className="text-sm font-bold text-foreground tracking-widest flex items-center gap-2">
-                                    <ImageIcon size={16} className="text-muted-foreground" /> Delivery
-                                </h2>
-                                <Badge variant="outline" className="text-[10px] text-green-600 dark:text-green-400 border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-900/20 px-2 py-0">Ready</Badge>
-                            </div>
-
-                            <div className="w-full flex flex-col gap-2 relative z-10">
-                                {/* Main Image 1:1 */}
-                                <div className="w-full aspect-square rounded-[5px] overflow-hidden relative group border border-border bg-muted/30 mb-4">
-                                    <video
-                                        src="/assets/ai-lab/woman_cycling.mp4"
-                                        className="w-full h-full object-cover rounded-[5px] transition-transform duration-500 group-hover:scale-105"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                    />
-                                    <div className="absolute top-2 right-2 bg-background/90 backdrop-blur border border-border px-2 py-1 rounded text-[9px] font-bold flex items-center gap-1 text-foreground shadow-sm">
-                                        4K HDR
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Prompt Input Simulation */}
-                            <div className="relative mb-5 w-full flex-shrink-0">
-                                <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
-                                    <Video size={10} className="text-green-500" /> AI Video Prompt
-                                </div>
-                                <div className="bg-muted/20 border border-green-500/30 rounded-[5px] p-3 text-[11px] text-muted-foreground font-medium leading-relaxed shadow-inner">
-                                    <span className="text-foreground">"Dynamic tracking shot of a young woman cycling through a sunlit urban environment, natural lighting, high dynamic range, photorealistic physics, 60fps cinematic movement ..."</span>
-                                    <span className="inline-block w-1 h-3 bg-green-500 animate-pulse ml-1 align-middle" />
-                                </div>
-                            </div>
-
-                            {/* Detailed Metadata */}
-                            <div className="grid grid-cols-2 gap-3 mt-auto mb-5">
-                                <div className="flex items-center gap-2 bg-muted/20 border border-green-500/20 p-2 rounded-[5px]">
-                                    <Video size={14} className="text-green-600 dark:text-green-400" />
-                                    <div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Format</p>
-                                        <p className="text-[11px] text-foreground font-medium">MP4 Video</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 bg-muted/20 border border-green-500/20 p-2 rounded-[5px]">
-                                    <Maximize size={14} className="text-green-600 dark:text-green-400" />
-                                    <div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-semibold">Resolution</p>
-                                        <p className="text-[11px] text-foreground font-medium">1080 x 1080</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Action Footer */}
-                            <div className="pt-5 flex items-center justify-between border-t border-border/50">
-                                <div className="flex flex-col">
-                                    <span className="text-[9px] text-muted-foreground uppercase font-semibold">Total Time</span>
-                                    <span className="text-xs text-foreground font-bold">45 Seconds</span>
-                                </div>
-                                <button className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-full text-[11px] font-bold hover:bg-primary/90 transition-all hover:-translate-y-0.5 shadow-sm">
-                                    <Download size={14} /> Download All
-                                </button>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
-                <style>{`
-          /* Smooth infinite sliding animation for the horizontal connector lines */
-          @keyframes slide {
-            0% { left: -50%; }
-            100% { left: 100%; }
-          }
-          
-          /* Hide scrollbar for Chrome, Safari and Opera */
-          .no-scrollbar::-webkit-scrollbar {
-            display: none;
-          }
-          /* Hide scrollbar for IE, Edge and Firefox */
-          .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-          }
-        `}</style>
+                <div className="mt-8 flex flex-col items-center justify-between gap-4 text-center lg:flex-row lg:text-left">
+                    <div>
+                        <p className="text-sm font-semibold text-slate-900">
+                            Everything arrives messy. The handoff should not.
+                        </p>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                            That is the whole point of the workflow: fewer scattered files, faster creative output.
+                        </p>
+                    </div>
+
+                    <a
+                        href="#pricing"
+                        onClick={scrollToPricing}
+                        className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1f3a8a] px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
+                    >
+                        See Pricing
+                        <ArrowRight size={16} />
+                    </a>
+                </div>
             </div>
         </section>
     );

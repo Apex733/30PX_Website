@@ -1,0 +1,87 @@
+import { CaseStudyTemplate, type CaseStudyData } from "@/components/CaseStudyTemplate";
+
+const MONDLY_SAAS_CASE_STUDY: CaseStudyData = {
+    seoTitle: "Mondly SaaS | AI-Assisted Product Design & Development",
+    seoDescription: "An AI-assisted SaaS build covering UI/UX, dashboard design, backend development, database setup, and launch-ready delivery.",
+    seoImage: "/portfolio/mondly-saas/hero.avif",
+    heroImage: "/portfolio/mondly-saas/hero.avif",
+    heroObjectFit: "contain",
+    projectName: "Mondly SaaS",
+    description: "Mondly SaaS was built as a complete product, not just a surface-level mockup. Using AI as a creative and development accelerator, the project moved from interface design to dashboard UX, backend logic, database structure, and a live-ready web experience.",
+    deliverables: [
+        "Full UI/UX design",
+        "SaaS dashboard system",
+        "Frontend development",
+        "Backend implementation",
+        "Database setup",
+        "Launch-ready deployment"
+    ],
+    theProblem: "The product needed more than attractive screens. It required a cohesive SaaS experience with a usable dashboard, connected backend flows, structured data, and enough polish to feel production-ready.",
+    ourSolution: "We used AI to accelerate ideation, interface refinement, and implementation while still carrying the build end-to-end by hand. That included the user experience, dashboard layouts, backend coding, database planning, and getting the app into a live state.",
+    clientGain: "The result was a fully realized SaaS product direction with strong visuals, working product structure, and a faster path from concept to launch than a traditional start-from-scratch workflow.",
+    stats: [
+        { value: "6", label: "Core Screens" },
+        { value: "Full", label: "Stack Build" },
+        { value: "Live", label: "Product Launch" }
+    ],
+    visualsTitle: "Inside the product",
+    visualsDescription: "Selected screens from the Mondly SaaS experience, covering the product UI, dashboard, and key workflows.",
+    images: [
+        {
+            src: "/portfolio/mondly-saas/screen-01.webp",
+            aspectRatio: "4:3",
+            description: "Landing and product framing built to make the SaaS feel premium, modern, and easy to understand at a glance."
+        },
+        {
+            src: "/portfolio/mondly-saas/screen-03.webp",
+            aspectRatio: "4:3",
+            description: "A broader product screen demonstrating how the interface scales beyond a single panel or widget."
+        },
+        {
+            src: "/portfolio/mondly-saas/screen-05.webp",
+            aspectRatio: "4:3",
+            description: "Wide layout treatment that reinforces the overall SaaS system and its polished visual identity."
+        },
+        {
+            src: "/portfolio/mondly-saas/screen-02.avif",
+            aspectRatio: "4:5",
+            description: "A focused dashboard view showing the product language and hierarchy used across the core workspace."
+        },
+        {
+            src: "/portfolio/mondly-saas/screen-04.webp",
+            aspectRatio: "4:5",
+            description: "Another vertical workflow view designed for clarity, data readability, and smoother product interactions."
+        },
+        {
+            src: "/portfolio/mondly-saas/screen-06.avif",
+            aspectRatio: "4:5",
+            description: "A final detailed dashboard screen showing the consistency of the UI/UX across the product."
+        }
+    ],
+    moreProjects: [
+        {
+            name: "GIGI Laurent | AI Campaign",
+            description: "AI-generated campaign visuals turning product-only assets into a full launch system.",
+            image: "/portfolio/gigi-laurent/hero.webp",
+            href: "/portfolio/gigi-laurent",
+            bgClass: "bg-gradient-to-br from-rose-100 to-cyan-100 dark:from-rose-950 dark:to-cyan-950"
+        },
+        {
+            name: "Fizz Bliss | Product Imagery",
+            description: "AI product visuals created to support a vibrant beverage launch across marketing touchpoints.",
+            image: "/portfolio/fizzbliss/dynamic-studio-pro_2760836823.avif",
+            href: "/portfolio/fizzbliss",
+            bgClass: "bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-950 dark:to-orange-900"
+        }
+    ],
+    accent: "#0F766E",
+    accentClass: "border-teal-700/30",
+    cardClass: "bg-teal-700/10 border-teal-700/20",
+    statShadowClass: "shadow-teal-700/20"
+};
+
+const MondlySaasProject = () => {
+    return <CaseStudyTemplate data={MONDLY_SAAS_CASE_STUDY} />;
+};
+
+export default MondlySaasProject;

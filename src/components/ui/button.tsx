@@ -3,9 +3,10 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+import { ButtonLabel } from "@/components/ui/button-label"
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-[background-color,border-color,color,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
     {
         variants: {
             variant: {
@@ -37,80 +38,27 @@ export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
     asChild?: boolean
-    /** Set to false to disable the liquid ripple hover effect */
+    /** Deprecated: retained for compatibility after removing the droplet hover effect. */
     ripple?: boolean
 }
 
-// Liquid ripple effect hook
-function useRipple(enabled: boolean) {
-    const containerRef = React.useRef<HTMLElement>(null);
-
-    const handlePointerEnter = React.useCallback(
-        (e: React.PointerEvent) => {
-            if (!enabled) return;
-            const el = containerRef.current;
-            if (!el) return;
-
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const size = Math.max(rect.width, rect.height) * 2.5;
-
-            const ripple = document.createElement("span");
-            ripple.className = "btn-ripple";
-            ripple.style.cssText = `
-                position: absolute;
-                left: ${x - size / 2}px;
-                top: ${y - size / 2}px;
-                width: ${size}px;
-                height: ${size}px;
-                border-radius: 50%;
-                background: currentColor;
-                opacity: 0.12;
-                transform: scale(0);
-                pointer-events: none;
-                animation: btn-ripple-expand 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            `;
-            el.appendChild(ripple);
-
-            ripple.addEventListener("animationend", () => {
-                ripple.remove();
-            });
-        },
-        [enabled],
-    );
-
-    return { containerRef, handlePointerEnter };
-}
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, asChild = false, ripple = true, ...props }, ref) => {
+    ({ className, variant, size, asChild = false, ripple = true, children, ...props }, ref) => {
         const Comp = asChild ? Slot : "button"
-        const { containerRef, handlePointerEnter } = useRipple(ripple && variant !== "link" && variant !== "ghost");
-
-        // Merge refs
-        const mergedRef = React.useCallback(
-            (node: HTMLButtonElement | null) => {
-                (containerRef as React.MutableRefObject<HTMLButtonElement | null>).current = node;
-                if (typeof ref === "function") ref(node);
-                else if (ref) (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
-            },
-            [ref, containerRef],
-        );
+        const shouldRollLabel = !asChild && size !== "icon"
+        void ripple
 
         return (
             <Comp
                 className={cn(
                     buttonVariants({ variant, size, className }),
-                    ripple && variant !== "link" && variant !== "ghost" && "relative overflow-hidden",
+                    "group/button",
                 )}
-                ref={mergedRef}
-                onPointerEnter={(e: React.PointerEvent<HTMLButtonElement>) => {
-                    handlePointerEnter(e);
-                    props.onPointerEnter?.(e);
-                }}
+                ref={ref}
                 {...props}
-            />
+            >
+                {shouldRollLabel ? <ButtonLabel>{children}</ButtonLabel> : children}
+            </Comp>
         )
     },
 )

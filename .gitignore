@@ -1,1 +1,10 @@
 git-auto-sync.sh
+.env
+.env.local
+.dev.vars
+.wrangler/
+node_modules
+.DS_Store
+._*
+**/.DS_Store
+**/._*

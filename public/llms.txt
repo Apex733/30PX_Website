@@ -1,0 +1,48 @@
+# 30PX
+
+30PX, also known as Thirty Pixels Agency, is an AI-enhanced design agency and flat-fee creative subscription service.
+
+## Canonical Site
+
+https://thirtypixels.com/
+
+## What 30PX Does
+
+30PX helps startups, founders, marketers, and growing brands ship creative work faster by pairing veteran designers with AI-assisted workflows.
+
+Core services include:
+
+- Branding and logo design
+- Social media creative
+- Web design and development
+- UI/UX and product design
+- Motion graphics and video editing
+- AI product imagery and campaign visuals
+- Presentation, report, email, packaging, and print design
+
+## Important Pages
+
+- Home: https://thirtypixels.com/
+- Services: https://thirtypixels.com/services
+- Pricing: https://thirtypixels.com/pricing
+- Portfolio: https://thirtypixels.com/work
+- About: https://thirtypixels.com/about
+- FAQs: https://thirtypixels.com/faqs
+- Contact: https://thirtypixels.com/contact
+
+## Case Studies
+
+- GIGI Laurent AI campaign imagery: https://thirtypixels.com/portfolio/gigi-laurent
+- Mondly SaaS AI-assisted product build: https://thirtypixels.com/portfolio/mondly-saas
+- LoudMinds complete branding: https://thirtypixels.com/portfolio/loudminds
+- GhostTongue visual identity: https://thirtypixels.com/portfolio/ghosttongue
+- Fizz Bliss AI product photography: https://thirtypixels.com/portfolio/fizzbliss
+- VitaVibe wellness packaging and product visuals: https://thirtypixels.com/portfolio/vitavibe
+
+## Contact
+
+Email: hello@thirtypixels.com
+
+## Crawling Notes
+
+The canonical domain is https://thirtypixels.com. Public marketing and portfolio pages are indexable. Private order and admin pages should not be indexed.

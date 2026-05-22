@@ -1,36 +1,51 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useMemo } from "react";
+import NumberFlowReact, { continuous, type Format } from "@number-flow/react"
+
+import { cn } from "@/lib/utils"
 
 interface NumberFlowProps {
-    value: number | string;
-    format?: Intl.NumberFormatOptions;
-    className?: string;
+    value: number | string
+    format?: Format
+    className?: string
+}
+
+const TRANSFORM_TIMING: EffectTiming = {
+    duration: 850,
+    easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+    fill: "both",
+}
+
+const SPIN_TIMING: EffectTiming = {
+    duration: 950,
+    easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+    fill: "both",
+}
+
+const OPACITY_TIMING: EffectTiming = {
+    duration: 220,
+    easing: "ease-out",
+    fill: "both",
 }
 
 export default function NumberFlow({ value, format, className }: NumberFlowProps) {
-    const formatted = useMemo(() => {
-        if (typeof value === 'number') {
-            return new Intl.NumberFormat('en-US', format).format(value);
-        }
-        return value;
-    }, [value, format]);
+    const baseClassName = cn("inline-flex tabular-nums items-baseline", className)
+
+    if (typeof value !== "number") {
+        return <span className={baseClassName}>{value}</span>
+    }
 
     return (
-        <span className={className} style={{ display: 'inline-block', position: 'relative' }}>
-            <AnimatePresence mode="popLayout" initial={false}>
-                <motion.span
-                    key={formatted}
-                    initial={{ filter: "blur(10px)", opacity: 0, y: -10 }}
-                    animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                    exit={{ filter: "blur(10px)", opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    style={{ display: 'inline-block' }}
-                >
-                    {formatted}
-                </motion.span>
-            </AnimatePresence>
-        </span>
-    );
+        <NumberFlowReact
+            value={value}
+            format={format}
+            plugins={[continuous]}
+            trend={(previous, next) => Math.sign(next - previous)}
+            transformTiming={TRANSFORM_TIMING}
+            spinTiming={SPIN_TIMING}
+            opacityTiming={OPACITY_TIMING}
+            willChange
+            className={baseClassName}
+        />
+    )
 }

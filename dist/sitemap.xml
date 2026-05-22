@@ -2,68 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thirtypixels.com/</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/about</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://thirtypixels.com/services</loc>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://thirtypixels.com/pricing</loc>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://thirtypixels.com/work</loc>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://thirtypixels.com/contact</loc>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/faqs</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
-    <loc>https://thirtypixels.com/portfolio/desora</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://thirtypixels.com/portfolio/gigi-laurent</loc>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://thirtypixels.com/portfolio/mondly-saas</loc>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/portfolio/loudminds</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/portfolio/ghosttongue</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://thirtypixels.com/portfolio/fizzbliss</loc>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/portfolio/vitavibe</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/privacy</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/terms</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/cookies</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
   <url>
     <loc>https://thirtypixels.com/dmca</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-04-20</lastmod>
   </url>
 </urlset>

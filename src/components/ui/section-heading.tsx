@@ -24,7 +24,7 @@ export function SectionHeading({
             "items-end text-right": align === "right",
         }, className)}>
             {badge && (
-                <Badge variant="secondary" className="text-primary bg-primary/10 hover:bg-primary/20 rounded-md mb-2">
+                <Badge variant="secondary" className="text-primary bg-primary/10 hover:bg-primary/10 rounded-md mb-2">
                     {badge}
                 </Badge>
             )}

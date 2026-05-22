@@ -17,7 +17,7 @@ export function Comparison() {
                     <p className="text-muted-foreground max-w-2xl mx-auto">See the difference 30PX makes for your brand visuals.</p>
                 </div>
                 <div className="w-full max-w-7xl mx-auto">
-                    <div className="rounded-lg border-2 overflow-hidden aspect-[16/9] shadow-2xl">
+                    <div className="rounded-[5px] border-2 overflow-hidden aspect-[16/9] shadow-2xl">
                         <ImageComparisonSlider
                             leftImage={beforeSrc || ""} // Before
                             rightImage={afterSrc || ""} // After

@@ -1,8 +1,43 @@
 {
   "name": "30pxwebsite",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-02-19",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
+  },
+  "d1_databases": [
+    {
+      "binding": "ORDERS_DB",
+      "database_name": "30px-orders",
+      "database_id": "ac14b937-c6ca-449d-b769-7fdbc2e083b0"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ORDER_ASSETS",
+      "bucket_name": "30px-order-assets"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "EMAIL_QUEUE",
+        "queue": "30px-order-events"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "30px-order-events",
+        "dead_letter_queue": "30px-order-events-dlq"
+      }
+    ]
+  },
+  "vars": {
+    "APP_BASE_URL": "https://thirtypixels.com",
+    "ORDER_SENDER_NAME": "Project",
+    "ORDER_SENDER_EMAIL": "project@thirtypixels.com",
+    "ORDER_REPLY_TO": "project@thirtypixels.com"
   }
 }

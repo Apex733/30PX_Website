@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header } from "@/components/ui/header";
 import { SEO } from "@/components/SEO";
 import { Footer } from "@/components/ui/footer-section";
+import { ButtonLabel } from "@/components/ui/button-label";
 import { ChevronDown } from "lucide-react";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 
@@ -9,15 +10,17 @@ const FAQItem = ({ question, answer }: { question: string, answer: React.ReactNo
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="border border-border/50 rounded-lg bg-card overflow-hidden">
+        <div className="border border-border/50 rounded-[5px] bg-card overflow-hidden">
             <button
-                className="w-full flex justify-between items-center p-5 text-left font-medium text-lg hover:bg-secondary/50 transition-colors"
+                className="group/button flex w-full items-center justify-between p-5 text-left text-lg font-medium transition-colors hover:bg-secondary/50"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${question.replace(/\s+/g, '-').toLowerCase()}`}
             >
-                {question}
-                <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                <ButtonLabel>
+                    {question}
+                    <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                </ButtonLabel>
             </button>
             <div
                 id={`faq-answer-${question.replace(/\s+/g, '-').toLowerCase()}`}

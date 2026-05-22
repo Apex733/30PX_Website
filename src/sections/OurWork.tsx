@@ -1,7 +1,7 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useState, useEffect } from "react";
-import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { cn } from "@/lib/utils";
+import { ButtonLabel } from "@/components/ui/button-label";
 
 // Define categories with content
 const categories = [
@@ -111,9 +111,6 @@ export function OurWork() {
         </div>
     );
 
-    // Normalize velocity passing for component that uses absolute value with a direction ref or positive/negative velocity
-    const absVelocity = (v: number) => v;
-
     return (
         <section className="py-12 md:py-16 bg-background">
             <div className="container mx-auto px-4 max-w-7xl">
@@ -136,13 +133,9 @@ export function OurWork() {
                                 onClick={() => !isEmpty && setActiveCategory(category.id)}
                                 disabled={isEmpty}
                                 className={cn(
-                                    "relative px-2 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200",
-                                    // Layout widths to mimic grid:
-                                    // Mobile: 2 per row (~50%)
+                                    "group/button relative rounded-full px-2 py-2.5 text-xs font-medium transition-all duration-200 sm:text-sm",
                                     "w-[calc(50%-0.5rem)]",
-                                    // Tablet: 3 per row (~33%)
                                     "md:w-[calc(33.333%-0.5rem)]",
-                                    // Desktop: 6 per row (~16.6%)
                                     "lg:w-[calc(16.666%-0.65rem)]",
 
                                     isEmpty
@@ -153,7 +146,7 @@ export function OurWork() {
                                 )}
                             >
                                 <span className="block truncate w-full">
-                                    {category.label}
+                                    <ButtonLabel>{category.label}</ButtonLabel>
                                 </span>
                                 {isEmpty && (
                                     <span className="absolute -top-2 -right-1 bg-neutral-200 text-neutral-500 text-[10px] px-1.5 py-0.5 rounded-full font-bold shadow-sm z-10 whitespace-nowrap">
@@ -166,62 +159,26 @@ export function OurWork() {
                 </div>
             </div>
 
-            {/* Vertical Multi-column Scrolling Grid */}
+            {/* Static Multi-column Grid */}
             {images.length > 0 ? (
                 <div className="container mx-auto px-4 max-w-7xl">
-                    <div className="relative w-full h-[600px] md:h-[800px] overflow-hidden rounded-xl bg-transparent">
-                        {images.length >= 3 ? (
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full w-full">
-                                {/* Column 1 - Up */}
-                                <VelocityScroll
-                                    axis="vertical"
-                                    default_velocity={absVelocity(3)}
-                                    velocity_sensitivity={0}
-                                    className="gap-4"
-                                >
-                                    <div className="flex flex-col gap-4 pb-4">
-                                        {col1.map((item, i) => <MediaItem key={`c1-${i}`} item={item} />)}
-                                    </div>
-                                </VelocityScroll>
-
-                                {/* Column 2 - Down */}
-                                <div className="hidden md:block">
-                                    <VelocityScroll
-                                        axis="vertical"
-                                        default_velocity={absVelocity(-4)}
-                                        velocity_sensitivity={0}
-                                        className="gap-4"
-                                    >
-                                        <div className="flex flex-col gap-4 pb-4">
-                                            {col2.map((item, i) => <MediaItem key={`c2-${i}`} item={item} />)}
-                                        </div>
-                                    </VelocityScroll>
-                                </div>
-
-                                {/* Column 3 - Up */}
-                                <div className="hidden md:block">
-                                    <VelocityScroll
-                                        axis="vertical"
-                                        default_velocity={absVelocity(2.5)}
-                                        velocity_sensitivity={0}
-                                        className="gap-4"
-                                    >
-                                        <div className="flex flex-col gap-4 pb-4">
-                                            {col3.map((item, i) => <MediaItem key={`c3-${i}`} item={item} />)}
-                                        </div>
-                                    </VelocityScroll>
-                                </div>
+                    <div className="w-full">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                            {/* Column 1 */}
+                            <div className="flex flex-col gap-4">
+                                {col1.map((item, i) => <MediaItem key={`c1-${i}`} item={item} />)}
                             </div>
-                        ) : (
-                            /* Fallback for small number of items */
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full p-4 overflow-y-auto">
-                                {images.map((item, i) => (
-                                    <div key={`fb-${i}`} className="w-full">
-                                        <MediaItem item={item} />
-                                    </div>
-                                ))}
+
+                            {/* Column 2 */}
+                            <div className="hidden md:flex flex-col gap-4">
+                                {col2.map((item, i) => <MediaItem key={`c2-${i}`} item={item} />)}
                             </div>
-                        )}
+
+                            {/* Column 3 */}
+                            <div className="hidden md:flex flex-col gap-4">
+                                {col3.map((item, i) => <MediaItem key={`c3-${i}`} item={item} />)}
+                            </div>
+                        </div>
                     </div>
                 </div>
             ) : (

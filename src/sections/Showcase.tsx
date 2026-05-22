@@ -28,14 +28,14 @@ const items = [
         type: 'video',
         src: showreelSrc,
         title: 'High-End Design',
-        desc: 'Premium visuals that elevate your brand perception instantly.',
+        desc: 'Premium visuals built to convert, not just impress.',
         sliderName: 'design',
     },
     {
         type: 'video',
         src: websiteShowSrc,
         title: 'Strategic Branding',
-        desc: 'Cohesive identity systems that tell your unique story.',
+        desc: 'A full identity system built to scale across every touchpoint.',
         sliderName: 'branding',
     },
     {
@@ -50,7 +50,7 @@ const items = [
         src: adsDesignSrc,
         title: 'Future Tech',
         sliderName: 'tech',
-        desc: 'Cutting-edge styles incorporating the latest in design trends.',
+        desc: 'Current design trends, executed at production quality.',
     },
 ];
 
@@ -93,7 +93,7 @@ export function Showcase() {
                         ))}
                     </SliderContent>
 
-                    <SliderBtnGroup className='container mx-auto px-4 md:px-12 max-w-6xl mt-6 h-fit text-black/80 dark:text-white/80 bg-muted/50 backdrop-blur-md overflow-hidden grid grid-cols-2 md:grid-cols-4 rounded-lg border border-muted-foreground/10'>
+                    <SliderBtnGroup className='container mx-auto px-4 md:px-12 max-w-6xl mt-6 h-fit text-black/80 dark:text-white/80 bg-muted/50 backdrop-blur-md overflow-hidden grid grid-cols-2 md:grid-cols-4 rounded-[5px] border border-muted-foreground/10'>
                         {items.map((item, index) => (
                             <SliderBtn
                                 key={index}

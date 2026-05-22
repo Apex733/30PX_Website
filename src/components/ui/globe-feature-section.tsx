@@ -15,7 +15,7 @@ export default function Featured_05() {
                     <SectionHeading
                         badge="Global Network"
                         title={<>Your creative team, <span className="text-[#7C3AED]">assembled.</span></>}
-                        description="We're not an agency. We're a curated network of veteran freelance designers from six continents—united by craft, driven by deadlines."
+                        description="A curated network of veteran designers from six continents. Armed with the best AI tools available. United by craft. Driven by deadlines."
                         align="left"
                     />
                     <div className="flex justify-center md:justify-start">

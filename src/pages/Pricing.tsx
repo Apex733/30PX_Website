@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { SEO } from "@/components/SEO";
@@ -13,30 +12,10 @@ import { ComparisonTable } from "@/sections/ComparisonTable";
 import { OurServices } from "@/sections/OurServices";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 import { PAYMENT_FREQUENCIES, PROFESSIONAL_TIERS, TIERS } from "@/lib/pricing";
-
-const proofPoints = [
-    {
-        title: "Limited-time 60% yearly savings",
-        description: "Lock in the yearly rate and keep premium creative output predictable.",
-        icon: Sparkles,
-    },
-    {
-        title: "Fast delivery without agency drag",
-        description: "Most requests land in 24 to 48 hours with real designers steering the work.",
-        icon: CheckCircle2,
-    },
-    {
-        title: "Built to scale with your brand",
-        description: "Start with social, then grow into ads, motion, UI, and enterprise support.",
-        icon: ShieldCheck,
-    },
-];
-
-const valueSnapshots = [
-    { label: "Starting at", value: "$24/mo" },
-    { label: "Turnaround", value: "24-48h" },
-    { label: "Revisions", value: "Unlimited" },
-];
+import { HeroCarousel } from "@/components/ui/hero-vertical-carousel";
+import { Badge } from "@/components/ui/badge";
+import { Typewriter } from "@/components/ui/typewriter";
+import { motion } from "framer-motion";
 
 function Pricing() {
     const [frequency, setFrequency] = React.useState<string>(PAYMENT_FREQUENCIES[1]);
@@ -45,6 +24,8 @@ function Pricing() {
     const scrollToPlans = () => {
         document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
+
+    const words = ["No hourly billing.", "No surprise invoices.", "No traditional agency fees.", "Cancel or pause anytime."];
 
     return (
         <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/10">
@@ -55,120 +36,61 @@ function Pricing() {
             />
             <Header />
 
-            <main className="overflow-hidden pt-24 md:pt-28">
-                <section className="relative overflow-hidden border-b border-border/50 bg-[linear-gradient(to_top,#fafafa,rgba(96,165,250,0.18),rgba(30,58,138,0.92),#020817)] px-4 pb-16 pt-8 text-white md:px-12 md:pb-20 md:pt-12">
-                    <div className="pointer-events-none absolute inset-0">
-                        <div className="absolute left-[-8rem] top-12 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl" />
-                        <div className="absolute right-[-8rem] top-24 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl" />
-                        <div className="absolute bottom-[-8rem] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+            <main className="overflow-hidden">
+                <section className="min-h-[100svh] pt-28 pb-12 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20 text-center lg:text-left px-4 md:px-12 relative overflow-hidden bg-[linear-gradient(to_top,#FAFAFA,#60a5fa,#1e3a8a,#020817)] text-white">
+                    <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+                        {/* Optional subtle noise or pattern could go here */}
                     </div>
 
-                    <div className="container relative z-10 mx-auto max-w-7xl">
-                        <div className="grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-                            <div className="space-y-8">
-                                <div className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur">
-                                    Pricing built with the same visual language as the homepage
-                                </div>
+                    <div className="container mx-auto relative z-10 grid min-h-[calc(100svh-10rem)] grid-cols-1 gap-12 items-center md:min-h-[calc(100svh-12rem)] lg:min-h-[calc(100svh-14rem)] lg:grid-cols-2">
+                        <motion.div layout className="flex flex-col items-center lg:items-start justify-start gap-6">
+                            <motion.div layout className="flex flex-col items-center lg:items-start justify-start mb-2 gap-6">
+                                <Badge variant="secondary" className="px-4 py-2 text-sm rounded-full border-[#FAFAFA]/10 bg-[#FAFAFA]/5 text-[#FAFAFA]/90 hover:bg-[#FAFAFA]/10 transition-colors duration-300">
+                                    Subscription Plans • Flat Monthly Rates
+                                </Badge>
+                            </motion.div>
 
-                                <div className="space-y-5">
-                                    <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-5xl lg:text-6xl">
-                                        Pick the plan that matches your creative velocity.
-                                    </h1>
-                                    <p className="max-w-2xl text-lg leading-8 text-white/75 md:text-xl">
-                                        From daily social content to full-service creative operations, every plan is shaped for predictable output, sharp turnaround times, and premium design without traditional agency overhead.
-                                    </p>
-                                </div>
+                            <motion.h1 layout className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#FAFAFA] leading-[1.1]">
+                                Premium design packages. Flat monthly rates.<br />
+                                <span className="text-blue-400 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200 inline-block min-h-[2.4em] md:min-h-0 leading-[1.2]">
+                                    <Typewriter words={words} speed={100} delayBetweenWords={2000} cursor={true} />
+                                </span>
+                            </motion.h1>
 
-                                <div className="flex flex-col gap-4 sm:flex-row">
+                            <motion.p layout transition={{ duration: 0.3 }} className="text-xl md:text-2xl text-white mb-12 max-w-3xl leading-relaxed">
+                                From daily social content to full-service creative operations, every plan is shaped for predictable output, sharp turnaround times, and premium design without traditional agency overhead.
+                            </motion.p>
+
+                            <motion.div layout className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start w-full">
+                                <Button
+                                    size="lg"
+                                    className="h-14 px-8 text-xl w-full sm:w-auto shadow-lg shadow-blue-900/20 bg-[#FAFAFA] text-black hover:bg-gray-100 rounded-full"
+                                    onClick={scrollToPlans}
+                                >
+                                    View plans
+                                </Button>
+                                <Link to="/order" className="w-full sm:w-auto">
                                     <Button
+                                        variant="outline"
                                         size="lg"
-                                        className="h-14 rounded-full bg-white px-8 text-base font-semibold text-slate-950 hover:bg-white/90"
-                                        onClick={scrollToPlans}
+                                        className="h-14 px-8 text-xl w-full sm:w-auto bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white/50 rounded-full"
                                     >
-                                        View plans
-                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                        Start a request
                                     </Button>
-                                    <Link to="/order">
-                                        <Button
-                                            size="lg"
-                                            variant="outline"
-                                            className="h-14 rounded-full border-white/20 bg-white/8 px-8 text-base font-semibold text-white hover:bg-white/12"
-                                        >
-                                            Start a request
-                                        </Button>
-                                    </Link>
-                                </div>
+                                </Link>
+                            </motion.div>
+                        </motion.div>
 
-                                <div className="grid gap-3 md:grid-cols-3">
-                                    {proofPoints.map((point) => {
-                                        const Icon = point.icon;
-
-                                        return (
-                                            <div
-                                                key={point.title}
-                                                className="rounded-[5px] border border-white/12 bg-white/[0.08] p-5 backdrop-blur"
-                                            >
-                                                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/10 text-white">
-                                                    <Icon className="h-5 w-5" />
-                                                </div>
-                                                <h2 className="text-base font-semibold text-white">{point.title}</h2>
-                                                <p className="mt-2 text-sm leading-6 text-white/70">{point.description}</p>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-
-                            <div className="rounded-[5px] border border-white/12 bg-white/[0.08] p-6 shadow-[0_30px_90px_rgba(2,8,23,0.3)] backdrop-blur-md md:p-7">
-                                <div className="flex items-center justify-between gap-4 border-b border-white/12 pb-5">
-                                    <div>
-                                        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/60">
-                                            Snapshot
-                                        </p>
-                                        <p className="mt-2 text-2xl font-semibold text-white">
-                                            One pricing page, two ways to buy
-                                        </p>
-                                    </div>
-                                    <div className="rounded-full border border-emerald-300/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-100">
-                                        Packages + hires
-                                    </div>
-                                </div>
-
-                                <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                                    {valueSnapshots.map((snapshot) => (
-                                        <div
-                                            key={snapshot.label}
-                                            className="rounded-[5px] border border-white/10 bg-black/10 px-4 py-5"
-                                        >
-                                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/55">
-                                                {snapshot.label}
-                                            </p>
-                                            <p className="mt-3 text-2xl font-semibold text-white">{snapshot.value}</p>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="mt-6 rounded-[5px] border border-white/10 bg-slate-950/20 p-5">
-                                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
-                                        What changes as you scale
-                                    </p>
-                                    <ul className="mt-4 space-y-3 text-sm leading-6 text-white/78">
-                                        <li className="flex items-start gap-3">
-                                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-sky-300" />
-                                            <span>Start with a structured social content engine, then move into ads, print, motion, and UI as your brand grows.</span>
-                                        </li>
-                                        <li className="flex items-start gap-3">
-                                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" />
-                                            <span>Keep the same flat-fee logic while unlocking faster turnaround, richer deliverables, and more direct support.</span>
-                                        </li>
-                                        <li className="flex items-start gap-3">
-                                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
-                                            <span>Flip the toggle when you need a dedicated designer instead of a package subscription.</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                        {/* Right Column - Hero Carousel - Extends to top under navigation */}
+                        <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block overflow-hidden pointer-events-none">
+                            <div className="h-full w-full pointer-events-auto">
+                                <HeroCarousel />
                             </div>
                         </div>
+                    </div>
+                    {/* Mobile carousel - visible below content on mobile */}
+                    <div className="lg:hidden mt-12 w-full h-[300px] overflow-hidden">
+                        <HeroCarousel />
                     </div>
                 </section>
 

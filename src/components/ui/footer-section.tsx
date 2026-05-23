@@ -27,7 +27,7 @@ export function Footer() {
             title: "Product",
             links: [
                 { label: "Features", href: "#services" },
-                { label: "Pricing", href: "#pricing" },
+                { label: "Pricing", href: "/pricing" },
                 { label: "Testimonials", href: "#reviews" },
                 { label: "Start a project", href: "/order" },
             ],

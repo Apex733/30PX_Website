@@ -122,18 +122,22 @@ const ROUTE_SEO: Record<string, RouteSeo> = {
     "/privacy": {
         title: "Privacy Policy - 30PX",
         description: "Read the 30PX privacy policy covering information collection, data use, sharing, retention, security, rights, third-party links, and contact details.",
+        robots: NOINDEX_ROBOTS,
     },
     "/terms": {
         title: "Terms of Use - 30PX",
         description: "Read the 30PX terms of use for subscriptions, billing, intellectual property, acceptable use, revisions, liability, termination, and contact details.",
+        robots: NOINDEX_ROBOTS,
     },
     "/cookies": {
         title: "Cookie Policy - 30PX",
         description: "Read the 30PX cookie policy covering how cookies are used, third-party cookies, managing cookie preferences, updates, and contact details.",
+        robots: NOINDEX_ROBOTS,
     },
     "/dmca": {
         title: "DMCA Policy - 30PX",
         description: "Read the 30PX DMCA policy covering copyright notices, counter-notifications, repeat infringers, good faith claims, and contact details.",
+        robots: NOINDEX_ROBOTS,
     },
     "/blog": {
         title: "30PX Blog - AI Design Thinking, Process and Strategy",
@@ -171,6 +175,34 @@ function isHtmlNavigationRequest(request: Request, pathname: string): boolean {
     return accept.includes("text/html") || accept.includes("*/*") || accept === "";
 }
 
+function getCanonicalRedirectUrl(request: Request): string | null {
+    const url = new URL(request.url);
+    if (!url.hostname.endsWith("thirtypixels.com")) {
+        return null;
+    }
+
+    let shouldRedirect = false;
+
+    if (url.hostname !== "thirtypixels.com") {
+        url.hostname = "thirtypixels.com";
+        shouldRedirect = true;
+    }
+
+    if (url.protocol !== "https:") {
+        url.protocol = "https:";
+        shouldRedirect = true;
+    }
+
+    return shouldRedirect ? url.toString() : null;
+}
+
+function createIndexAssetRequest(request: Request): Request {
+    const indexUrl = new URL(request.url);
+    indexUrl.pathname = "/";
+    indexUrl.search = "";
+    return new Request(indexUrl.toString(), request);
+}
+
 async function injectRouteSeo(
     request: Request,
     response: Response,
@@ -205,6 +237,9 @@ async function injectRouteSeo(
     }, canonical);
 
     headers.set("content-type", "text/html; charset=utf-8");
+    headers.delete("content-length");
+    headers.delete("content-encoding");
+    headers.delete("etag");
 
     return new Response(enrichedHtml, {
         status: statusOverride || response.status,
@@ -216,24 +251,24 @@ async function injectRouteSeo(
 function injectHeadTags(html: string, pathname: string, routeSeo: RouteSeo, canonical: string): string {
     const image = routeSeo.image || DEFAULT_SOCIAL_IMAGE;
     const headTags = [
-        `<meta property="og:image:alt" content="${escapeHtmlAttr(routeSeo.title)}" />`,
-        `<meta name="twitter:image:alt" content="${escapeHtmlAttr(routeSeo.title)}" />`,
+        `<meta property="og:image:alt" content="${escapeHtmlAttr(routeSeo.title)}" data-rh="true" />`,
+        `<meta name="twitter:image:alt" content="${escapeHtmlAttr(routeSeo.title)}" data-rh="true" />`,
         `<script type="application/ld+json" data-route-seo="true">${safeJson(buildRouteSchema(pathname, routeSeo, canonical))}</script>`,
     ].join("\n  ");
 
     let nextHtml = html;
     nextHtml = upsertHeadTag(nextHtml, /<title>[\s\S]*?<\/title>/i, `<title>${escapeHtmlText(routeSeo.title)}</title>`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeHtmlAttr(routeSeo.description)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']robots["'][^>]*>/i, `<meta name="robots" content="${escapeHtmlAttr(routeSeo.robots || INDEXABLE_ROBOTS)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${escapeHtmlAttr(canonical)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:type["'][^>]*>/i, `<meta property="og:type" content="${routeSeo.schemaType === "Article" ? "article" : "website"}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:title["'][^>]*>/i, `<meta property="og:title" content="${escapeHtmlAttr(routeSeo.title)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:description["'][^>]*>/i, `<meta property="og:description" content="${escapeHtmlAttr(routeSeo.description)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:image["'][^>]*>/i, `<meta property="og:image" content="${escapeHtmlAttr(image)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:url["'][^>]*>/i, `<meta property="og:url" content="${escapeHtmlAttr(canonical)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']twitter:title["'][^>]*>/i, `<meta name="twitter:title" content="${escapeHtmlAttr(routeSeo.title)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']twitter:description["'][^>]*>/i, `<meta name="twitter:description" content="${escapeHtmlAttr(routeSeo.description)}" />`);
-    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']twitter:image["'][^>]*>/i, `<meta name="twitter:image" content="${escapeHtmlAttr(image)}" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeHtmlAttr(routeSeo.description)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']robots["'][^>]*>/i, `<meta name="robots" content="${escapeHtmlAttr(routeSeo.robots || INDEXABLE_ROBOTS)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${escapeHtmlAttr(canonical)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:type["'][^>]*>/i, `<meta property="og:type" content="${routeSeo.schemaType === "Article" ? "article" : "website"}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:title["'][^>]*>/i, `<meta property="og:title" content="${escapeHtmlAttr(routeSeo.title)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:description["'][^>]*>/i, `<meta property="og:description" content="${escapeHtmlAttr(routeSeo.description)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:image["'][^>]*>/i, `<meta property="og:image" content="${escapeHtmlAttr(image)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+property=["']og:url["'][^>]*>/i, `<meta property="og:url" content="${escapeHtmlAttr(canonical)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']twitter:title["'][^>]*>/i, `<meta name="twitter:title" content="${escapeHtmlAttr(routeSeo.title)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']twitter:description["'][^>]*>/i, `<meta name="twitter:description" content="${escapeHtmlAttr(routeSeo.description)}" data-rh="true" />`);
+    nextHtml = upsertHeadTag(nextHtml, /<meta\s+name=["']twitter:image["'][^>]*>/i, `<meta name="twitter:image" content="${escapeHtmlAttr(image)}" data-rh="true" />`);
 
     if (nextHtml.includes("</head>")) {
         return nextHtml.replace("</head>", `  ${headTags}\n</head>`);
@@ -423,6 +458,13 @@ export default {
                 return withCors(new Response(null, { status: 204 }), request);
             }
 
+            if (request.method === "GET" || request.method === "HEAD") {
+                const canonicalRedirect = getCanonicalRedirectUrl(request);
+                if (canonicalRedirect) {
+                    return Response.redirect(canonicalRedirect, 301);
+                }
+            }
+
             if (url.pathname === "/api/health") {
                 return withCors(json({ ok: true }), request);
             }
@@ -468,13 +510,14 @@ export default {
                 }
 
                 const routeSeo = ROUTE_SEO[normalizedPath];
-                const response = await env.ASSETS.fetch(request);
 
                 if (routeSeo) {
+                    const response = await env.ASSETS.fetch(createIndexAssetRequest(request));
                     return injectRouteSeo(request, response, normalizedPath, routeSeo);
                 }
 
                 if (isHtmlNavigationRequest(request, normalizedPath)) {
+                    const response = await env.ASSETS.fetch(createIndexAssetRequest(request));
                     return injectRouteSeo(request, response, normalizedPath, {
                         title: "Page Not Found - 30PX",
                         description: "This 30PX page could not be found.",
@@ -482,6 +525,7 @@ export default {
                     }, 404);
                 }
 
+                const response = await env.ASSETS.fetch(request);
                 return response;
             }
 

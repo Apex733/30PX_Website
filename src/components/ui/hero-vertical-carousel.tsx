@@ -24,6 +24,17 @@ const isVideo = (src: string) => {
     return /\.webm($|\?)/i.test(src);
 };
 
+const describeCarouselImage = (src: string, index: number) => {
+    const fileName = decodeURIComponent(src.split("/").pop() || "");
+    const baseName = fileName.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").trim();
+
+    if (baseName.length >= 3) {
+        return `30PX design showcase ${baseName}`;
+    }
+
+    return `30PX design showcase image ${index + 1}`;
+};
+
 const PREVIEW_SCALE = 0.595;
 const PREVIEW_GUTTER = 18;
 const PREVIEW_OFFSET = 28;
@@ -215,7 +226,7 @@ const HeroHoverPreview = ({
                             src={preview.src}
                             className="block h-auto w-auto max-h-none max-w-none"
                             style={mediaStyle}
-                            alt=""
+                            alt={describeCarouselImage(preview.src, 0)}
                             decoding="async"
                             draggable={false}
                             onLoad={measurePreview}
@@ -367,7 +378,7 @@ const CarouselColumn = ({
                                 src={src}
                                 className={commonClasses}
                                 draggable={false}
-                                alt=""
+                                alt={describeCarouselImage(src, i)}
                                 width="300"
                                 height="400"
                                 loading="eager"

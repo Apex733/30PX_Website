@@ -16,6 +16,7 @@ export default function Contact() {
             <Header />
 
             <main className="flex-grow pt-32 pb-8">
+                <h1 className="sr-only">Contact 30PX</h1>
                 <FreePDFDownload
                     title="Send us a message."
                     subtitle="Tell us about your project, your timeline, and your budget. We will follow up with a clear plan."

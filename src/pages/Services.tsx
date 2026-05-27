@@ -24,6 +24,7 @@ export default function Services() {
             <Header />
 
             <main className="flex-grow pt-32 pb-8">
+                <h1 className="sr-only">AI-powered design services by 30PX</h1>
                 <OurServices />
                 <ComparisonTable />
                 <PaymentModel />

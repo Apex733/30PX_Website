@@ -739,7 +739,7 @@ function OrderRequest() {
                                 <div key={item.id} className="flex items-center gap-4 p-4">
                                     <div className="h-14 w-14 overflow-hidden rounded-[5px] border border-neutral-200 bg-neutral-50">
                                         {item.previewUrl ? (
-                                            <img src={item.previewUrl} alt="" className="h-full w-full object-cover" />
+                                            <img src={item.previewUrl} alt={`Preview of ${item.file.name}`} className="h-full w-full object-cover" />
                                         ) : (
                                             <div className="flex h-full w-full items-center justify-center text-neutral-500">
                                                 <Icon className="h-6 w-6" />
@@ -1282,7 +1282,7 @@ function OrderRequest() {
                         <div className="hidden h-[360px] overflow-hidden rounded-[5px] border border-neutral-200 bg-neutral-950 p-3 lg:grid lg:grid-cols-3 lg:gap-3">
                             {visualStack.map((src, index) => (
                                 <div key={src} className={cn("overflow-hidden rounded-[5px] border border-white/10 bg-white/5", index % 2 === 0 ? "translate-y-4" : "-translate-y-4")}>
-                                    <img src={src} alt="" className="h-full w-full object-cover" loading="eager" />
+                                    <img src={src} alt={`30PX project showcase ${index + 1}`} className="h-full w-full object-cover" loading="eager" />
                                 </div>
                             ))}
                         </div>

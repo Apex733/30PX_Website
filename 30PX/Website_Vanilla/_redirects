@@ -1,0 +1,6 @@
+# Force www -> non-www (consolidates duplicate URLs for Google)
+https://www.thirtypixels.com/* https://thirtypixels.com/:splat 301
+
+# Catch-all: send any unknown path back to the homepage with a 200
+# (prevents 5xx on URLs Google discovered from old links)
+/* /index.html 200

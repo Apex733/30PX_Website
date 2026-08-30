@@ -16,11 +16,19 @@ export function Hero() {
                 {/* Optional subtle noise or pattern could go here */}
             </div>
 
+<<<<<<< HEAD
             <div className="container mx-auto relative z-10 grid min-h-[calc(100svh-10rem)] grid-cols-1 gap-12 items-center md:min-h-[calc(100svh-12rem)] lg:min-h-[calc(100svh-14rem)] lg:grid-cols-2">
                 <motion.div layout className="flex flex-col items-center lg:items-start justify-start gap-6">
                     <motion.div layout className="flex flex-col items-center lg:items-start justify-start mb-2 gap-6">
                         <Badge variant="secondary" className="px-4 py-2 text-sm rounded-full border-[#FAFAFA]/10 bg-[#FAFAFA]/5 text-[#FAFAFA]/90 hover:bg-[#FAFAFA]/10 transition-colors duration-300">
                             AI-Powered Agency • 200+ Five-Star Reviews
+=======
+            <div className="container mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="flex flex-col items-center lg:items-start justify-start gap-6">
+                    <div className="flex flex-col items-center lg:items-start justify-start mb-2 gap-6">
+                        <Badge variant="secondary" className="px-4 py-2 text-sm rounded-full border-[#FAFAFA]/10 bg-[#FAFAFA]/5 text-[#FAFAFA]/90 hover:bg-[#FAFAFA]/10">
+                            Top Rated • 200+ Five-Star Review
+>>>>>>> 24e3ecec (Update Reviews to Review in Hero section)
                         </Badge>
                     </motion.div>
 
